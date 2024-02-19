@@ -1,0 +1,21 @@
+html {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding-top: 1rem;
+}
+
+.page-wrapper {
+    width: 900px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.form-wrapper {
+    padding: 2rem;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
