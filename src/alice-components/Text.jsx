@@ -8,7 +8,7 @@ async function fetchPostData(postId) {
 
 function TextPost() {
 
-  const [Text,setText] = useState()
+  const [text,setText] = useState()
 
   useEffect(() => {
     fetchTextPost()
@@ -23,7 +23,7 @@ function TextPost() {
   }
 
   return (
-<p>{Text}</p>
+<p>{text}</p>
   )
 }
 
