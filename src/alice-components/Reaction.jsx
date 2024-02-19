@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+
+async function fetchPostData(postId) {
+    const response = await fetch(`http://localhost:4001/posts/${postId}`)
+    const data = await response.json()
+    return data
+  }
 
 function LikeButton() {
+
   const [likes, setLikes] = useState()
 
   useEffect(() => {
@@ -8,28 +15,32 @@ function LikeButton() {
   }, [])
 
   // For testing purposes, set the postID to something
-  const postId = '65d2db357ae9a04d4ca82b66'
+  const postId = '65d2e1373d8e4dc65b2338b5'
 
   const fetchLikes = async () => {
-    const response = await fetch(`http://localhost:4001/posts/${postId}`)
-    const data = await response.json()
-
-    // Reaction is an array of users who liked the post, so we need the number of elements in the array as a count of how many likes.
+    const data = await fetchPostData(postId)
     setLikes(data.reactions.length)
   }
 
-  const addLike = async () => {    
-    const response = await fetch(`http://localhost:4001/posts/${postId}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reactions: "65d2a391305ef18ce544da03" })
-    })
+  const addLike = async () => {
+      const data = await fetchPostData(postId)
+      const existingReactions = data.reactions
+      console.log(existingReactions)
+      // testing purpose im using 65d2e1373d8e4dc65b2338b1
+      const updatedReactions = [...existingReactions, "65d2e1373d8e4dc65b2338b1"]
 
-    if (response.ok) {
-      // Update with a new count of the array length 
-      fetchLikes()
-    }
-  }
+
+      // Update the backend with the updated reactions
+      await fetch(`http://localhost:4001/posts/${postId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reactions: updatedReactions }),
+      })
+
+        // Update with a new count of the array length 
+    fetchLikes()
+
+    }  
 
   return (
     <button onClick={addLike}>
@@ -38,4 +49,4 @@ function LikeButton() {
   )
 }
 
-export default LikeButton;
+export default LikeButton
