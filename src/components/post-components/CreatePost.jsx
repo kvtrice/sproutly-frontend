@@ -2,18 +2,37 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./CreatePost.css";
 
-const CreatePost = () => {
+const CreatePost = ({ addPost }) => {
+
+    // const params = useParams()
+    const [title, setTitle] = useState("")
+    const [content, setContent] = useState("")
+    const [imageUrl, setImageUrl] = useState("")
+    const nav = useNavigate()
+
+    const createNewPost = async (e) => {
+        e.preventDefault()
+        await addPost(title, content)
+        // Clear post entry fields
+        setTitle("")
+        setContent("")
+        // Navigate home after creation
+        nav('/')
+    }
+
 	return (
 		<div className="page-wrapper">
 			<div className="form-wrapper">
 				<h2>New Post</h2>
-				<form>
+				<form className="section" onSubmit={createNewPost}>
 					<div className="field">
 						<div className="control">
 							<input
 								className="input is-normal"
 								type="text"
 								placeholder="Enter post title"
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
 							></input>
 						</div>
 					</div>
@@ -22,29 +41,31 @@ const CreatePost = () => {
 							<textarea
 								className="textarea"
 								placeholder="Start typing here..."
+                                value={content}
+                                onChange={e => setContent(e.target.value)}
 							></textarea>
 						</div>
 					</div>
-                    <div class="file">
-                        <label class="file-label">
-                            <input class="file-input" type="file" name="plant-image" />
-                            <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
+                    <div className="file">
+                        <label className="file-label">
+                            <input className="file-input" type="file" name="plant-image" />
+                            <span className="file-cta">
+                            <span className="file-icon">
+                                <i className="fas fa-upload"></i>
                             </span>
-                            <span class="file-label">
+                            <span className="file-label">
                                 Upload image
                             </span>
                             </span>
                         </label>
                     </div>
-					<div class="field is-grouped is-grouped-right">
-						<p class="control">
-							<a class="button is-light">Discard</a>
+					<div className="field is-grouped is-grouped-right">
+						<p className="control">
+							<a className="button is-light">Discard</a>
 						</p>
-						<p class="control">
-							<a class="button is-primary">Create Post</a>
-						</p>
+						<div className="control">
+                            <input class="button" type="submit" value="Submit"></input>
+						</div>
 					</div>
 				</form>
 			</div>
