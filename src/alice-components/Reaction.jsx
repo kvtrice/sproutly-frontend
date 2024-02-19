@@ -37,7 +37,7 @@ function LikeButton() {
         body: JSON.stringify({ reactions: updatedReactions }),
       })
 
-        // Update with a new count of the array length 
+    // Update with a new count of the array length 
     fetchLikes()
 
     }  
