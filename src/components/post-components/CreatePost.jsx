@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreatePost.css";
+import PlantSearch from "../PlantSearch";
 
 const CreatePost = ({ addPost }) => {
+	const [title, setTitle] = useState("");
+	const [content, setContent] = useState("");
+	const [imageUrl, setImageUrl] = useState("");
+	const nav = useNavigate();
 
-    // const params = useParams()
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
-    const [imageUrl, setImageUrl] = useState("")
-    const nav = useNavigate()
-
-    const createNewPost = async (e) => {
-        e.preventDefault()
-        await addPost(title, content)
-        // Clear post entry fields
-        setTitle("")
-        setContent("")
-        // Navigate home after creation
-        nav('/')
-    }
+	const createNewPost = async (e) => {
+		e.preventDefault();
+		await addPost(title, content, imageUrl);
+		// Clear post entry fields
+		setTitle("");
+		setContent("");
+        setImageUrl("");
+		// Navigate home after creation
+		nav("/");
+	};
 
 	return (
 		<div className="page-wrapper">
@@ -31,8 +31,8 @@ const CreatePost = ({ addPost }) => {
 								className="input is-normal"
 								type="text"
 								placeholder="Enter post title"
-                                value={title}
-                                onChange={e => setTitle(e.target.value)}
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
 							></input>
 						</div>
 					</div>
@@ -41,30 +41,41 @@ const CreatePost = ({ addPost }) => {
 							<textarea
 								className="textarea"
 								placeholder="Start typing here..."
-                                value={content}
-                                onChange={e => setContent(e.target.value)}
+								value={content}
+								onChange={(e) => setContent(e.target.value)}
 							></textarea>
 						</div>
 					</div>
-                    <div className="file">
-                        <label className="file-label">
-                            <input className="file-input" type="file" name="plant-image" />
-                            <span className="file-cta">
-                            <span className="file-icon">
-                                <i className="fas fa-upload"></i>
-                            </span>
-                            <span className="file-label">
-                                Upload image
-                            </span>
-                            </span>
-                        </label>
+					<div className="file">
+						<label className="file-label">
+							<input
+								className="file-input"
+								type="file"
+								name="plant-image"
+								value={imageUrl}
+								onChange={(e) => setImageUrl(e.target.value)}
+							/>
+							<span className="file-cta">
+								<span className="file-icon">
+									<i className="fas fa-upload"></i>
+								</span>
+								<span className="file-label">Upload image</span>
+							</span>
+						</label>
+					</div>
+                    <div className="search">
+                        <PlantSearch />
                     </div>
 					<div className="field is-grouped is-grouped-right">
 						<p className="control">
 							<a className="button is-light">Discard</a>
 						</p>
 						<div className="control">
-                            <input class="button" type="submit" value="Submit"></input>
+							<input
+								class="button"
+								type="submit"
+								value="Submit"
+							></input>
 						</div>
 					</div>
 				</form>
