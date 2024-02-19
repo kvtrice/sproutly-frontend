@@ -3,6 +3,7 @@ import CreatePost from "./src/components/post-components/CreatePost";
 import Home from "./src/components/Home";
 import { useEffect, useState } from "react";
 import LikeButton from './src/alice-components/Reaction.jsx'
+import CommentsCount from "./src/alice-components/Comments.jsx";
 
 function App() {
 	// State for Posts
@@ -46,12 +47,17 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home/>} />
-					<Route path="/post" element={<LikeButton/>}>
+					<Route path="/post" element={
+						<>
+							<LikeButton/>
+							<CommentsCount/>
+						</>
+						}/>
 						<Route
 							path="new"
-							element={<CreatePost addPost={addPost} />}
+							element={<CreatePost addPost={addPost}/>}
 						/>
-					</Route>
+					<Route/> 
 				</Routes>
 				
 			</BrowserRouter>
