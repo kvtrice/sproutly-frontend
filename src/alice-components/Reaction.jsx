@@ -14,7 +14,7 @@ function LikeButton() {
     fetchLikes()
   }, [])
 
-  // For testing purposes, set the postID to something
+  // For testing purposes, hardcoded an existing postID 
   const postId = '65d2f5665305d3958a7ee6ec'
 
   const fetchLikes = async () => {
@@ -26,7 +26,7 @@ function LikeButton() {
       const data = await fetchPostData(postId)
       const existingReactions = data.reactions
       console.log(existingReactions)
-      // testing purpose im using 65d2e1373d8e4dc65b2338b1
+      // testing purpose hardcoded an existing userID
       const updatedReactions = [...existingReactions, "65d2f5665305d3958a7ee6e8"]
 
 
