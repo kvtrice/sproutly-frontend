@@ -7,6 +7,19 @@ form {
     padding-top: 1rem;
 }
 
+li {
+    cursor: pointer;
+}
+
+li p {
+    padding: 0.2rem;
+}
+
+li:hover {
+    background-color: lightgreen;
+    border-radius: 5px;
+}
+
 .page-wrapper {
     width: 900px;
     justify-content: center;
@@ -18,4 +31,8 @@ form {
     padding: 2rem;
     border: 1px solid lightgray;
     border-radius: 10px;
+}
+
+.search {
+    padding: 1rem 0rem;
 }

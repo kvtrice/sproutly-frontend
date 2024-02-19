@@ -53,7 +53,7 @@ function App() {
 							<CommentsCount/>
 						</>
 						}/>
-						<Route
+					  <Route
 							path="new"
 							element={<CreatePost addPost={addPost}/>}
 						/>
