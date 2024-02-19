@@ -46,13 +46,12 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home/>} />
-					<Route path="/post">
+					<Route path="/post" element={<LikeButton/>}>
 						<Route
 							path="new"
 							element={<CreatePost addPost={addPost} />}
 						/>
 					</Route>
-					<Route path="/Alice" element={<LikeButton/>} />
 				</Routes>
 				
 			</BrowserRouter>

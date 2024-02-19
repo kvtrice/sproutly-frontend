@@ -15,7 +15,7 @@ function LikeButton() {
   }, [])
 
   // For testing purposes, set the postID to something
-  const postId = '65d2e1373d8e4dc65b2338b5'
+  const postId = '65d2f5665305d3958a7ee6ec'
 
   const fetchLikes = async () => {
     const data = await fetchPostData(postId)
@@ -27,7 +27,7 @@ function LikeButton() {
       const existingReactions = data.reactions
       console.log(existingReactions)
       // testing purpose im using 65d2e1373d8e4dc65b2338b1
-      const updatedReactions = [...existingReactions, "65d2e1373d8e4dc65b2338b1"]
+      const updatedReactions = [...existingReactions, "65d2f5665305d3958a7ee6e8"]
 
 
       // Update the backend with the updated reactions
