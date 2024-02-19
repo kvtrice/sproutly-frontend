@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreatePost from "./src/components/post-components/CreatePost";
 import Home from "./src/components/Home";
 import { useEffect, useState } from "react";
+import LikeButton from './src/alice-components/Reaction.jsx'
 
 function App() {
 	// State for Posts
@@ -44,15 +45,18 @@ function App() {
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home/>} />
 					<Route path="/post">
 						<Route
 							path="new"
 							element={<CreatePost addPost={addPost} />}
 						/>
 					</Route>
+					<Route path="/Alice" element={<LikeButton/>} />
 				</Routes>
+				
 			</BrowserRouter>
+			
 		</>
 	);
 }
