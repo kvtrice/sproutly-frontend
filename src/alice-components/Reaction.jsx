@@ -15,7 +15,7 @@ function LikeButton() {
   }, [])
 
   // For testing purposes, hardcoded an existing postID 
-  const postId = '65d2f5665305d3958a7ee6ec'
+  const postId = '65d2f5665305d3958a7ee6ed'
 
   const fetchLikes = async () => {
     const data = await fetchPostData(postId)
