@@ -13,7 +13,7 @@ async function fetchPostData() {
 }
 
 function Allthread() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     fetchPostData().then((data) => {
@@ -21,24 +21,24 @@ function Allthread() {
     })
   }, [])
 
-return (
-  <div>
-    {posts.map((post) => (
-      <div key={post._id}>
-        {post.isThreadStarter && (
-          <>
-            <UserDetails postId={post._id} />
-            <DatePost postId={post._id} />
-            <TextPost postId={post._id} />
-            <ImagePost postId={post._id} />
-            <LikeButton postId={post._id} />
-            <CommentsCount parentID={post._id} />
-          </>
-        )}
-      </div>
-    ))}
-  </div>
-)
+  return (
+    <div>
+      {posts.map((post) => (
+        <div key={post._id}>
+          {post.isThreadStarter && (
+            <>
+              <UserDetails post={post} />
+              <DatePost post={post} />
+              <TextPost post={post} />
+              <ImagePost post={post} />
+              <LikeButton postId={post._id}  />
+              <CommentsCount parentID={post._id}  />
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default Allthread
