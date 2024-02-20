@@ -6,15 +6,12 @@ async function fetchPostData(postId) {
   return data
 }
 
-function ImagePost() {
+function ImagePost({ postId }) {
   const [image, setImage] = useState()
 
   useEffect(() => {
     fetchImagePost()
-  }, [])
-
-  // For testing purposes, hardcoded an existing postID
-  const postId = '65d3fafda444c0564fad7c53'
+  }, [postId])
 
   const fetchImagePost = async () => {
     const data = await fetchPostData(postId)
@@ -23,7 +20,7 @@ function ImagePost() {
 
   //the question mark ensure that nothing is rendered if there no image field in a post
   return (
-    <div class ="image is-square">
+    <div className ="image is-square">
       {image ? <img src={image} alt="post image" /> : null}
     </div>
   )

@@ -6,15 +6,12 @@ async function fetchPostData() {
     return data
 }
 
-function CommentsCount() {
+function CommentsCount({ parentID }) {
     const [comments, setComments] = useState()
 
     useEffect(() => {
         fetchComments()
-    }, [])
-
-    // For testing purposes, hardcoded an existing postID 
-    const parentID = '65d3fafda444c0564fad7c53'
+    }, [parentID])
 
     const fetchComments = async () => {
         const data = await fetchPostData()
