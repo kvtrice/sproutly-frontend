@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-async function fetchPostData(postId) {
+async function fetchsinglePostData(postId) {
     const response = await fetch(`http://localhost:4001/posts/${postId}`)
     const data = await response.json()
     return data
@@ -15,7 +15,7 @@ function TextPost({postId}) {
   }, [postId])
 
   const fetchTextPost = async () => {
-    const data = await fetchPostData(postId)
+    const data = await fetchsinglePostData(postId)
     setText(data.content)
   }
 
