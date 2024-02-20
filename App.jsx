@@ -8,6 +8,7 @@ import TextPost from "./src/alice-components/Text.jsx";
 import ImagePost from "./src/alice-components/Image.jsx";
 import DatePost from "./src/alice-components/Date.jsx";
 import ImageUpload from "./src/components/ImageUpload.jsx";
+import UserDetails from './src/alice-components/User';
 
 function App() {
 	// State for Posts
@@ -53,7 +54,7 @@ function App() {
 					<Route path="/" element={<Home/>} />
 					<Route path="/post" element={
 						<>
-							<UserDetails/>
+							<UserDetails />
 							<DatePost/>
 							<TextPost/>
 							<ImagePost/>
