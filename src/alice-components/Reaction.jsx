@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { FaThumbsUp } from 'react-icons/fa'
 
 
-async function fetchPostData(postId) {
+async function fetchsinglePostData(postId) {
     const response = await fetch(`http://localhost:4001/posts/${postId}`)
     const data = await response.json()
     return data
@@ -18,12 +18,12 @@ function LikeButton({postId}) {
 
 
   const fetchLikes = async () => {
-    const data = await fetchPostData(postId)
+    const data = await fetchsinglePostData(postId)
     setLikes(data.reactions.length)
   }
 
   const addLike = async () => {
-      const data = await fetchPostData(postId)
+      const data = await fetchsinglePostData(postId)
       const existingReactions = data.reactions
       console.log(existingReactions)
       // testing purpose hardcoded an existing userID

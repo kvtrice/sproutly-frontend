@@ -3,7 +3,7 @@ import CreatePost from "./src/components/post-components/CreatePost";
 import Home from "./src/components/Home";
 import { useEffect, useState } from "react";
 import ImageUpload from "./src/components/ImageUpload.jsx";
-import Allthread from "./src/alice-components/allthread.jsx";
+import Allthread from "./src/alice-components/Allthread.jsx";
 
 function App() {
 	// State for Posts

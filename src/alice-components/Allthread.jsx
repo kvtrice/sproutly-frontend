@@ -6,7 +6,7 @@ import ImagePost from './Image'
 import LikeButton from './Reaction'
 import CommentsCount from './Comments'
 
-async function Allpostdata() {
+async function fetchPostData() {
   const response = await fetch('http://localhost:4001/posts/')
   const data = await response.json()
   return data
@@ -16,7 +16,7 @@ function Allthread() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    Allpostdata().then((data) => {
+    fetchPostData().then((data) => {
       setPosts(data)
     })
   }, [])
