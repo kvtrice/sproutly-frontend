@@ -2,20 +2,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreatePost from "./src/components/post-components/CreatePost";
 import Home from "./src/components/Home";
 import { useEffect, useState } from "react";
-import LikeButton from './src/alice-components/Reaction.jsx'
-import CommentsCount from "./src/alice-components/Comments.jsx";
-import TextPost from "./src/alice-components/Text.jsx";
-import ImagePost from "./src/alice-components/Image.jsx";
-import DatePost from "./src/alice-components/Date.jsx";
 import ImageUpload from "./src/components/ImageUpload.jsx";
-import UserDetails from './src/alice-components/User';
+import Allthread from "./src/alice-components/Allthread.jsx";
 
 function App() {
 	// State for Posts
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-		fetch("http://127.0.0.1:4001/posts")
+		fetch("http://localhost:4001/posts/")
 			.then((response) => response.json())
 			.then((data) => setPosts(data));
 	}, []);
@@ -51,17 +46,12 @@ function App() {
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Home/>} />
-					<Route path="/post" element={
-						<>
-							<UserDetails />
-							<DatePost/>
-							<TextPost/>
-							<ImagePost/>
-							<LikeButton/>
-							<CommentsCount/>
-						</>
-						}/>
+					<Route path="/" element={
+					<>
+					<Home/>
+					<Allthread/>
+					</>} />
+					<Route/>
 					  <Route
 							path="new"
 							element={<CreatePost addPost={addPost}/>}
@@ -72,7 +62,7 @@ function App() {
 			</BrowserRouter>
 			
 		</>
-	);
+	)
 }
 
 export default App
