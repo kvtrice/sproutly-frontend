@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { FaThumbsUp } from 'react-icons/fa'
+
 
 async function fetchPostData(postId) {
     const response = await fetch(`http://localhost:4001/posts/${postId}`)
@@ -42,11 +44,14 @@ function LikeButton() {
 
     }  
 
-  return (
-    <button onClick={addLike}>
-      {likes} reactions
-    </button>
-  )
+    return (
+    <div>
+      <p class="mb-1">{likes} reactions</p>
+      <button  class= "icon is-medium" onClick={addLike}>
+        <FaThumbsUp />
+      </button>
+    </div>
+    )
 }
 
 export default LikeButton

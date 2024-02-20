@@ -53,12 +53,12 @@ function App() {
 					<Route path="/" element={<Home/>} />
 					<Route path="/post" element={
 						<>
-							<LikeButton/>
-							<CommentsCount/>
 							<UserDetails/>
 							<DatePost/>
 							<TextPost/>
 							<ImagePost/>
+							<LikeButton/>
+							<CommentsCount/>
 						</>
 						}/>
 					  <Route

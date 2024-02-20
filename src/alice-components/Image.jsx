@@ -23,7 +23,7 @@ function ImagePost() {
 
   //the question mark ensure that nothing is rendered if there no image field in a post
   return (
-    <div>
+    <div class ="image is-square">
       {image ? <img src={image} alt="post image" /> : null}
     </div>
   )
