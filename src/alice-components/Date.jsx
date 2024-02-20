@@ -6,25 +6,27 @@ async function fetchPostData(postId) {
     return data
   }
 
-function TextPost() {
+function DatePost() {
 
-  const [text,setText] = useState()
+  const [date,setDate] = useState()
 
   useEffect(() => {
-    fetchTextPost()
+    fetchDatePost()
   }, [])
 
   // For testing purposes, hardcoded an existing postID 
   const postId = '65d2f5665305d3958a7ee6ed'
 
-  const fetchTextPost = async () => {
+  const fetchDatePost = async () => {
     const data = await fetchPostData(postId)
-    setText(data.content)
+    // Extract the date part (YYYY-MM-DD) from the string
+    const formattedDate = new Date(data.createdDateTime).toISOString().split('T')[0];
+    setDate(formattedDate);
   }
 
   return (
-<p>{text}</p>
+<p>{date}</p>
   )
 }
 
-export default TextPost
+export default DatePost
