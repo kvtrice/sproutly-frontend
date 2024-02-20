@@ -6,16 +6,13 @@ async function fetchPostData(postId) {
     return data
   }
 
-function DatePost() {
+function DatePost({ postId }) {
 
   const [date,setDate] = useState()
 
   useEffect(() => {
     fetchDatePost()
-  }, [])
-
-  // For testing purposes, hardcoded an existing postID 
-  const postId = '65d3fafda444c0564fad7c53'
+  }, [postId])
 
   const fetchDatePost = async () => {
     const data = await fetchPostData(postId)

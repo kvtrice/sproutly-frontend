@@ -9,6 +9,7 @@ import ImagePost from "./src/alice-components/Image.jsx";
 import DatePost from "./src/alice-components/Date.jsx";
 import UserDetails from "./src/alice-components/User.jsx";
 
+
 function App() {
 	// State for Posts
 	const [posts, setPosts] = useState([]);
@@ -53,12 +54,12 @@ function App() {
 					<Route path="/" element={<Home/>} />
 					<Route path="/post" element={
 						<>
-							<UserDetails/>
-							<DatePost/>
-							<TextPost/>
-							<ImagePost/>
-							<LikeButton/>
-							<CommentsCount/>
+							<UserDetails postId="65d3fafda444c0564fad7c53" />
+							<DatePost postId="65d3fafda444c0564fad7c53" />
+							<TextPost postId="65d3fafda444c0564fad7c53"/>
+							<ImagePost postId="65d3fafda444c0564fad7c53"/>
+							<LikeButton postId="65d3fafda444c0564fad7c53" />
+							<CommentsCount postId="65d3fafda444c0564fad7c53"/>
 						</>
 						}/>
 					  <Route

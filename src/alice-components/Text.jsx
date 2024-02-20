@@ -6,16 +6,13 @@ async function fetchPostData(postId) {
     return data
   }
 
-function TextPost() {
+function TextPost({postId}) {
 
   const [text,setText] = useState()
 
   useEffect(() => {
     fetchTextPost()
-  }, [])
-
-  // For testing purposes, hardcoded an existing postID 
-  const postId = '65d3fafda444c0564fad7c53'
+  }, [postId])
 
   const fetchTextPost = async () => {
     const data = await fetchPostData(postId)

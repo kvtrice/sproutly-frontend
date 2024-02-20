@@ -8,16 +8,14 @@ async function fetchPostData(postId) {
     return data
   }
 
-function LikeButton() {
+function LikeButton({postId}) {
 
   const [likes, setLikes] = useState()
 
   useEffect(() => {
     fetchLikes()
-  }, [])
+  }, [postId])
 
-  // For testing purposes, hardcoded an existing postID 
-  const postId = '65d3fafda444c0564fad7c53'
 
   const fetchLikes = async () => {
     const data = await fetchPostData(postId)
@@ -46,8 +44,8 @@ function LikeButton() {
 
     return (
     <div>
-      <p class="mb-1">{likes} reactions</p>
-      <button  class= "icon is-medium" onClick={addLike}>
+      <p className="mb-1">{likes} reactions</p>
+      <button  className= "icon is-medium" onClick={addLike}>
         <FaThumbsUp />
       </button>
     </div>

@@ -6,16 +6,13 @@ async function fetchPostData(postId) {
   return data
 }
 
-function UserDetails() {
+function UserDetails({postId}) {
   const [username, setUsername] = useState()
   const [profilePicture, setProfilePicture] = useState()
 
   useEffect(() => {
     fetchUser()
-  }, [])
-
-  // For testing purposes, hardcoded an existing postID
-  const postId = '65d3fafda444c0564fad7c53'
+  }, [postId])
 
   const fetchUser = async () => {
     const data = await fetchPostData(postId)
