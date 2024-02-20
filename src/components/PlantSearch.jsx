@@ -35,7 +35,7 @@ const PlantSearch = () => {
 	];
 
 	const [searchQuery, setSearchQuery] = useState("");
-	const [searchResults, setSearchResults] = useState(['Aloe vera', 'Calathea', 'Monstera']);
+	const [searchResults, setSearchResults] = useState([]);
 	const [selectedPlants, setSelectedPlants] = useState([]);
 
 	const handleInputChange = (e) => {
@@ -55,13 +55,16 @@ const PlantSearch = () => {
 	};
 
 	const handleSelectedPlants = (plant) => {
-			console.log("Adding plant:", plant)
-			setSelectedPlants([...selectedPlants, plant])
+		if (!selectedPlants.includes(plant)) {
+			setSelectedPlants([...selectedPlants, plant]);
+			setTimeout(() => {
+				setSearchResults([]);
+			}, 200);
+		}
 	};
 
-	const handleRemovePlant = (e, plant) => {
-    e.preventDefault()
-		console.log("Removing plant:", plant);
+	const handleRemovePlant = (plant) => {
+		console.log("Removing plant");
 		setSelectedPlants(
 			selectedPlants.filter((selectedPlant) => selectedPlant !== plant)
 		);
@@ -69,31 +72,38 @@ const PlantSearch = () => {
 
 	return (
 		<div>
-			<div>
+			<div className="tag-wrapper">
 				{selectedPlants.map((plant, index) => (
-					<span key={index}>
-						{plant}
-						<button 
-            
-            onClick={() => handleRemovePlant(plant)}>
+					<div key={index} className="tag">
+						<span className="tag-text">{plant}</span>
+						<button
+							type="button"
+							className="tag-x-button"
+							onClick={() => handleRemovePlant(plant)}
+						>
 							x
 						</button>
-					</span>
+					</div>
 				))}
 			</div>
 			<input
 				className="input"
 				type="text"
 				value={searchQuery}
-        onClick={e => setSearchResults(['Aloe vera', 'Calathea', 'Monstera'])}
+				onClick={(e) => setSearchResults(plants.slice(0, 10))}
 				onChange={handleInputChange}
 				onBlur={handleInputBlur}
 				placeholder="Search for a plant tag"
 			/>
 			<ul>
 				{searchResults.map((plant, index) => (
-					<li key={index} onClick={(e) => handleSelectedPlants(e.target.dataset.plant)}>
-						<p data-plant={plant}>{plant}</p>
+					<li
+						onMouseDown={(e) => e.preventDefault()}
+						key={index}
+						data-plant={plant}
+						onClick={() => handleSelectedPlants(plant)}
+					>
+						{plant}
 					</li>
 				))}
 			</ul>

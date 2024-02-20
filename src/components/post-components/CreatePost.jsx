@@ -63,16 +63,16 @@ const CreatePost = ({ addPost }) => {
 							</span>
 						</label>
 					</div>
-                    <div className="search">
-                        <PlantSearch />
-                    </div>
+					<div className="search">
+						<PlantSearch />
+					</div>
 					<div className="field is-grouped is-grouped-right">
 						<p className="control">
 							<a className="button is-light">Discard</a>
 						</p>
 						<div className="control">
 							<input
-								class="button"
+								className="button"
 								type="submit"
 								value="Submit"
 							></input>
