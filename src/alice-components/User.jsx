@@ -6,27 +6,30 @@ async function fetchPostData(postId) {
   return data
 }
 
-function ImagePost() {
-  const [image, setImage] = useState()
+function UserDetails() {
+  const [username, setUsername] = useState()
+  const [profilePicture, setProfilePicture] = useState()
 
   useEffect(() => {
-    fetchImagePost()
+    fetchUser()
   }, [])
 
   // For testing purposes, hardcoded an existing postID
   const postId = '65d3fafda444c0564fad7c53'
 
-  const fetchImagePost = async () => {
+  const fetchUser = async () => {
     const data = await fetchPostData(postId)
-    setImage(data.image)
+    setProfilePicture(data.user.profilePicture)
+    setUsername(data.user.username)
   }
 
   //the question mark ensure that nothing is rendered if there no image field in a post
   return (
     <div>
-      {image ? <img src={image} alt="post image" /> : null}
+       <b>{username} </b> 
+      <img src={profilePicture} alt="profile picture of user" /> 
     </div>
   )
 }
 
-export default ImagePost
+export default UserDetails

@@ -15,7 +15,7 @@ function DatePost() {
   }, [])
 
   // For testing purposes, hardcoded an existing postID 
-  const postId = '65d2f5665305d3958a7ee6ed'
+  const postId = '65d3fafda444c0564fad7c53'
 
   const fetchDatePost = async () => {
     const data = await fetchPostData(postId)
