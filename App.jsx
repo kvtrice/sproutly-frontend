@@ -7,7 +7,7 @@ import CommentsCount from "./src/alice-components/Comments.jsx";
 import TextPost from "./src/alice-components/Text.jsx";
 import ImagePost from "./src/alice-components/Image.jsx";
 import DatePost from "./src/alice-components/Date.jsx";
-import UserDetails from "./src/alice-components/User.jsx";
+import ImageUpload from "./src/components/ImageUpload.jsx";
 
 function App() {
 	// State for Posts
@@ -66,6 +66,7 @@ function App() {
 							element={<CreatePost addPost={addPost}/>}
 						/>
 					<Route/> 
+					<Route path="/upload" element={<ImageUpload />} />
 				</Routes>
 			</BrowserRouter>
 			
