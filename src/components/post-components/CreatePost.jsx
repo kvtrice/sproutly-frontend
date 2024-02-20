@@ -7,17 +7,23 @@ const CreatePost = ({ addPost }) => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
-	const nav = useNavigate();
+
+	// Raise state up to parent component and pass down to PlanSearch component
+	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
+
+	const nav = useNavigate()
 
 	const createNewPost = async (e) => {
-		e.preventDefault();
-		await addPost(title, content, imageUrl);
+		e.preventDefault()
+		await addPost(title, content, imageUrl, selectedPlantTags)
 		// Clear post entry fields
-		setTitle("");
-		setContent("");
-        setImageUrl("");
+		setTitle("")
+		setContent("")
+        setImageUrl("")
+		setSelectedPlantTags("")
+
 		// Navigate home after creation
-		nav("/");
+		nav("/")
 	};
 
 	return (
@@ -64,7 +70,7 @@ const CreatePost = ({ addPost }) => {
 						</label>
 					</div>
 					<div className="search">
-						<PlantSearch />
+						<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
 					</div>
 					<div className="field is-grouped is-grouped-right">
 						<p className="control">

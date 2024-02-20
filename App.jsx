@@ -20,17 +20,17 @@ function App() {
 	}, []);
 
 	// Create Post function
-	async function addPost(title, content) {
+	async function addPost(title, content, image, tags) {
 		// Defined new post data
 		const newPost = {
 			user: "65d2e1373d8e4dc65b2338b2",
 			title: title,
 			content: content,
-			image: null,
+			image: image,
 			parentID: null,
 			isThreadStarter: false,
 			isComment: false,
-			tags: ["Monstera"],
+			tags: tags,
 		};
 
 		// POST the new post to API
@@ -67,7 +67,6 @@ function App() {
 						/>
 					<Route/> 
 				</Routes>
-				
 			</BrowserRouter>
 			
 		</>
