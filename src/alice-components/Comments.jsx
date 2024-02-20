@@ -14,7 +14,7 @@ function CommentsCount() {
     }, [])
 
     // For testing purposes, hardcoded an existing postID 
-    const parentID = '65d2f5665305d3958a7ee6ed'
+    const parentID = '65d3fafda444c0564fad7c53'
 
     const fetchComments = async () => {
         const data = await fetchPostData()
