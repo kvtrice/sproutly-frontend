@@ -59,7 +59,7 @@ function App() {
 							<TextPost postId="65d3fafda444c0564fad7c53"/>
 							<ImagePost postId="65d3fafda444c0564fad7c53"/>
 							<LikeButton postId="65d3fafda444c0564fad7c53" />
-							<CommentsCount postId="65d3fafda444c0564fad7c53"/>
+							<CommentsCount parentID="65d3fafda444c0564fad7c53"/>
 						</>
 						}/>
 					  <Route
