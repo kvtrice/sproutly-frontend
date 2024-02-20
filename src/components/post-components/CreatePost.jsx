@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreatePost.css";
 import PlantSearch from "../PlantSearch";
+import ImageUpload from "../ImageUpload";
 
 const CreatePost = ({ addPost }) => {
 	const [title, setTitle] = useState("");
@@ -52,22 +53,8 @@ const CreatePost = ({ addPost }) => {
 							></textarea>
 						</div>
 					</div>
-					<div className="file">
-						<label className="file-label">
-							<input
-								className="file-input"
-								type="file"
-								name="plant-image"
-								value={imageUrl}
-								onChange={(e) => setImageUrl(e.target.value)}
-							/>
-							<span className="file-cta">
-								<span className="file-icon">
-									<i className="fas fa-upload"></i>
-								</span>
-								<span className="file-label">Upload image</span>
-							</span>
-						</label>
+					<div className="upload-image">
+						<ImageUpload setImageUrl={setImageUrl} />
 					</div>
 					<div className="search">
 						<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
