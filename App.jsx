@@ -6,6 +6,7 @@ import LikeButton from './src/alice-components/Reaction.jsx'
 import CommentsCount from "./src/alice-components/Comments.jsx";
 import TextPost from "./src/alice-components/Text.jsx";
 import ImagePost from "./src/alice-components/Image.jsx";
+import DatePost from "./src/alice-components/Date.jsx";
 
 function App() {
 	// State for Posts
@@ -53,8 +54,10 @@ function App() {
 						<>
 							<LikeButton/>
 							<CommentsCount/>
+							<DatePost/>
 							<TextPost/>
 							<ImagePost/>
+				
 						</>
 						}/>
 					  <Route
