@@ -25,9 +25,11 @@ function UserDetails() {
 
   //the question mark ensure that nothing is rendered if there no image field in a post
   return (
-    <div>
-       <b>{username} </b> 
-      <img src={profilePicture} alt="profile picture of user" /> 
+    <div className="is-flex">
+      <figure className="image is-48x48 is-inline-block mr-2">
+        <img className="is-rounded" src={profilePicture} alt="profile picture of user" />
+      </figure>
+      <b>{username}</b>
     </div>
   )
 }
