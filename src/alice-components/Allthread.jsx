@@ -32,7 +32,7 @@ function Allthread() {
               <TextPost post={post} />
               <ImagePost post={post} />
               <LikeButton postId={post._id}  />
-              <CommentsCount parentID={post._id}  />
+              <CommentsCount parentID={post._id} posts={posts}  />
             </>
           )}
         </div>
