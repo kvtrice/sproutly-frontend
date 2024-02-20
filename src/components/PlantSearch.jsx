@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PlantSearch = () => {
+const PlantSearch = ({ setSelectedPlantTags }) => {
 	const plants = [
 		"Aloe vera",
 		"Birds nest fern",
@@ -54,20 +54,22 @@ const PlantSearch = () => {
 		setSearchResults([]);
 	};
 
-	const handleSelectedPlants = (plant) => {
+	const handleSelectedPlants = async (plant) => {
 		if (!selectedPlants.includes(plant)) {
-			setSelectedPlants([...selectedPlants, plant]);
+			await setSelectedPlants([...selectedPlants, plant])
+			await setSelectedPlantTags([...selectedPlants, plant])
 			setTimeout(() => {
-				setSearchResults([]);
-			}, 200);
+				setSearchResults([])
+			}, 200)
+			setSearchQuery('')
 		}
 	};
 
-	const handleRemovePlant = (plant) => {
-		console.log("Removing plant");
-		setSelectedPlants(
+	const handleRemovePlant = async (plant) => {
+		await setSelectedPlants(
 			selectedPlants.filter((selectedPlant) => selectedPlant !== plant)
-		);
+		)
+		await setSelectedPlantTags(selectedPlants.filter((selectedPlant) => selectedPlant !== plant))
 	};
 
 	return (
@@ -95,13 +97,14 @@ const PlantSearch = () => {
 				onBlur={handleInputBlur}
 				placeholder="Search for a plant tag"
 			/>
-			<ul>
+			<ul className="plant-list-wrapper">
 				{searchResults.map((plant, index) => (
 					<li
 						onMouseDown={(e) => e.preventDefault()}
 						key={index}
 						data-plant={plant}
 						onClick={() => handleSelectedPlants(plant)}
+						className="plant-list-items"
 					>
 						{plant}
 					</li>
