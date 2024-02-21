@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreatePost.css";
 import PlantSearch from "../PlantSearch";
 import ImageUpload from "../ImageUpload";
+import DiscardWarning from "./DiscardWarning";
 
 const CreatePost = () => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
+	const [isDiscardShowing, setIsDiscardShowing] = useState(false)
+	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
 
-	// Create Post function
+	const nav = useNavigate()
+
+	// Add Post function
 	async function addPost(title, content, imageUrl, tags) {
 		// Defined new post data
 		const newPost = {
@@ -37,22 +42,24 @@ const CreatePost = () => {
 		setPosts([...posts, postData]);
 	}
 
-	// Raise state up to parent component and pass down to PlanSearch component
-	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
-
-	const nav = useNavigate()
-
+	// Create Post only if there's a minimmum of Title & Content entered (mandatory)
 	const createNewPost = async (e) => {
-		e.preventDefault()
-		await addPost(title, content, imageUrl, selectedPlantTags)
-		// Clear post entry fields
-		setTitle("")
-		setContent("")
-        setImageUrl("")
-		setSelectedPlantTags("")
+		if (title && content) {
+			e.preventDefault();
+			await addPost(title, content, imageUrl, selectedPlantTags);
+			// Clear post entry fields
+			setTitle("");
+			setContent("");
+			setImageUrl("");
+			setSelectedPlantTags("");
+			// Navigate home after creation
+			nav("/");
+		}
+	};
 
-		// Navigate home after creation
-		nav("/")
+	// Discard warning handler
+	const displayDiscardWarning = () => {
+		setIsDiscardShowing(true);
 	};
 
 	return (
@@ -85,11 +92,18 @@ const CreatePost = () => {
 						<ImageUpload setImageUrl={setImageUrl} />
 					</div>
 					<div className="search">
-						<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
+						<PlantSearch
+							setSelectedPlantTags={setSelectedPlantTags}
+						/>
 					</div>
 					<div className="field is-grouped is-grouped-right">
 						<p className="control">
-							<a className="button is-light">Discard</a>
+							<a
+								className="button is-light"
+								onClick={displayDiscardWarning}
+							>
+								Discard
+							</a>
 						</p>
 						<div className="control">
 							<input
@@ -100,6 +114,11 @@ const CreatePost = () => {
 						</div>
 					</div>
 				</form>
+			</div>
+
+			{/* Discard Warning */}
+			<div>
+				{isDiscardShowing && <DiscardWarning setIsDiscardShowing={setIsDiscardShowing} setTitle={setTitle} setContent={setContent} setImageUrl={setImageUrl} setSelectedPlantTags={setSelectedPlantTags} />}
 			</div>
 		</div>
 	);
