@@ -1,26 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-async function fetchsinglePostData(postId) {
-  const response = await fetch(`http://localhost:4001/posts/${postId}`)
-  const data = await response.json()
-  return data
-}
+function UserDetails({post}) {
+  const username = post.user.username
+  const profilePicture = post.user.profilePicture
 
-function UserDetails({postId}) {
-  const [username, setUsername] = useState()
-  const [profilePicture, setProfilePicture] = useState()
-
-  useEffect(() => {
-    fetchUser()
-  }, [postId])
-
-  const fetchUser = async () => {
-    const data = await fetchsinglePostData(postId)
-    setProfilePicture(data.user.profilePicture)
-    setUsername(data.user.username)
-  }
-
-  //the question mark ensure that nothing is rendered if there no image field in a post
   return (
     <div className="is-flex">
       <figure className="image is-48x48 is-inline-block mr-2">

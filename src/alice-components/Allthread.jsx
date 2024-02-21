@@ -13,7 +13,7 @@ async function fetchPostData() {
 }
 
 function Allthread() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     fetchPostData().then((data) => {
@@ -21,24 +21,46 @@ function Allthread() {
     })
   }, [])
 
-return (
-  <div>
-    {posts.map((post) => (
-      <div key={post._id}>
-        {post.isThreadStarter && (
-          <>
-            <UserDetails postId={post._id} />
-            <DatePost postId={post._id} />
-            <TextPost postId={post._id} />
-            <ImagePost postId={post._id} />
-            <LikeButton postId={post._id} />
-            <CommentsCount parentID={post._id} />
-          </>
-        )}
-      </div>
-    ))}
-  </div>
-)
+  const addLike = async (postId) => {
+    const postIndex = posts.findIndex(post => post._id === postId)
+    const post = posts[postIndex]
+    const updatedReactions = [...post.reactions, '65d2f5665305d3958a7ee6e8']
+
+    // update the backend with the updated reactions
+    await fetch(`http://localhost:4001/posts/${postId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reactions: updatedReactions }),
+    })
+
+    // fetch the updated post data
+    const response = await fetch(`http://localhost:4001/posts/${postId}`)
+    const updatedPost = await response.json()
+
+    // pdate the posts state with the updated post
+    const updatedPosts = [...posts]
+    updatedPosts[postIndex] = updatedPost
+    setPosts(updatedPosts)
+  }
+
+  return (
+    <div>
+      {posts.map((post) => (
+        <div key={post._id}>
+          {post.isThreadStarter && (
+            <>
+              <UserDetails post={post} />
+              <DatePost post={post} />
+              <TextPost post={post} />
+              <ImagePost post={post} />
+              <LikeButton post={post} addLike={addLike} />
+              <CommentsCount parentID={post._id} posts={posts}  />
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default Allthread
