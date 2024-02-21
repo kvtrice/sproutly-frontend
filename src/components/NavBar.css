@@ -1,5 +1,5 @@
 .sproutly-navbar {
-    background-color: white;
+    background-color: var(--background-color);
     position: sticky;
     top: 0;
     z-index: 30;
@@ -21,6 +21,11 @@
     align-items: end;
     justify-content: space-between;
     margin: 0 auto;
+}
+
+.dark-mode-toggle-container {
+    padding-top: 1rem;
+    align-self: center;
 }
 
 .hidden {

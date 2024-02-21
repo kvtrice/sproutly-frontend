@@ -3,7 +3,7 @@ import DisplayPost from './DisplayPost'
 import "./AllThreads.css"
 import SortFilter from "./SortFilter"
 
-function AllThreads() {
+function AllThreads({ isDark }) {
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
