@@ -1,0 +1,76 @@
+html {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding-top: 1rem;
+}
+
+h2 { 
+    text-align: center;
+}
+
+.plant-list-wrapper {
+    margin-top: 0.5rem;
+}
+
+.plant-list-wrapper .plant-list-items {
+    padding-left: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: lightgreen;
+    border-radius: 5px;
+}
+
+.page-wrapper {
+    width: 900px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.form-wrapper {
+    padding: 2rem;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.search {
+    padding: 1rem 0rem;
+}
+
+.tag-wrapper {
+    padding-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag-wrapper .tag {
+    display: flex;
+    background: rgb(246, 246, 246);
+    border: solid 1px rgb(226, 226, 226);
+    border-radius: 30px;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+    align-items: center;
+}
+
+.tag .tag-x-button {
+    background-color: transparent;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    padding-bottom: 0.2rem;
+}
+
+.tag .tag-x-button:hover {
+    background-color: lightblue;
+}
