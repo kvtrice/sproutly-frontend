@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-function Filter({ sortOrder, onToggle }) {
+function SortFilter({ sortOrder, onToggle }) {
   return (
     <button onClick={onToggle}>
       {sortOrder === 'descending' ? 'Filter Ascending' : 'Filter Descending'}
@@ -9,4 +9,4 @@ function Filter({ sortOrder, onToggle }) {
   )
 }
 
-export default Filter
+export default SortFilter

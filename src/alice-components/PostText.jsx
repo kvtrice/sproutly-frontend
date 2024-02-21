@@ -1,9 +1,9 @@
 import React from 'react'
 
-function TextPost({post}) {
+function PostText({post}) {
   return (
     <p>{post.content}</p>
   )
 }
 
-export default TextPost
+export default PostText

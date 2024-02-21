@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ImagePost({ post }) {
+function PostImage({ post }) {
   //the question mark ensures that nothing is rendered if there is no image field in a post
   return (
     <div>
@@ -9,4 +9,4 @@ function ImagePost({ post }) {
   )
 }
 
-export default ImagePost
+export default PostImage
