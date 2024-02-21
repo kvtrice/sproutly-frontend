@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 function SortFilter({ post, setPosts }) {
-  const [sortOrder, setSortOrder] = useState('descending')
+  const [sortOrder, setSortOrder] = useState('ascending')
 
   useEffect(() => {
     const sortedData = [...post].sort((a, b) => {
