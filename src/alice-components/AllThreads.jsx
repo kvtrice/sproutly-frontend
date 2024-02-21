@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DisplayPost from './DisplayPost'
 import "./AllThreads.css"
+import SortFilter from "./SortFilter"
 
 function AllThreads() {
 	const [posts, setPosts] = useState([]);
@@ -17,8 +18,14 @@ function AllThreads() {
 		return data;
 	}
 
+	const handleSortedPosts = (sortedData) => {
+		setPosts(sortedData)
+	  }
+
+	  
 	return (
 		<div className="thread-wrapper">
+			<SortFilter post={posts} setPosts={handleSortedPosts} /> 
 			{posts.map((post) => (
 				<div key={post._id}>
 					{post.isThreadStarter && (
@@ -29,5 +36,7 @@ function AllThreads() {
 		</div>
 	);
 }
+
+
 
 export default AllThreads

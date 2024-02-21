@@ -5,7 +5,8 @@ import PostText from './PostText'
 import PostImage from './PostImage'
 import LikeButton from './LikeButton'
 import CommentsCount from './CommentsCount'
-import SortFilter from "./SortFilter";
+
+
 
 const DisplayPost = ({ post, posts, setPosts }) => {
 	return (
