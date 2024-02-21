@@ -14,7 +14,7 @@ const NavBar = () => {
 
 	return (
 		// Desktop Nav
-		<nav className="navbar">
+		<nav className="sproutly-navbar">
 			<div className="nav-items">
 				{/* Logo */}
 				<div className="logo">
