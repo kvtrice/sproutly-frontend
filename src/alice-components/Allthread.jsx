@@ -17,7 +17,9 @@ function Allthread() {
 
   useEffect(() => {
     fetchPostData().then((data) => {
-      setPosts(data)
+      // this is the default descending rendeer of threads
+      const sortedPosts = data.sort((a, b) => new Date(b.createdDateTime) - new Date(a.createdDateTime))
+      setPosts(sortedPosts)
     })
   }, [])
 
