@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './PlantSearch.css'
 
 const PlantSearch = ({ setSelectedPlantTags }) => {
 	const plants = [
@@ -73,7 +74,7 @@ const PlantSearch = ({ setSelectedPlantTags }) => {
 	};
 
 	return (
-		<div>
+		<div className="search-wrapper">
 			<div className="tag-wrapper">
 				{selectedPlants.map((plant, index) => (
 					<div key={index} className="tag">

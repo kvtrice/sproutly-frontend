@@ -1,6 +1,4 @@
-.discard-container {
-    position: relative;
-    margin: 0 auto;
+.modal-background .discard-container {
     margin-top: 10%;
     background-color: white;
     display: flex;

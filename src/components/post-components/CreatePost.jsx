@@ -4,6 +4,7 @@ import "./CreatePost.css";
 import PlantSearch from "../PlantSearch";
 import ImageUpload from "../ImageUpload";
 import DiscardWarning from "./DiscardWarning";
+import NavBar from "../NavBar";
 
 const CreatePost = () => {
 	const [title, setTitle] = useState("");
@@ -63,64 +64,75 @@ const CreatePost = () => {
 	};
 
 	return (
-		<div className="page-wrapper">
-			<div className="form-wrapper">
-				<h2>New Post</h2>
-				<form className="section" onSubmit={createNewPost}>
-					<div className="field">
-						<div className="control">
-							<input
-								className="input is-normal"
-								type="text"
-								placeholder="Enter post title"
-								value={title}
-								onChange={(e) => setTitle(e.target.value)}
-							></input>
+		<>
+			<NavBar />
+			<div className="page-wrapper">
+				<div className="form-wrapper">
+					<h2>New Post</h2>
+					<form className="section" onSubmit={createNewPost}>
+						<div className="field">
+							<div className="control">
+								<input
+									className="input is-normal"
+									type="text"
+									placeholder="Enter post title"
+									value={title}
+									onChange={(e) => setTitle(e.target.value)}
+								></input>
+							</div>
 						</div>
-					</div>
-					<div className="field">
-						<div className="control">
-							<textarea
-								className="textarea"
-								placeholder="Start typing here..."
-								value={content}
-								onChange={(e) => setContent(e.target.value)}
-							></textarea>
+						<div className="field">
+							<div className="control">
+								<textarea
+									className="textarea"
+									placeholder="Start typing here..."
+									value={content}
+									onChange={(e) => setContent(e.target.value)}
+								></textarea>
+							</div>
 						</div>
-					</div>
-					<div className="upload-image">
-						<ImageUpload setImageUrl={setImageUrl} />
-					</div>
-					<div className="search">
-						<PlantSearch
+						<div className="upload-image">
+							<ImageUpload setImageUrl={setImageUrl} />
+						</div>
+						<div className="search">
+							<PlantSearch
+								setSelectedPlantTags={setSelectedPlantTags}
+							/>
+						</div>
+						<div className="field is-grouped is-grouped-right">
+							<p className="control">
+								<a
+									className="button is-light"
+									onClick={displayDiscardWarning}
+								>
+									Discard
+								</a>
+							</p>
+							<div className="control">
+								<input
+									className="button"
+									type="submit"
+									value="Submit"
+								></input>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				{/* Discard Warning */}
+				<div>
+					{isDiscardShowing && (
+						<DiscardWarning
+							setIsDiscardShowing={setIsDiscardShowing}
+							setTitle={setTitle}
+							setContent={setContent}
+							setImageUrl={setImageUrl}
 							setSelectedPlantTags={setSelectedPlantTags}
 						/>
-					</div>
-					<div className="field is-grouped is-grouped-right">
-						<p className="control">
-							<a
-								className="button is-light"
-								onClick={displayDiscardWarning}
-							>
-								Discard
-							</a>
-						</p>
-						<div className="control">
-							<input
-								className="button"
-								type="submit"
-								value="Submit"
-							></input>
-						</div>
-					</div>
-				</form>
+					)}
+				</div>
 			</div>
-
-			{/* Discard Warning */}
-			<div>
-				{isDiscardShowing && <DiscardWarning setIsDiscardShowing={setIsDiscardShowing} setTitle={setTitle} setContent={setContent} setImageUrl={setImageUrl} setSelectedPlantTags={setSelectedPlantTags} />}
-			</div>
-		</div>
+		</>
 	);
 };
 export default CreatePost;

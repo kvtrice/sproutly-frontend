@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './ImageUpload.css'
 
 const ImageUpload = ({ setImageUrl}) => {
 	const [image, setImage] = useState(null)
@@ -53,7 +54,7 @@ const ImageUpload = ({ setImageUrl}) => {
 				</span>
 				<span className="file-name">{fileName}</span>
 			</label>
-			<button className="button" onClick={handleUpload} >Upload</button>
+			<button className="button upload-button" onClick={handleUpload} >Upload</button>
 		</div>
 	);
 };
