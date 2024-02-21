@@ -5,6 +5,7 @@ import TextPost from './Text'
 import ImagePost from './Image'
 import LikeButton from './Reaction'
 import CommentsCount from './Comments'
+import './Allthread.css'
 
 async function fetchPostData() {
   const response = await fetch('http://localhost:4001/posts/')
@@ -44,7 +45,7 @@ function Allthread() {
   }
 
   return (
-    <div>
+    <div className="thread-wrapper">
       {posts.map((post) => (
         <div key={post._id}>
           {post.isThreadStarter && (

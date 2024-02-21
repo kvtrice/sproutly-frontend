@@ -1,6 +1,9 @@
-html {
-    display: flex;
+.page-wrapper {
+    margin: 0 auto;
+    width: 900px;
     justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
 form {
@@ -24,18 +27,6 @@ li {
     cursor: pointer;
 }
 
-li:hover {
-    background-color: lightgreen;
-    border-radius: 5px;
-}
-
-.page-wrapper {
-    width: 900px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-}
-
 .form-wrapper {
     padding: 2rem;
     border: 1px solid lightgray;
@@ -47,15 +38,16 @@ li:hover {
 }
 
 .tag-wrapper {
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     display: flex;
     flex-wrap: wrap;
+    min-height: 40px;
 }
 
 .tag-wrapper .tag {
     display: flex;
     background: rgb(246, 246, 246);
-    border: solid 1px rgb(226, 226, 226);
+    border: solid 1px rgb(233, 233, 233);
     border-radius: 30px;
     margin-right: 0.3rem;
     margin-bottom: 0.3rem;
@@ -72,5 +64,5 @@ li:hover {
 }
 
 .tag .tag-x-button:hover {
-    background-color: lightblue;
+    color: red;
 }

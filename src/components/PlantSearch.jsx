@@ -93,7 +93,7 @@ const PlantSearch = ({ setSelectedPlantTags }) => {
 				className="input"
 				type="text"
 				value={searchQuery}
-				onClick={(e) => setSearchResults(plants.slice(0, 10))}
+				onClick={(e) => setSearchResults(plants)}
 				onChange={handleInputChange}
 				onBlur={handleInputBlur}
 				placeholder="Search for a plant tag"
