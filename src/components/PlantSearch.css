@@ -1,3 +1,28 @@
 .search-wrapper input {
     border-radius: 20px;
 }
+
+.search-wrapper {
+    position: relative;
+  }
+  
+  .plant-list-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    background-color: #fbfbfb; 
+    border-radius: 10px;
+    width: calc(100% - 2px); 
+    max-height: 200px; 
+    overflow-y: auto; 
+  }
+  
+  .plant-list-items {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .plant-list-items:hover {
+    background-color: #e1f9dd;
+  }

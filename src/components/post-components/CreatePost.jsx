@@ -66,7 +66,7 @@ const CreatePost = () => {
 	return (
 		<>
 			<NavBar />
-			<div className="page-wrapper">
+			<div className="page-wrapper has-navbar-fixed-top">
 				<div className="form-wrapper">
 					<h2>New Post</h2>
 					<form className="section" onSubmit={createNewPost}>
@@ -102,7 +102,7 @@ const CreatePost = () => {
 						<div className="field is-grouped is-grouped-right">
 							<p className="control">
 								<a
-									className="button is-light"
+									className="button is-danger"
 									onClick={displayDiscardWarning}
 								>
 									Discard

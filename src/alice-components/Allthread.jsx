@@ -5,6 +5,7 @@ import TextPost from './Text'
 import ImagePost from './Image'
 import LikeButton from './Reaction'
 import CommentsCount from './Comments'
+import './Allthread.css'
 import Filter from './Filter'
 
 async function fetchPostData() {
@@ -59,7 +60,6 @@ function Allthread() {
 
   return (
     <div>
-      <Filter sortOrder={sortOrder} onToggle={toggleSortOrder} />
       {posts.map((post) => (
         <div key={post._id}>
           {post.isThreadStarter && (
