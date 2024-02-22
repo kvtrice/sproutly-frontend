@@ -5,7 +5,7 @@ import NavBarSignUp from "./NavBarSignUp";
 import PlantSearch from "./PlantSearch";
 import DarkModeToggle from "./DarkModeToggle";
 
-const NavBar = () => {
+const NavBar = ( {isDark, setIsDark} ) => {
 	const [nav, setNav] = useState(false);
 
 	const handleNav = () => {
@@ -14,7 +14,7 @@ const NavBar = () => {
 
 	return (
 		// Desktop Nav
-		<nav className="navbar">
+		<nav className="sproutly-navbar" data-theme={isDark ? "dark" : "light"}>
 			<div className="nav-items">
 				{/* Logo */}
 				<div className="logo">
@@ -25,8 +25,8 @@ const NavBar = () => {
 					<PlantSearch />
 				</div>
 				{/* Dark Mode Toggle */}
-				<div className="dark-mode-toggle">
-					<DarkModeToggle />
+				<div className="dark-mode-toggle-container">
+					<DarkModeToggle isChecked={isDark} handleDarkMode={() => setIsDark(!isDark)} />
 				</div>
 				{/* Sign up Buttons */}
 				<div className="signup-buttons-container">
