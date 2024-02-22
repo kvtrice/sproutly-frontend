@@ -18,7 +18,7 @@ const DisplayPost = ({ post, posts, setPosts }) => {
 			<LikeButton post={post} posts={posts} setPosts={setPosts} />
 			<CommentsCount posts={posts} parentID={post._id} />
 		</div>
-	);
-};
+	)
+}
 
 export default DisplayPost;
