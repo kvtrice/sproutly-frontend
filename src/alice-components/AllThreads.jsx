@@ -4,9 +4,9 @@ import "./AllThreads.css"
 import SortFilter from "./SortFilter"
 
 
-function AllThreads() {
-	const [posts, setPosts] = useState([])
-	
+function AllThreads({ isDark }) {
+	const [posts, setPosts] = useState([]);
+
 	useEffect(() => {
 		fetchAllPostData().then((data) => {
 			setPosts(data);
@@ -23,7 +23,7 @@ function AllThreads() {
 		setPosts(sortedData)
 	  }
 
-	
+	  
 	return (
 		<div className="thread-wrapper">
 			<SortFilter post={posts} setPosts={handleSortedPosts} /> 
