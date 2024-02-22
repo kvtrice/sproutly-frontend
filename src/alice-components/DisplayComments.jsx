@@ -4,6 +4,7 @@ import PostDateTime from './PostDateTime'
 import PostText from './PostText'
 import PostImage from './PostImage'
 import LikeButton from './LikeButton'
+import SortFilter from "./SortFilter"
 
 function DisplayComments({ parentID, posts,setPosts}) {
     const commentsWithParentID = posts.filter((item) => item.parentID === parentID)
@@ -13,7 +14,8 @@ function DisplayComments({ parentID, posts,setPosts}) {
     //that was passed by the Parent component so posts has to be posts={posts} and not posts={comment} or 
     //at setPosts change of Liking a post it will change the array of posts to that single object clicked. I learnt the hard way
     return (
-        <>
+        <> 
+            <SortFilter posts={posts} setPosts={setPosts}/>
             {commentsWithParentID.map((comment) => (
                 <div key={comment._id}>
                     <UserDetails post={comment} />
