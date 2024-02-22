@@ -6,13 +6,12 @@ import ImageUpload from "../ImageUpload";
 import DiscardWarning from "./DiscardWarning";
 import NavBar from "../NavBar";
 
-const CreatePost = () => {
+const CreatePost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
 	const [isDiscardShowing, setIsDiscardShowing] = useState(false)
-	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
 
 	const nav = useNavigate()
 
