@@ -8,8 +8,6 @@ import CommentsCount from './CommentsCount'
 import PostTitle from "./PostTitle";
 import PostTag from "./PostTag";
 
-
-
 const DisplayPost = ({ post, posts, setPosts }) => {
 	return (
 		<div>
