@@ -5,6 +5,8 @@ import PostText from './PostText'
 import PostImage from './PostImage'
 import CommentsCount from './CommentsCount'
 import LikeButton from './LikeButton'
+import PostTitle from './PostTitle'
+import PostTag from './PostTag'
 
 function DisplayParent({ parentID, posts,setPosts }) {
     const Parent = posts.filter((item) => item._id === parentID)
@@ -15,10 +17,12 @@ function DisplayParent({ parentID, posts,setPosts }) {
                 <div key={comment._id}>
                     <UserDetails post={comment} />
                     <PostDateTime post={comment} />
+                    <PostTitle post={comment} />
                     <PostText post={comment} />
+                    <PostTag post={comment}/>
                     <PostImage post={comment} />
                     <CommentsCount posts={posts} parentID={comment._id} />
-                     <LikeButton post={comment} posts={posts} setPosts={setPosts} />
+                    <LikeButton post={comment} posts={posts} setPosts={setPosts} />
                 </div>
             ))}
         </>
