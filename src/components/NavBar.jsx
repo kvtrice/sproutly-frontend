@@ -18,7 +18,9 @@ const NavBar = ( {isDark, setIsDark, setSelectedPlantTags} ) => {
 			<div className="nav-items">
 				{/* Logo */}
 				<div className="logo">
-					<h1>Sproutly</h1>
+					<a href="/">
+						<h1>Sproutly</h1>
+					</a>
 				</div>
 				{/* Search Bar */}
 				<div className="search-container">
