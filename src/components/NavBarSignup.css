@@ -1,3 +1,13 @@
 .signup {
     margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.signup-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.signup-buttons .button {
+    width: 8rem;
 }

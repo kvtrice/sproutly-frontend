@@ -26,7 +26,10 @@ const NavBar = ( {isDark, setIsDark} ) => {
 				</div>
 				{/* Dark Mode Toggle */}
 				<div className="dark-mode-toggle-container">
-					<DarkModeToggle isChecked={isDark} handleDarkMode={() => setIsDark(!isDark)} />
+					<DarkModeToggle
+						isChecked={isDark}
+						handleDarkMode={() => setIsDark(!isDark)}
+					/>
 				</div>
 				{/* Sign up Buttons */}
 				<div className="signup-buttons-container">
@@ -37,14 +40,30 @@ const NavBar = ( {isDark, setIsDark} ) => {
 					<AiOutlineMenu size={30} />
 				</div>
 			</div>
+
 			{/* Mobile Nav */}
-			<div className={nav ? "mobile-menu" : "hidden"}>
-				{/* Close Icon */}
-				<div
-					onClick={handleNav}
-					className="close-hamburger-menu-button"
-				>
-					<AiOutlineClose size={30} />
+			<div className={nav ? "mobile-nav" : "hidden"}>
+				<div className="mobile-menu">
+					{/* Close Icon */}
+					<div
+						onClick={handleNav}
+						className="close-hamburger-menu-button"
+					>
+						<AiOutlineClose size={30} />
+					</div>
+					{/* Sign up Buttons mobile */}
+					<div className="signup-buttons-container-mob">
+						<NavBarSignUp />
+					</div>
+					<hr className="line"/>
+					{/* Dark Mode Toggle */}
+					<div className="dark-mode-toggle-container-mob">
+						<DarkModeToggle
+							isChecked={isDark}
+							handleDarkMode={() => setIsDark(!isDark)}
+						/>
+						<p>Dark Mode</p>
+					</div>
 				</div>
 			</div>
 		</nav>

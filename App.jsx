@@ -5,6 +5,7 @@ import Home from "./src/components/Home";
 import useLocalStorage from "use-local-storage"
 
 function App() {
+	// Dark mode state - required by all components so lifted it to the highest level and passed it down via prop drilling
 	const [ isDark, setIsDark ] = useLocalStorage("isDark", false)
 
 	return (
@@ -12,8 +13,9 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home isDark={isDark} setIsDark={setIsDark}/>} />
-					<Route path="/post">
+					<Route path="/post" >
 						<Route path="new" element={<CreatePost isDark={isDark} setIsDark={setIsDark}/>} />
+						<Route path=":parentID" element={<CreatePost />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
