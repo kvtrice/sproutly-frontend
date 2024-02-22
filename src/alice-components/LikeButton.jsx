@@ -35,9 +35,9 @@ function LikeButton({ post, posts, setPosts }) {
 		const updatedPost = await response.json();
 
 		// Update the posts state with the updated post
-		const updatedPosts = [...posts];
-		updatedPosts[postIndex] = updatedPost;
-		setPosts(updatedPosts);
+		const updatedPosts = [...posts]
+		updatedPosts[postIndex] = updatedPost
+		setPosts(updatedPosts)
   }
 
   return (
