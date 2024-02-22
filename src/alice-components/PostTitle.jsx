@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 function PostTitle({ post }) {
   return (
-    <p>{post.title}</p>
+    <Link to={`post/${post._id}`}>{post.title}</Link>
   )    
 }
 
