@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import DisplayPost from './DisplayPost'
 import "./AllThreads.css"
 import SortFilter from "./SortFilter"
+import PostSomethingCta from '../components/PostSomethingCta'
 
 
 function AllThreads({ isDark, selectedPlantTags }) {
@@ -34,6 +35,7 @@ function AllThreads({ isDark, selectedPlantTags }) {
 
 	return (
 		<div className="thread-wrapper">
+			<PostSomethingCta />
 			<SortFilter
 				posts={posts}
 				setPosts={setPosts}
