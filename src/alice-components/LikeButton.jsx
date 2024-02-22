@@ -14,31 +14,49 @@ function LikeButton({ post, posts, setPosts }) {
     setLikes(likes + 1)
   }
 
-  // Add like function
-  const addLike = async (postId) => {
+const addLike = async (postId) => {
+
+  if (Array.isArray(posts)) {
     const postIndex = posts.findIndex((post) => post._id === postId);
-    const post = posts[postIndex];
-		const updatedReactions = [
-			...post.reactions,
-			"65d2f5665305d3958a7ee6e8",
-		]
+    const post = posts[postIndex]
+    const updatedReactions = [
+      ...post.reactions,
+      "65d2f5665305d3958a7ee6e8",
+    ]
 
-    // Update the backend with the updated reactions
-		await fetch(`http://localhost:4001/posts/${postId}`, {
-			method: "PUT",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ reactions: updatedReactions }),
-		})
 
-    // Fetch the updated post data
-		const response = await fetch(`http://localhost:4001/posts/${postId}`);
-		const updatedPost = await response.json();
+    await fetch(`http://localhost:4001/posts/${postId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reactions: updatedReactions }),
+    })
 
-		// Update the posts state with the updated post
-		const updatedPosts = [...posts];
-		updatedPosts[postIndex] = updatedPost;
-		setPosts(updatedPosts);
+  
+    const response = await fetch(`http://localhost:4001/posts/${postId}`);
+    const updatedPost = await response.json()
+
+
+    const updatedPosts = [...posts]
+    updatedPosts[postIndex] = updatedPost
+    setPosts(updatedPosts)
+  } else {
+    const updatedReactions = [
+      ...posts.reactions,
+      "65d2f5665305d3958a7ee6e8",
+    ]
+
+    await fetch(`http://localhost:4001/posts/${postId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reactions: updatedReactions }),
+    })
+
+    const response = await fetch(`http://localhost:4001/posts/${postId}`);
+    const updatedPost = await response.json()
+
+    setPosts(updatedPost)
   }
+}
 
   return (
     <div>

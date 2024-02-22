@@ -23,7 +23,7 @@ function ThreadPage() {
     return (
         <div>
 			<DisplayParent parentID={parentID} posts={posts} setPosts={setPosts} />
-            <DisplayComments parentID={parentID} posts={posts}  />
+            <DisplayComments parentID={parentID} posts={posts} setPosts={setPosts} />
         </div>
     )
 }

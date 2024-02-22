@@ -18,7 +18,7 @@ function DisplayParent({ parentID, posts,setPosts }) {
                     <PostText post={comment} />
                     <PostImage post={comment} />
                     <CommentsCount posts={posts} parentID={comment._id} />
-                    <LikeButton post={comment} posts={comment} setPosts={setPosts} />
+                     <LikeButton post={comment} posts={posts} setPosts={setPosts} />
                 </div>
             ))}
         </>
