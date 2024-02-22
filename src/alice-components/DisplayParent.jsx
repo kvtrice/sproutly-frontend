@@ -9,20 +9,20 @@ import PostTitle from './PostTitle'
 import PostTag from './PostTag'
 
 function DisplayParent({ parentID, posts,setPosts }) {
-    const Parent = posts.filter((item) => item._id === parentID)
+    const parents = posts.filter((item) => item._id === parentID)
     
     return (
         <>
-            {Parent.map((comment) => (
-                <div key={comment._id}>
-                    <UserDetails post={comment} />
-                    <PostDateTime post={comment} />
-                    <PostTitle post={comment} />
-                    <PostText post={comment} />
-                    <PostTag post={comment}/>
-                    <PostImage post={comment} />
-                    <CommentsCount posts={posts} parentID={comment._id} />
-                    <LikeButton post={comment} posts={posts} setPosts={setPosts} />
+            {parents.map((parent) => (
+                <div key={parent._id}>
+                    <UserDetails post={parent} />
+                    <PostDateTime post={parent} />
+                    <PostTitle post={parent} />
+                    <PostText post={parent} />
+                    <PostTag post={parent}/>
+                    <PostImage post={parent} />
+                    <CommentsCount posts={posts} parentID={parent._id} />
+                    <LikeButton post={parent} posts={posts} setPosts={setPosts} />
                 </div>
             ))}
         </>
