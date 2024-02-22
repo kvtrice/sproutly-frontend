@@ -4,8 +4,8 @@ import PostDateTime from './PostDateTime'
 import PostText from './PostText'
 import PostImage from './PostImage'
 
-function DisplayComments({ parentID, posts }) {
-    const commentsWithParentID = posts.filter((item) => item.parentID === parentID)
+function DisplayParent({ parentID, posts }) {
+    const commentsWithParentID = posts.filter((item) => item._id === parentID)
     
     return (
         <>
@@ -21,4 +21,4 @@ function DisplayComments({ parentID, posts }) {
     )
 }
 
-export default DisplayComments
+export default DisplayParent
