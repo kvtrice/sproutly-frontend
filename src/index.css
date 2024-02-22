@@ -18,19 +18,19 @@ img {
 }
 
 :root {
-    --background-color: #f6f6f6;
-    --foreground-color: #003cff;
-    --primary-text-color: #0a0a0a;
+    --background-color: #fffffF;
+    --foreground-color: #00ff48;
+    --primary-text-color: #000000;
     --secondary-text-color: #ffffff;
-    --toggle-bg: #f0eb9d;
-    --toggle-fg: #ffd000;
+    --toggle-bg: #69ce93;
+    --toggle-fg: #d0fae1;
 }
 
 [data-theme="dark"] {
-    --background-color: #000000;
-    --foreground-color: #9bb3ff;
+    --background-color: #022f0c;
+    --foreground-color: #0f521e;
     --primary-text-color: #fffdfd;
     --secondary-text-color: #000000;
-    --toggle-bg: #000f57;
-    --toggle-fg: #879bff;
+    --toggle-bg: #396446;
+    --toggle-fg: #85a990;
 }

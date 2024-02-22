@@ -5,6 +5,7 @@ import ThreadPage from './src/alice-components/ThreadPage'
 import useLocalStorage from "use-local-storage"
 
 function App() {
+	// Dark mode state - required by all components so lifted it to the highest level and passed it down via prop drilling
 	const [ isDark, setIsDark ] = useLocalStorage("isDark", false)
 
 	return (
