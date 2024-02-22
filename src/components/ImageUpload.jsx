@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import './ImageUpload.css'
+import { SpinningCircles } from 'react-loading-icons'
+import { FaCheck } from "react-icons/fa"
 
 const ImageUpload = ({ setImageUrl}) => {
 	const [image, setImage] = useState(null)
 	const [fileName, setFileName] = useState("new_image.jpg")
+	const [isUploading, setIsUploading] = useState(false);
+	const [uploaded, setUploaded] = useState(false);
 
 	const uploadFile = async () => {
 		const data = new FormData()
@@ -11,6 +15,7 @@ const ImageUpload = ({ setImageUrl}) => {
 		data.append("upload_preset", "images")
 
 		try {
+			setIsUploading(true);
 			let api = "https://api.cloudinary.com/v1_1/djtgmjm16/image/upload"
 			const res = await fetch(api, {
 				method: 'POST',
@@ -19,8 +24,9 @@ const ImageUpload = ({ setImageUrl}) => {
 
 			  const responseData = await res.json() // Parse the JSON response
 			  const secure_url = responseData.secure_url // Access secure_url from the parsed response
-			  console.log(secure_url)
-			  await setImageUrl(secure_url)
+			  setImageUrl(secure_url);
+				setIsUploading(false);
+				setUploaded(true);
 
 		} catch (err) {
 			console.error(err)
@@ -54,7 +60,13 @@ const ImageUpload = ({ setImageUrl}) => {
 				</span>
 				<span className="file-name">{fileName}</span>
 			</label>
-			<button className="button upload-button" onClick={handleUpload} >Upload</button>
+			<button className="button upload-button" onClick={handleUpload}>
+				Upload
+			</button>
+			<div className="uploading-icons-container">
+				{/* Set loading icons for uploading and uploaded to signal to user */}
+				<div className="uploading-icons">{isUploading ? <SpinningCircles fill="#000000" /> : uploaded ? <FaCheck className="check" /> : ""}</div>
+			</div>
 		</div>
 	);
 };
