@@ -64,6 +64,7 @@ const ImageUpload = ({ setImageUrl}) => {
 				Upload
 			</button>
 			<div className="uploading-icons-container">
+				{/* Set loading icons for uploading and uploaded to signal to user */}
 				<div className="uploading-icons">{isUploading ? <SpinningCircles fill="#000000" /> : uploaded ? <FaCheck className="check" /> : ""}</div>
 			</div>
 		</div>
