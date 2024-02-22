@@ -34,3 +34,10 @@ img {
     --toggle-bg: #396446;
     --toggle-fg: #85a990;
 }
+
+.page-wrapper {
+    margin: 0 auto;
+    max-width: 900px;
+    justify-content: center;
+    align-items: center;
+}

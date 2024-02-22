@@ -34,7 +34,7 @@ function AllThreads({ isDark, selectedPlantTags }) {
 	}, [selectedPlantTags, posts])
 
 	return (
-		<div className="thread-wrapper">
+		<div className="page-wrapper">
 			<PostSomethingCta />
 			<SortFilter
 				posts={posts}

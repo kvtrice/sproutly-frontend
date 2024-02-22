@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import DisplayComments from './DisplayComments'
 import DisplayParent from './DisplayParent'
+import AddComment from '../components/post-components/AddComment'
 
 
 function ThreadPage() {
@@ -22,9 +23,12 @@ function ThreadPage() {
 
     return (
         <div>
-			<DisplayParent parentID={parentID} posts={posts} setPosts={setPosts} />
-            <DisplayComments parentID={parentID} posts={posts} setPosts={setPosts} />
-        </div>
+			<div className='page-wrapper'>
+				<DisplayParent parentID={parentID} posts={posts} setPosts={setPosts} />
+				<DisplayComments parentID={parentID} posts={posts} setPosts={setPosts} />
+				<AddComment />
+			</div>
+		</div>
     )
 }
 
