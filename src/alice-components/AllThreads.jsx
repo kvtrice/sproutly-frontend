@@ -4,36 +4,64 @@ import "./AllThreads.css"
 import SortFilter from "./SortFilter"
 
 
-function AllThreads({ isDark }) {
+function AllThreads({ isDark, selectedPlantTags }) {
 	const [posts, setPosts] = useState([]);
+	const [filteredPostsByTag, setFilteredPostsByTag] = useState([]);
 
-	useEffect(() => {
-		fetchAllPostData().then((data) => {
-			setPosts(data);
-		});
-	}, []);
-
+	// Fetch all posts
 	async function fetchAllPostData() {
 		const response = await fetch("http://localhost:4001/posts/");
 		const data = await response.json();
 		return data;
 	}
 
-	const handleSortedPosts = (sortedData) => {
-		setPosts(sortedData)
-	  }
+	// set posts based on the fetched data
+	useEffect(() => {
+		fetchAllPostData().then((data) => {
+			setPosts(data);
+		});
+	}, []);
 
-	  
+	// Filter posts based on plant tags
+	useEffect( () => {
+		// Filter the posts based on the selected plant tags
+		const filtered = posts.filter((post) => {
+			// Match if any of the selected plant tags are present in the post tags
+			return selectedPlantTags.some((tag) => post.tags.includes(tag));
+		});
+		setFilteredPostsByTag(filtered);
+		console.log(filteredPostsByTag);
+	}, [selectedPlantTags, posts])
+
 	return (
 		<div className="thread-wrapper">
-			<SortFilter post={posts} setPosts={handleSortedPosts} /> 
-			{posts.map((post) => (
-				<div key={post._id}>
-					{post.isThreadStarter && (
-						<DisplayPost posts={posts} setPosts={setPosts} post={post} />
-					)}
-				</div>
-			))}
+			<SortFilter
+				posts={posts}
+				setPosts={setPosts}
+			/>
+			{filteredPostsByTag.length > 0
+				? filteredPostsByTag.map((post) => (
+						<div key={post._id}>
+							{post.isThreadStarter && (
+								<DisplayPost
+									posts={posts}
+									setPosts={setPosts}
+									post={post}
+								/>
+							)}
+						</div>
+				  ))
+				: posts.map((post) => (
+						<div key={post._id}>
+							{post.isThreadStarter && (
+								<DisplayPost
+									posts={posts}
+									setPosts={setPosts}
+									post={post}
+								/>
+							)}
+						</div>
+				  ))}
 		</div>
 	);
 }

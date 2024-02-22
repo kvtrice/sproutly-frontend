@@ -5,7 +5,7 @@ import NavBarSignUp from "./NavBarSignUp";
 import PlantSearch from "./PlantSearch";
 import DarkModeToggle from "./DarkModeToggle";
 
-const NavBar = ( {isDark, setIsDark} ) => {
+const NavBar = ( {isDark, setIsDark, setSelectedPlantTags} ) => {
 	const [nav, setNav] = useState(false);
 
 	const handleNav = () => {
@@ -22,7 +22,7 @@ const NavBar = ( {isDark, setIsDark} ) => {
 				</div>
 				{/* Search Bar */}
 				<div className="search-container">
-					<PlantSearch />
+					<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
 				</div>
 				{/* Dark Mode Toggle */}
 				<div className="dark-mode-toggle-container">
