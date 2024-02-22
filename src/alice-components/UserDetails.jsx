@@ -6,9 +6,9 @@ function UserDetails({post}) {
 
   return (
     <div className="is-flex">
-      <figure className="image is-48x48 is-inline-block mr-2">
+      <div className="image is-48x48 is-inline-block mr-2">
         <img className="is-rounded" src={profilePicture} alt="profile picture of user" />
-      </figure>
+      </div>
       <b>{username}</b>
     </div>
   )
