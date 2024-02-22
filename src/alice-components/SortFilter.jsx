@@ -21,7 +21,6 @@ function SortFilter({
 			}
 		});
 		setPosts(sortedData); // Update the parent component's posts
-		console.log(sortedData);
 	}, [sortOrder]);
 
 	const toggleSortOrder = () => {

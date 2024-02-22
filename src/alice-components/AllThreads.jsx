@@ -30,7 +30,6 @@ function AllThreads({ isDark, selectedPlantTags }) {
 			return selectedPlantTags.some((tag) => post.tags.includes(tag));
 		});
 		setFilteredPostsByTag(filtered);
-		console.log(filteredPostsByTag);
 	}, [selectedPlantTags, posts])
 
 	return (
