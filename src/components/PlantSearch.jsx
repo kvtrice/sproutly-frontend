@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import './PlantSearch.css'
+import React, { useState, useEffect } from "react";
+import "./PlantSearch.css";
 
-const PlantSearch = ({ setSelectedPlantTags }) => {
+const PlantSearch = ({ selectedPlantTags, setSelectedPlantTags }) => {
 	const plants = [
 		"Aloe vera",
 		"Birds nest fern",
@@ -37,7 +37,14 @@ const PlantSearch = ({ setSelectedPlantTags }) => {
 
 	const [searchQuery, setSearchQuery] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
-	const [selectedPlants, setSelectedPlants] = useState([]);
+	const [selectedPlants, setSelectedPlants] = useState(
+		selectedPlantTags || []
+	);
+
+	// Update selectedPlants whenever selectedPlantTags changes
+	useEffect(() => {
+		setSelectedPlants(selectedPlantTags || []);
+	}, [selectedPlantTags]);
 
 	const handleInputChange = (e) => {
 		const query = e.target.value;
@@ -57,20 +64,22 @@ const PlantSearch = ({ setSelectedPlantTags }) => {
 
 	const handleSelectedPlants = async (plant) => {
 		if (!selectedPlants.includes(plant)) {
-			await setSelectedPlants([...selectedPlants, plant])
-			await setSelectedPlantTags([...selectedPlants, plant])
+			await setSelectedPlants([...selectedPlants, plant]);
+			await setSelectedPlantTags([...selectedPlants, plant]);
 			setTimeout(() => {
-				setSearchResults([])
-			}, 200)
-			setSearchQuery('')
+				setSearchResults([]);
+			}, 200);
+			setSearchQuery("");
 		}
 	};
 
 	const handleRemovePlant = async (plant) => {
 		await setSelectedPlants(
 			selectedPlants.filter((selectedPlant) => selectedPlant !== plant)
-		)
-		await setSelectedPlantTags(selectedPlants.filter((selectedPlant) => selectedPlant !== plant))
+		);
+		await setSelectedPlantTags(
+			selectedPlants.filter((selectedPlant) => selectedPlant !== plant)
+		);
 	};
 
 	return (

@@ -4,7 +4,7 @@ import "./CommentContent.css"
 const CommentContent = ({ content, setContent }) => {
 	return (
 		<div className="field">
-			<div className="control">
+			<div className="control comment-control">
 				<textarea
 					className="textarea"
 					placeholder="Start typing here..."
