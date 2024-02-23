@@ -21,7 +21,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home isDark={isDark} setIsDark={setIsDark} selectedPlantTags={selectedPlantTags} setSelectedPlantTags={setSelectedPlantTags}/>} />
-					<Route path="/register" element={<RegisterUser/>} /> {/* New route for /register */}
+					<Route path="/register" element={<RegisterUser/>} />
                     <Route path="/post" >
                         <Route path="new" element={<CreatePost isDark={isDark} selectedPlantTags={selectedPlantTags} setSelectedPlantTags={setSelectedPlantTags}/>} />
                         <Route path=":parentID" element={<ThreadPage/>} />
