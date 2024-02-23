@@ -2,8 +2,10 @@ import React from 'react'
 
 function PostText({post}) {
   return (
-    <p>{post.content}</p>
-  )
+		<div>
+			<p>{post.content}</p>
+		</div>
+  );
 }
 
 export default PostText

@@ -4,10 +4,10 @@ import './DiscardWarning.css'
 
 const DiscardWarning = ({
 	setIsDiscardShowing,
-	setTitle,
-	setContent,
-	setImageUrl,
-	setSelectedPlantTags,
+    setTitle = () => {},
+    setContent = () => {},
+    setImageUrl = () => {},
+    setSelectedPlantTags = () => {}
 }) => {
     const nav = useNavigate()
 
@@ -18,8 +18,8 @@ const DiscardWarning = ({
 		setImageUrl("");
 		setSelectedPlantTags([]);
 		setIsDiscardShowing(false);
-		// Navigate home on Discard
-		nav("/");
+		// Navigate back
+		nav(-1)
 	};
 
 	const handleCancel = () => {
