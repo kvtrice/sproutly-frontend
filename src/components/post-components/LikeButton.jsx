@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { FaThumbsUp } from 'react-icons/fa'
+import {jwtDecode} from 'jwt-decode'
 
 function LikeButton({ post, posts, setPosts }) {
   const [likes, setLikes] = useState()
+
+  const token = sessionStorage.getItem("user_id")
+
+  // I have honestly try to use const and try to do const user_id = try {} but it hasn't worked for me in order to use the jwtDecode.
+  let  user_Id
+  // it has to be in a try block since if token is null and user are not logged in yet it will throw an error directly and break the page 
+  try {
+    user_Id = jwtDecode(token).user_id
+    console.log(user_Id)
+  } catch(error) {
+  }
 
   useEffect(() => {
     const reactionsLength = post.reactions.length
@@ -10,17 +22,17 @@ function LikeButton({ post, posts, setPosts }) {
   }, [post])
 
   const handleAddLike = () => {
-    addLike(post._id)
+    addLike(post._id, user_Id)
     setLikes(likes + 1)
   }
 
   // Add like function
-  const addLike = async (postId) => {
+  const addLike = async (postId, user_Id) => {
     const postIndex = posts.findIndex((post) => post._id === postId)
     const post = posts[postIndex]
 		const updatedReactions = [
 			...post.reactions,
-			"65d2f5665305d3958a7ee6e8",
+			user_Id,
 		]
 
     // Update the backend with the updated reactions
