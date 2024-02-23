@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const EditCommentNavigation = ({ post }) => {
+const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const nav = useNavigate()
@@ -15,6 +15,11 @@ const EditCommentNavigation = ({ post }) => {
         nav(`/comment/${post._id}/edit`)
     }
 
+    const handleDeleteWarning = () => {
+        setIsDeleteShowing(true)
+        setCommentToDelete(post._id)
+    }
+
 	return (
         <div>
             <div>
@@ -23,7 +28,7 @@ const EditCommentNavigation = ({ post }) => {
             </div>
             <div className={isMenuOpen ? 'menu-button' : 'hidden'}>
                 <button onClick={navigateToEdit}>Edit Comment</button>
-                <button>Delete Comment</button>
+                <button onClick={handleDeleteWarning}>Delete Comment</button>
             </div>
         </div>
     )

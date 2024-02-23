@@ -7,11 +7,17 @@ import LikeButton from "./LikeButton";
 import SortFilter from "./SortFilter";
 import EditCommentNavigation from "./EditCommentNavigation";
 
-function DisplayComments({ parentID, posts, setPosts }) {
+function DisplayComments({
+	parentID,
+	posts,
+	setPosts,
+	isDeleteShowing,
+	setIsDeleteShowing,
+	setCommentToDelete,
+}) {
 	const commentsWithParentID = posts.filter(
 		(item) => item.parentID === parentID
 	);
-	const [isEditing, setIsEditing] = useState(null)
 
 	// LikeButton post={comment} posts={posts}, the single post need to be post={comment} for each filtered objects but the posts are the array of posts
 	//that was passed by the Parent component so posts has to be posts={posts} and not posts={comment} or
@@ -25,7 +31,13 @@ function DisplayComments({ parentID, posts, setPosts }) {
 				<div key={comment._id}>
 					<UserDetails post={comment} />
 					<PostDateTime post={comment} />
-					<EditCommentNavigation post={comment} parentID={parentID}/>
+					<EditCommentNavigation
+						post={comment}
+						parentID={parentID}
+						isDeleteShowing={isDeleteShowing}
+						setIsDeleteShowing={setIsDeleteShowing}
+						setCommentToDelete={setCommentToDelete}
+					/>
 					<PostText post={comment} />
 					<PostImage post={comment} />
 					<LikeButton
