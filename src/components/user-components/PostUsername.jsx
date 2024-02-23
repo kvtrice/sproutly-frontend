@@ -3,13 +3,10 @@ import React from "react"
 const PostUsername = ({ username, SetUsername }) => {
 
     return (
-          <label>
-            Enter your username:
-            <input
+            <input className="input is-medium"
               value={username}
               onChange={(e) => SetUsername(e.target.value)}
             />
-          </label>
     )
 }
 

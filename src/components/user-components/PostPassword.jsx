@@ -3,13 +3,10 @@ import React from "react"
 const PostPassword = ({ password, SetPassword }) => {
 
     return (
-          <label>
-            Enter your password:
-            <input
+            <input type="password" className="input is-medium" 
               value={password}
               onChange={(e) => SetPassword(e.target.value)}
             />
-          </label>
     )
 }
 
