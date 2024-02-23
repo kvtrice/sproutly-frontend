@@ -6,7 +6,7 @@ function CommentsCount({ parentID, posts }) {
     const numComments = commentsWithParentID.length;
   
     return (
-      <Link to={`post/${parentID}`}>{numComments} comments</Link>
+      <Link to={`http://localhost:5173/post/${parentID}`}>{numComments} comments</Link>
     )
   }
 
