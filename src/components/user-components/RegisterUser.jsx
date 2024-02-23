@@ -19,10 +19,6 @@ const RegisterUser = () => {
             plants :  selectedPlantTags,
             ProfilePicture : imageUrl
         }
-        console.log("Username:", userDetail.username)
-        console.log("Password:", userDetail.password)
-        console.log("Selected Plant Tags:", userDetail.plants)
-        console.log("Profile Picture URL:", userDetail.ProfilePicture)
 
         try {
             const putRegister = await fetch ("http://localhost:4001/users/register" , {

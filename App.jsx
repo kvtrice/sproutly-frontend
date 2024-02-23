@@ -6,6 +6,7 @@ import EditPost from "./src/components/post-components/EditPost";
 import useLocalStorage from "use-local-storage";
 import { useState } from "react";
 import RegisterUser from "./src/components/user-components/RegisterUser";
+import Login from "./src/components/user-components/Login";
 
 function App() {
 	// State to ahndle dark mode
@@ -22,6 +23,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home isDark={isDark} setIsDark={setIsDark} selectedPlantTags={selectedPlantTags} setSelectedPlantTags={setSelectedPlantTags}/>} />
 					<Route path="/register" element={<RegisterUser/>} />
+					<Route path="/login" element={<Login/>} />
                     <Route path="/post" >
                         <Route path="new" element={<CreatePost isDark={isDark} selectedPlantTags={selectedPlantTags} setSelectedPlantTags={setSelectedPlantTags}/>} />
                         <Route path=":parentID" element={<ThreadPage/>} />
