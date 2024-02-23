@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import PostUsername from "./PostUsername"
-import PostPassword from "./PostPassword"
+import PostUsername from "./user-components/PostUsername"
+import PostPassword from "./user-components/PostPassword"
 
 
 const Login = () => {
@@ -26,8 +26,8 @@ const Login = () => {
                 const errorData = await putLogin.json()
                 setLoginError(errorData.error)            
             } else {
-                const token = await putLogin.json()
-                console.log(token)
+                const payload = await putLogin.json()
+                sessionStorage.setItem("user_id", payload.token)
             }
 
 
