@@ -7,7 +7,7 @@ function LikeButton({ post, posts, setPosts }) {
 
   const token = sessionStorage.getItem("user_id")
 
-  // I have honestly try to use const and used it to do const user_id = try {} but it hasn't worked for me in order to use the jwtDecode 
+  // I have honestly try to use const and try to do const user_id = try {} but it hasn't worked for me in order to use the jwtDecode.
   let  user_Id
   // it has to be in a try block since if token is null and user are not logged in yet it will throw an error directly and break the page 
   try {
