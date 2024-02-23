@@ -26,8 +26,8 @@ const Login = () => {
                 const errorData = await putLogin.json()
                 setLoginError(errorData.error)            
             } else {
-                const token = await putLogin.json()
-                console.log(token)
+                const payload = await putLogin.json()
+                sessionStorage.setItem("user_id", payload.token)
             }
 
 
