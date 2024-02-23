@@ -4,12 +4,14 @@ import DisplayComments from './post-components/DisplayComments'
 import DisplayParent from './post-components/DisplayParent'
 import AddComment from './post-components/AddComment'
 import NavBar from "./NavBar";
+import DeleteCommentWarning from './post-components/DeleteCommentWarning'
 
 
 function ThreadPage() {
 	const { parentID } = useParams();
 	const [posts, setPosts] = useState([]);
-	const [editingCommentId, setEditingCommentId] = useState(null)
+	const [commentToDelete, setCommentToDelete] = useState("")
+	const [isDeleteShowing, setIsDeleteShowing] = useState(false)
 
 	useEffect(() => {
 		fetchAllPostData().then((data) => {
@@ -36,8 +38,17 @@ function ThreadPage() {
 					parentID={parentID}
 					posts={posts}
 					setPosts={setPosts}
+					isDeleteShowing={isDeleteShowing}
+					setIsDeleteShowing={setIsDeleteShowing}
+					setCommentToDelete={setCommentToDelete}
 				/>
 				<AddComment parentID={parentID} />
+				{isDeleteShowing && (
+					<DeleteCommentWarning
+						setIsDeleteShowing={setIsDeleteShowing}
+						commentToDelete={commentToDelete}
+					/>
+				)}
 			</div>
 		</div>
 	);
