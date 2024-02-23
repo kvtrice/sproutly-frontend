@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import DisplayComments from './DisplayComments'
-import DisplayParent from './DisplayParent'
-import AddComment from '../components/post-components/AddComment'
-import NavBar from "../components/NavBar";
+import DisplayComments from './post-components/DisplayComments'
+import DisplayParent from './post-components/DisplayParent'
+import AddComment from './post-components/AddComment'
+import NavBar from "./NavBar";
 
 
 function ThreadPage() {

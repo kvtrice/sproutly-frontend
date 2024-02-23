@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreatePost from "./src/components/post-components/CreatePost";
 import Home from "./src/components/Home";
-import ThreadPage from './src/alice-components/ThreadPage'
+import ThreadPage from './src/components/ThreadPage'
 import useLocalStorage from "use-local-storage"
 import { useState } from 'react'
 

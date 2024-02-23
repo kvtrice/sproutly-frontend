@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FaThumbsUp } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react'
+import { FaThumbsUp } from 'react-icons/fa'
 
 function LikeButton({ post, posts, setPosts }) {
   const [likes, setLikes] = useState()
@@ -16,8 +16,8 @@ function LikeButton({ post, posts, setPosts }) {
 
   // Add like function
   const addLike = async (postId) => {
-    const postIndex = posts.findIndex((post) => post._id === postId);
-    const post = posts[postIndex];
+    const postIndex = posts.findIndex((post) => post._id === postId)
+    const post = posts[postIndex]
 		const updatedReactions = [
 			...post.reactions,
 			"65d2f5665305d3958a7ee6e8",
@@ -31,8 +31,8 @@ function LikeButton({ post, posts, setPosts }) {
 		})
 
     // Fetch the updated post data
-		const response = await fetch(`http://localhost:4001/posts/${postId}`);
-		const updatedPost = await response.json();
+		const response = await fetch(`http://localhost:4001/posts/${postId}`)
+		const updatedPost = await response.json()
 
 		// Update the posts state with the updated post
 		const updatedPosts = [...posts]
