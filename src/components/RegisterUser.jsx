@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import PostUsername from "./PostUsername"
-import PostPassword from "./PostPassword"
-import PlantSearch from "../PlantSearch"
-import ImageUpload from "../ImageUpload"
+import PostUsername from "./user-components/PostUsername.jsx"
+import PostPassword from "./user-components/PostUsername.jsx"
+import PlantSearch from "./PlantSearch"
+import ImageUpload from "./ImageUpload"
 
 const RegisterUser = () => {
     const [username, SetUsername] = useState("")
