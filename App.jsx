@@ -3,6 +3,7 @@ import CreatePost from "./src/components/post-components/CreatePost";
 import Home from "./src/components/Home";
 import ThreadPage from './src/components/ThreadPage'
 import EditPost from "./src/components/post-components/EditPost";
+import EditComment from "./src/components/post-components/EditComment";
 import useLocalStorage from "use-local-storage";
 import { useState } from "react";
 import RegisterUser from "./src/components/user-components/RegisterUser";
@@ -32,6 +33,16 @@ function App() {
 									isDark={isDark}
 									selectedPlantTags={selectedPlantTags}
 									setSelectedPlantTags={setSelectedPlantTags}
+								/>
+							}
+						/>
+                    </Route>
+					<Route path="/comment" >
+						<Route
+							path=":commentId/edit"
+							element={
+								<EditComment
+									isDark={isDark}
 								/>
 							}
 						/>

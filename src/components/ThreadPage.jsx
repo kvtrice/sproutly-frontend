@@ -9,6 +9,7 @@ import NavBar from "./NavBar";
 function ThreadPage() {
 	const { parentID } = useParams();
 	const [posts, setPosts] = useState([]);
+	const [editingCommentId, setEditingCommentId] = useState(null)
 
 	useEffect(() => {
 		fetchAllPostData().then((data) => {
