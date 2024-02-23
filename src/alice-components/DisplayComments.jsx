@@ -15,7 +15,9 @@ function DisplayComments({ parentID, posts,setPosts}) {
     //at setPosts change of Liking a post it will change the array of posts to that single object clicked. I learnt the hard way
     return (
         <> 
-            <SortFilter posts={posts} setPosts={setPosts}/>
+            {commentsWithParentID.length > 0 ? (
+                <SortFilter posts={posts} setPosts={setPosts} />
+            ) : null}
             {commentsWithParentID.map((comment) => (
                 <div key={comment._id}>
                     <UserDetails post={comment} />
