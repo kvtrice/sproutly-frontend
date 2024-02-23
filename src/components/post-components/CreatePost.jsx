@@ -5,6 +5,7 @@ import PlantSearch from "../PlantSearch";
 import ImageUpload from "../ImageUpload";
 import DiscardWarning from "./DiscardWarning";
 import NavBar from "../NavBar";
+import PostContent from "./PostContent";
 
 const CreatePost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 	const [title, setTitle] = useState("");
@@ -80,15 +81,8 @@ const CreatePost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 								></input>
 							</div>
 						</div>
-						<div className="field">
-							<div className="control">
-								<textarea
-									className="textarea"
-									placeholder="Start typing here..."
-									value={content}
-									onChange={(e) => setContent(e.target.value)}
-								></textarea>
-							</div>
+						<div className="post-content">
+							<PostContent setContent={setContent} content={content}/>
 						</div>
 						<div className="upload-image">
 							<ImageUpload setImageUrl={setImageUrl} />
