@@ -9,7 +9,8 @@ const RegisterUser = () => {
     const [password, SetPassword] = useState("")
     const [selectedPlantTags, setSelectedPlantTags] = useState("")
     const [imageUrl, setImageUrl] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
+    const [usernameError, setUsernameError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
 
 	async function addUser() {
         const userDetail = {
@@ -34,19 +35,24 @@ const RegisterUser = () => {
 
             if (!putRegister.ok) {
                 const errorData = await putRegister.json()
-                throw new Error(errorData.error)
+                errorData.Displayederrors.forEach(error => {
+                    if (error.includes('Username')) setUsernameError(error)
+                    if (error.includes('Password')) setPasswordError(error)
+                })
             }
         } catch (err) {
-            setErrorMessage(err.message)
+            console.error(err.message)
         }
     }
+
 
     return (
         <>
              <h1>Welcome to Sproutly</h1>
             <PostUsername SetUsername={SetUsername} username={username} />
-            {errorMessage && <p className="has-text-danger">{errorMessage}</p>}
+            {usernameError && <p className="has-text-danger">{usernameError}</p>}
             <PostPassword SetPassword={SetPassword} password={password} />
+            {passwordError && <p className="has-text-danger">{passwordError}</p>}
         <label htmlFor="profilePicture">Upload Profile Picture:</label>
         <ImageUpload  setImageUrl={setImageUrl} id="profilePicture" />
             <PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
