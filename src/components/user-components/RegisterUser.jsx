@@ -47,17 +47,35 @@ const RegisterUser = () => {
 
 
     return (
-        <>
-             <h1>Welcome to Sproutly</h1>
-            <PostUsername SetUsername={SetUsername} username={username} />
-            {usernameError && <p className="has-text-danger">{usernameError}</p>}
-            <PostPassword SetPassword={SetPassword} password={password} />
-            {passwordError && <p className="has-text-danger">{passwordError}</p>}
-        <label htmlFor="profilePicture">Upload Profile Picture:</label>
-        <ImageUpload  setImageUrl={setImageUrl} id="profilePicture" />
-            <PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
-            <button onClick={() => addUser(username)}>Register User</button>
-        </>
+<>
+    <section className="section">
+        <div className="container">
+            <div className="columns is-centered">       
+                <div className="column is-half">
+                    <h1 className="has-text-centered">Welcome to Sproutly</h1>
+                    <div className="field">
+                        <label className="label">Choose a user name (visible to public)</label>
+                        <PostUsername SetUsername={SetUsername} username={username} />
+                        {usernameError && <p className="has-text-danger">{usernameError}</p>}
+                    </div>
+                    <div className="field">
+                        <label className="label">Choose a password</label>
+                        <PostPassword SetPassword={SetPassword} password={password} />
+                        {passwordError && <p className="has-text-danger">{passwordError}</p>}
+                    </div>
+                    <div className="field">
+                        <label className="label" htmlFor="profilePicture">Upload Profile Picture:</label>
+                        <ImageUpload setImageUrl={setImageUrl} id="profilePicture" />
+                    </div>
+                    <PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
+                    <div className="columns is-centered mt-6">
+                    <button className="button is-primary button is-medium" onClick={() => addUser(username)}>Register User</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</>
     )
 }
 
