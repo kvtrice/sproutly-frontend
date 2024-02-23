@@ -1,73 +1,67 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./CreatePost.css";
-import PlantSearch from "../PlantSearch";
 import ImageUpload from "../ImageUpload";
 import DiscardWarning from "./DiscardWarning";
 import NavBar from "../NavBar";
 import PostContent from "./PostContent";
 
-const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
-	const [title, setTitle] = useState("");
+const EditComment = ({ post }) => {
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [isDiscardShowing, setIsDiscardShowing] = useState(false);
 	const nav = useNavigate();
-	const { postId } = useParams()
 
-	// Fetch the details of the selected post
+	const { commentId } = useParams();
+
+	// Fetch the details of the selected comment
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
-				`http://127.0.0.1:4001/posts/${postId}`
+				`http://127.0.0.1:4001/posts/${commentId}`
 			);
 			const post = await response.json();
-			setTitle(post.title || "");
 			setContent(post.content || "");
 			setImageUrl(post.image || "");
-			setSelectedPlantTags(post.tags || []);
 		};
 
 		fetchPost();
-	}, [postId]);
+	}, [commentId]);
 
-	// Edit Post Function
-	const editPost = async (postId, title, content, imageUrl, selectedPlantTags) => {
-
-		// Defined updated post data
-		const updatedPost = {
-			title: title,
+	// Edit comment Function
+	const editComment = async (commentId, content, imageUrl) => {
+		// Defined updated comment data
+		const updatedComment = {
 			content: content,
 			image: imageUrl,
-			tags: selectedPlantTags,
 		};
 
 		// POST the updated post to API
 		try {
 			const result = await fetch(
-				`http://127.0.0.1:4001/posts/${postId}`,
+				`http://127.0.0.1:4001/posts/${commentId}`,
 				{
 					method: "PUT",
 					headers: {
 						"content-Type": "application/json",
 					},
-					body: JSON.stringify(updatedPost),
+					body: JSON.stringify(updatedComment),
 				}
 			);
 
 			if (!result.ok) {
-				throw new Error("Failed to update post!");
+				throw new Error("Failed to update comment!");
 			}
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	const handleUpdatePost = async (e) => {
+	const handleUpdateComment = async (e) => {
 		e.preventDefault();
-        await editPost(postId, title, content, imageUrl, selectedPlantTags)
-		// Navigate to the URL or the updated post if successfully updated
-		nav(`/post/${postId}`);
+		await editComment(commentId, content, imageUrl);
+		// Navigate to the URL or the parent post if successfully updated
+		nav(-1);
 	};
 
 	// Discard warning handler
@@ -80,19 +74,8 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 			<NavBar />
 			<div className="page-wrapper has-navbar-fixed-top">
 				<div className="form-wrapper">
-					<h2>Edit Post</h2>
-					<form className="section" onSubmit={handleUpdatePost}>
-						<div className="field">
-							<div className="control">
-								<input
-									className="input is-normal"
-									type="text"
-									placeholder="Enter post title"
-									value={title}
-									onChange={(e) => setTitle(e.target.value)}
-								></input>
-							</div>
-						</div>
+					<h2>Edit Comment</h2>
+					<form className="section" onSubmit={handleUpdateComment}>
 						<div className="post-content">
 							<PostContent
 								setContent={setContent}
@@ -100,12 +83,9 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 							/>
 						</div>
 						<div className="upload-image">
-							<ImageUpload setImageUrl={setImageUrl} initialImageUrl={imageUrl} />
-						</div>
-						<div className="search">
-							<PlantSearch
-								setSelectedPlantTags={setSelectedPlantTags}
-                                selectedPlantTags={selectedPlantTags}
+							<ImageUpload
+								setImageUrl={setImageUrl}
+								initialImageUrl={imageUrl}
 							/>
 						</div>
 						<div className="field is-grouped is-grouped-right">
@@ -133,10 +113,8 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 					{isDiscardShowing && (
 						<DiscardWarning
 							setIsDiscardShowing={setIsDiscardShowing}
-							setTitle={setTitle}
 							setContent={setContent}
 							setImageUrl={setImageUrl}
-							setSelectedPlantTags={setSelectedPlantTags}
 						/>
 					)}
 				</div>
@@ -145,4 +123,4 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 	);
 };
 
-export default EditPost;
+export default EditComment;
