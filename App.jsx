@@ -5,8 +5,8 @@ import ThreadPage from './src/components/ThreadPage'
 import EditPost from "./src/components/post-components/EditPost";
 import useLocalStorage from "use-local-storage";
 import { useState } from "react";
-import RegisterUser from "./src/components/user-components/RegisterUser";
-import Login from "./src/components/user-components/Login";
+import RegisterUser from "./src/components/RegisterUser";
+import Login from "./src/components/Login";
 
 function App() {
 	// State to ahndle dark mode

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import PostUsername from "./PostUsername"
-import PostPassword from "./PostPassword"
+import PostUsername from "./user-components/PostUsername"
+import PostPassword from "./user-components/PostPassword"
 
 
 const Login = () => {

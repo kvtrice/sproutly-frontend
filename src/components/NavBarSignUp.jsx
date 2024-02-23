@@ -8,7 +8,7 @@ const NavBarSignUp = () => {
 			<a className="button is-primary signup">
 			<Link to={`/register`}><strong>Sign up</strong></Link>
 			</a>
-			<a className="button is-light login">Log in</a>
+			<Link to={`/login`}><a className="button is-light login">Log in</a></Link>
 		</div>
 	);
 };
