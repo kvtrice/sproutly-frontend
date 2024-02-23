@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import DisplayPost from './DisplayPost'
+import DisplayPost from './post-components/DisplayPost.jsx'
 import "./AllThreads.css"
-import SortFilter from "./SortFilter"
-import PostSomethingCta from '../components/PostSomethingCta'
+import SortFilter from "./post-components/SortFilter.jsx"
+import PostSomethingCta from './PostSomethingCta'
 
 
 function AllThreads({ isDark, selectedPlantTags }) {
