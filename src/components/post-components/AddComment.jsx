@@ -21,7 +21,7 @@ const AddComment = ({ parentID }) => {
 			parentID: parentID,
 			isThreadStarter: false,
 			isComment: true,
-			tags: null,
+			tags: [],
 		};
 
 		// POST the new comment to API
