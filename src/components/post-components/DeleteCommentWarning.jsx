@@ -2,6 +2,7 @@ import React from "react";
 import "./DiscardWarning.css";
 
 const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete }) => {
+    // Id ofthe comment the user is interacting with
 	const commentId = commentToDelete;
 
 	const handleConfirm = () => {
