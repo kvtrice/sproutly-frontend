@@ -10,6 +10,10 @@ h2 {
     text-align: center;
 }
 
+.post-content {
+    margin-bottom: 1rem;
+}
+
 .plant-list-wrapper {
     margin-top: 0.5rem;
 }
