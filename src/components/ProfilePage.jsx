@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import UserLikes from './Userlikes'
-import DisplayPost from '../post-components/DisplayPost'
-import UserData from './Userdata'
+import UserLikes from './user-components/Userlikes'
+import DisplayPost from './post-components/DisplayPost'
+import UserData from './user-components/Userdata'
 import { useParams } from 'react-router-dom'
 
 async function Allpostdata() {
