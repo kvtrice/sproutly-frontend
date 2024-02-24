@@ -8,7 +8,8 @@ import useLocalStorage from "use-local-storage";
 import { useState, useEffect } from "react";
 import RegisterUser from "./src/components/RegisterUser";
 import Login from "./src/components/Login";
-import ProfilePage from "./src/components/user-components/ProfilePage";
+import ProfilePage from "./src/components/ProfilePage";
+import EditUserDetails from "./src/components/UserEdit";
 
 function App() {
 	// State to ahndle dark mode
@@ -43,6 +44,7 @@ function App() {
 							/>
 						}
 					/>
+					<Route path="user/edit/:user_id" element={<EditUserDetails/>} />
 					<Route path="/register" element={<RegisterUser />} />
 					<Route path="/profile/:user_id" element={<ProfilePage />} />
 					<Route path="/login" element={<Login />} />
