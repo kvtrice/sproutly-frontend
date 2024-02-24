@@ -8,6 +8,7 @@ import useLocalStorage from "use-local-storage";
 import { useState } from "react";
 import RegisterUser from "./src/components/RegisterUser";
 import Login from "./src/components/Login";
+import ProfilePage from "./src/components/user-components/ProfilePage";
 
 function App() {
 	// State to ahndle dark mode
@@ -24,6 +25,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home isDark={isDark} setIsDark={setIsDark} selectedPlantTags={selectedPlantTags} setSelectedPlantTags={setSelectedPlantTags}/>} />
 					<Route path="/register" element={<RegisterUser/>} />
+					<Route path="/Profile" element={<ProfilePage/>} />
 					<Route path="/login" element={<Login/>} />
                     <Route path="/post" >
                         <Route path="new" element={<CreatePost isDark={isDark} selectedPlantTags={selectedPlantTags} setSelectedPlantTags={setSelectedPlantTags}/>} />
