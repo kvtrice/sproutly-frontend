@@ -7,14 +7,19 @@ import DiscardWarning from "./DiscardWarning";
 import NavBar from "../NavBar";
 import PostContent from "./PostContent";
 
-const CreatePost = ({ selectedPlantTags, setSelectedPlantTags }) => {
+const CreatePost = ({
+	selectedPlantTags,
+	setSelectedPlantTags,
+	setIsDark,
+	isDark,
+}) => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
-	const [isDiscardShowing, setIsDiscardShowing] = useState(false)
+	const [isDiscardShowing, setIsDiscardShowing] = useState(false);
 
-	const nav = useNavigate()
+	const nav = useNavigate();
 
 	// Add Post function
 	async function addPost(title, content, imageUrl, tags) {
@@ -65,7 +70,7 @@ const CreatePost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 
 	return (
 		<>
-			<NavBar />
+			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<div className="page-wrapper has-navbar-fixed-top">
 				<div className="form-wrapper">
 					<h2>New Post</h2>
@@ -82,7 +87,10 @@ const CreatePost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 							</div>
 						</div>
 						<div className="post-content">
-							<PostContent setContent={setContent} content={content}/>
+							<PostContent
+								setContent={setContent}
+								content={content}
+							/>
 						</div>
 						<div className="upload-image">
 							<ImageUpload setImageUrl={setImageUrl} />

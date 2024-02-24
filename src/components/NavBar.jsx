@@ -14,13 +14,25 @@ const NavBar = ( {isDark, setIsDark, setSelectedPlantTags} ) => {
 
 	return (
 		// Desktop Nav
-		<nav className="sproutly-navbar" data-theme={isDark ? "dark" : "light"}>
+		<nav className="sproutly-navbar">
 			<div className="nav-items">
 				{/* Logo */}
 				<div className="logo">
-					<a href="/">
-						<h1>Sproutly</h1>
-					</a>
+					{isDark ? (
+						<a href="/">
+							<img
+								src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-dark_i7f6px.png"
+								alt="Sproutly Logo"
+							/>
+						</a>
+					) : (
+						<a href="/">
+							<img
+								src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
+								alt="Sproutly Logo"
+							/>
+						</a>
+					)}
 				</div>
 				{/* Search Bar */}
 				<div className="search-container">
@@ -39,7 +51,7 @@ const NavBar = ( {isDark, setIsDark, setSelectedPlantTags} ) => {
 				</div>
 				{/* Menu icon */}
 				<div onClick={handleNav} className="hamburger-menu-button">
-					<AiOutlineMenu size={30} />
+					<AiOutlineMenu size={30} className="mob-menu-button" />
 				</div>
 			</div>
 
@@ -51,13 +63,13 @@ const NavBar = ( {isDark, setIsDark, setSelectedPlantTags} ) => {
 						onClick={handleNav}
 						className="close-hamburger-menu-button"
 					>
-						<AiOutlineClose size={30} />
+						<AiOutlineClose size={30} className="mob-menu-button" />
 					</div>
 					{/* Sign up Buttons mobile */}
 					<div className="signup-buttons-container-mob">
 						<NavBarSignUp />
 					</div>
-					<hr className="line"/>
+					<hr className="line" />
 					{/* Dark Mode Toggle */}
 					<div className="dark-mode-toggle-container-mob">
 						<DarkModeToggle

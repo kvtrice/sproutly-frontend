@@ -7,11 +7,11 @@ import NavBar from "./NavBar";
 import DeleteCommentWarning from './post-components/DeleteCommentWarning'
 
 
-function ThreadPage() {
+function ThreadPage({ isDark, setIsDark }) {
 	const { parentID } = useParams();
 	const [posts, setPosts] = useState([]);
-	const [commentToDelete, setCommentToDelete] = useState("")
-	const [isDeleteShowing, setIsDeleteShowing] = useState(false)
+	const [commentToDelete, setCommentToDelete] = useState("");
+	const [isDeleteShowing, setIsDeleteShowing] = useState(false);
 
 	useEffect(() => {
 		fetchAllPostData().then((data) => {
@@ -27,7 +27,7 @@ function ThreadPage() {
 
 	return (
 		<div>
-			<NavBar />
+			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<div className="page-wrapper">
 				<DisplayParent
 					parentID={parentID}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaThumbsUp } from 'react-icons/fa'
 import {jwtDecode} from 'jwt-decode'
+import "./LikeButton.css";
 
 function LikeButton({ post, posts, setPosts }) {
   const [likes, setLikes] = useState()
@@ -53,13 +54,13 @@ function LikeButton({ post, posts, setPosts }) {
   }
 
   return (
-    <div>
-      <p className="mb-1">{likes} reactions</p>
-      <button className="icon is-medium" onClick={handleAddLike}>
-        <FaThumbsUp />
-      </button>
-    </div>
-  )
+		<div className='reaction-container'>
+			<button className="like-button-container" onClick={handleAddLike}>
+				<FaThumbsUp className="like-button" size={22}/>
+			</button>
+			<p className="reaction-count">{likes} reactions</p>
+		</div>
+  );
 }
 
 export default LikeButton

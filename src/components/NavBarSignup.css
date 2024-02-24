@@ -1,5 +1,5 @@
 .signup {
-    margin-right: 0.5rem;
+    margin-right: 0.8rem;
     margin-bottom: 0.5rem;
 }
 
@@ -10,4 +10,8 @@
 
 .signup-buttons .button {
     width: 8rem;
+}
+
+.signup-buttons .button a {
+    font-size: 14px;
 }

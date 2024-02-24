@@ -1,0 +1,10 @@
+.comment-count-container {
+    margin-left: 1.5rem;
+}
+
+.comment-text {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}

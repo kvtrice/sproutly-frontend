@@ -2,7 +2,7 @@ import React from 'react'
 
 function PostText({post}) {
   return (
-		<div>
+		<div className='post-text'>
 			<p>{post.content}</p>
 		</div>
   );

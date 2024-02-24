@@ -12,7 +12,7 @@ const PostSomethingCta = () => {
 
   return (
     <div className="post-something-wrapper">
-        <div className="post-something-container">
+        <div className="post-something-container component-wrapper">
             <div className='profile-picture'>
                 <img className="user-profile-picture" src={authenticatedUserProfilePicture} />
             </div>

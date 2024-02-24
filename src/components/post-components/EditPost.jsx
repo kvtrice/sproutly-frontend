@@ -7,13 +7,18 @@ import DiscardWarning from "./DiscardWarning";
 import NavBar from "../NavBar";
 import PostContent from "./PostContent";
 
-const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
+const EditPost = ({
+	selectedPlantTags,
+	setSelectedPlantTags,
+	setIsDark,
+	isDark,
+}) => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [isDiscardShowing, setIsDiscardShowing] = useState(false);
 	const nav = useNavigate();
-	const { postId } = useParams()
+	const { postId } = useParams();
 
 	// Fetch the details of the selected post
 	useEffect(() => {
@@ -32,8 +37,13 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 	}, [postId]);
 
 	// Edit Post Function
-	const editPost = async (postId, title, content, imageUrl, selectedPlantTags) => {
-
+	const editPost = async (
+		postId,
+		title,
+		content,
+		imageUrl,
+		selectedPlantTags
+	) => {
 		// Defined updated post data
 		const updatedPost = {
 			title: title,
@@ -65,7 +75,7 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 
 	const handleUpdatePost = async (e) => {
 		e.preventDefault();
-        await editPost(postId, title, content, imageUrl, selectedPlantTags)
+		await editPost(postId, title, content, imageUrl, selectedPlantTags);
 		// Navigate to the URL or the updated post if successfully updated
 		nav(`/post/${postId}`);
 	};
@@ -77,7 +87,7 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 
 	return (
 		<>
-			<NavBar />
+			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<div className="page-wrapper has-navbar-fixed-top">
 				<div className="form-wrapper">
 					<h2>Edit Post</h2>
@@ -100,12 +110,15 @@ const EditPost = ({ selectedPlantTags, setSelectedPlantTags }) => {
 							/>
 						</div>
 						<div className="upload-image">
-							<ImageUpload setImageUrl={setImageUrl} initialImageUrl={imageUrl} />
+							<ImageUpload
+								setImageUrl={setImageUrl}
+								initialImageUrl={imageUrl}
+							/>
 						</div>
 						<div className="search">
 							<PlantSearch
 								setSelectedPlantTags={setSelectedPlantTags}
-                                selectedPlantTags={selectedPlantTags}
+								selectedPlantTags={selectedPlantTags}
 							/>
 						</div>
 						<div className="field is-grouped is-grouped-right">

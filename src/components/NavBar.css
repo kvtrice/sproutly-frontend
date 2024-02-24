@@ -14,13 +14,17 @@ hr {
     z-index: 30;
     display: flex;
     width: 100%;
-    box-shadow: 2px 2px 10px rgb(232, 232, 232);
+    border-bottom: 1px solid var(--nav-bottom-border-color);
     margin-bottom: 1rem;
     transition: visibility 300ms ease-in;
   }
 
 .search-container {
     width: 50%;
+}
+
+.logo {
+    max-width: 120px;
 }
 
 .nav-items {
@@ -57,6 +61,8 @@ hr {
     position: fixed;
     height: 100%;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .mobile-menu {
@@ -84,6 +90,10 @@ hr {
     cursor: pointer;
 }
 
+.mob-menu-button {
+    fill: var(--primary-text-color);
+}
+
 @media screen and (max-width: 1024px) {
 
     .hamburger-menu-button {
@@ -92,6 +102,10 @@ hr {
 
     .search-container, .dark-mode-toggle, .signup-buttons-container, .dark-mode-toggle-container {
         display: none;
+    }
+
+    .nav-items {
+        align-items: center;
     }
 }
 

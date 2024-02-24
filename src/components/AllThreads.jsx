@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import DisplayPost from './post-components/DisplayPost.jsx'
-import "./AllThreads.css"
 import SortFilter from "./post-components/SortFilter.jsx"
 import PostSomethingCta from './PostSomethingCta'
 
@@ -35,34 +34,37 @@ function AllThreads({ isDark, selectedPlantTags }) {
 
 	return (
 		<div className="page-wrapper">
-			<PostSomethingCta />
 			<SortFilter
-				posts={posts}
-				setPosts={setPosts}
-			/>
-			{filteredPostsByTag.length > 0
-				? filteredPostsByTag.map((post) => (
-						<div key={post._id}>
-							{post.isThreadStarter && (
-								<DisplayPost
-									posts={posts}
-									setPosts={setPosts}
-									post={post}
-								/>
-							)}
-						</div>
-				  ))
-				: posts.map((post) => (
-						<div key={post._id}>
-							{post.isThreadStarter && (
-								<DisplayPost
-									posts={posts}
-									setPosts={setPosts}
-									post={post}
-								/>
-							)}
-						</div>
-				  ))}
+					posts={posts}
+					setPosts={setPosts}
+				/>
+			<PostSomethingCta />
+			<div >
+
+				{filteredPostsByTag.length > 0
+					? filteredPostsByTag.map((post) => (
+							<div key={post._id}>
+								{post.isThreadStarter && (
+									<DisplayPost
+										posts={posts}
+										setPosts={setPosts}
+										post={post}
+									/>
+								)}
+							</div>
+					  ))
+					: posts.map((post) => (
+							<div key={post._id}>
+								{post.isThreadStarter && (
+									<DisplayPost
+										posts={posts}
+										setPosts={setPosts}
+										post={post}
+									/>
+								)}
+							</div>
+					  ))}
+			</div>
 		</div>
 	);
 }

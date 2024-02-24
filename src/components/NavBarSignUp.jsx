@@ -10,7 +10,7 @@ const NavBarSignUp = () => {
 					<strong>Sign up</strong>
 				</Link>
 			</button>
-			<Link to={`/login`}> <button className="button is-light login">Log in</button></Link>
+			<button className="button is-light login"><Link to={`/login`}><strong>Log in</strong></Link></button>
 		</div>
 	);
 };

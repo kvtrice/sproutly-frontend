@@ -1,10 +1,9 @@
 .post-something-wrapper {
-    max-width: 900px;
-    margin: 2rem 0rem;
+    max-width: 800px;
+    margin: 1rem 0rem;
 }
 
 .post-something-wrapper .post-something-container {
-    background-color: rgba(237, 237, 237, 0.648);
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -15,12 +14,18 @@
 }
 
 .post-something-input {
-    width: 70%;
+    width: 90%;
 }
 
 .post-something-input .input {
     border-radius: 40px;
     height: 60px;
+    background: var(--post-something-input-color);
+    border: 1px solid var(--border-color);
+}
+
+.post-something-input .input:hover {
+    border-color: var(--border-color-hover-color);
 }
 
 .user-profile-picture {

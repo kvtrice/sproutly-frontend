@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { BsSortDownAlt } from "react-icons/bs"; // Oldest to Newest
+import { BsSortDown } from "react-icons/bs"; // Newest to Oldest
+import "./SortFilter.css";
 
 function SortFilter({
 	posts,
@@ -31,10 +34,18 @@ function SortFilter({
 
 	return (
 		<div>
-			<button onClick={toggleSortOrder}>
-				{sortOrder === "descending"
-					? "Oldest to Newest"
-					: "Newest to Oldest"}
+			<button onClick={toggleSortOrder} className='sort-button-container'>
+				{sortOrder === "descending" ? (
+					<div className='sort-button'>
+						<BsSortDownAlt size={20} className='sort-icon'/>
+						<p className='sort-text'>Oldest to Newest</p>
+					</div>
+				) : (
+					<div className='sort-button'>
+						<BsSortDown size={20} className='sort-icon'/>
+						<p className='sort-text'>Newest to Oldest</p>
+					</div>
+				)}
 			</button>
 		</div>
 	);

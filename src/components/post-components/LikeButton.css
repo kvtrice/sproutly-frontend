@@ -1,0 +1,25 @@
+.reaction-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.like-button-container {
+    margin-right: 0.5rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.like-button {
+    fill: var(--primary-text-color);
+}
+
+.like-button:hover {
+    fill: var(--primary-button-color)
+}
+
+.reaction-count {
+    font-size: 15px;
+    font-weight: 500;
+}

@@ -20,7 +20,7 @@ const EditPostNavigation = ({ post }) => {
         <div>
             <div>
                 {/*  Need to add logic to also check if the post belong to the currently logged in user */}
-                {post.isThreadStarter ? <AiOutlineEllipsis onClick={handleMenu} cursor="pointer"/> : ""}
+                {post.isThreadStarter ? <AiOutlineEllipsis className="post-menu" size={30} onClick={handleMenu} cursor="pointer"/> : ""}
             </div>
             <div className={isMenuOpen ? 'menu-button' : 'hidden'}>
                 <button onClick={navigateToEdit}>Edit Post</button>

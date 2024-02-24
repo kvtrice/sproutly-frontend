@@ -1,7 +1,156 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 
+/* Remove default Flexbox on HTML that Bulma applies & Set global background */
 html {
     display: block;
+    background: var(--background-color);
+}
+
+/* Set global font */
+body, .button, .input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Global Defaults */
+
+/* Light Mode colors */
+:root {
+    /* Background colors */
+    --background-color: #e5f1ec;
+    --foreground-color: #fcfcfc;
+
+    /* Nav Colours */
+    --nav-bottom-border-color: #fcfcfc;
+
+    /* Text colors */
+    --primary-text-color: #333333;
+    --secondary-text-color: #fcfcfc;
+
+    /* Button colors */
+    --primary-button-color: #B7E4C7;
+    --primary-button-text-color: #333333;
+    --secondary-button-color: #fcfcfc;
+    --sort-button-bg-color: #fcfcfc;
+
+    /* Border colors */
+    --border-color: rgb(233, 233, 233);
+    --border-color-hover-color: rgb(181, 181, 181);
+
+    /* Input field colors */
+    --placeholder-text-color: rgb(199, 199, 199);
+    --post-something-input-color: #fcfcfc;
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+    /* Background colors */
+    --background-color: #13201c;
+    --foreground-color: #1b2d27;
+
+    /* Nav Colours */
+    --nav-bottom-border-color: #35524A;
+
+    /* Text colors */
+    --primary-text-color: #F5F5F5;
+    --secondary-text-color: #333333;
+
+    /* Button colors */
+    --primary-button-color: #41674e;
+    --primary-button-text-color: #fcfcfc;
+    --secondary-button-color: #29403a;
+    --sort-button-bg-color: #20312C;
+
+    /* Border colors */
+    --border-color: #35524A;
+    --border-color-hover-color: #6d9383;
+
+    /* Input field colors */
+    --placeholder-text-color: rgba(217, 217, 217, 0.426);
+    --post-something-input-color: #314b43;
+}
+
+/* Wrappers */
+
+.page-wrapper {
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+}
+
+.component-wrapper {
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    background-color: var(--foreground-color);
+}
+
+/* Images */
+
+img {
+    border-radius: 10px;
+}
+
+/* Buttons */
+
+.button.is-primary {
+    background-color: var(--primary-button-color);
+    color: var(--primary-button-text-color);
+    transition: 300ms ease-in-out;
+}
+
+.button.is-primary a {
+    color: var(--primary-button-text-color);
+}
+
+.button.is-light {
+    background-color: var(--secondary-button-color);
+    color: var(--primary-text-color);
+    transition: 300ms ease-in-out;
+}
+
+.button.is-light a {
+    color: var(--primary-text-color);
+}
+
+.button.is-primary:hover {
+    background-color: var(--primary-button-color);
+    color: var(--secondary-text-color);
+    transform: scale(1.1);
+}
+
+.button.is-light:hover {
+    background-color: var(--secondary-button-color);
+    color: var(--primary-text-color);
+    transform: scale(1.1);
+}
+
+/* Links */
+
+a {
+    color: var(--primary-text-color)
+}
+
+a:hover {
+    color: var(--primary-text-color)
+}
+
+.input, .textarea {
+    border-color: var(--border-color);
+    background-color: var(--foreground-color);
+    color: var(--primary-text-color);
+}
+
+.input::placeholder {
+    color: var(--placeholder-text-color);
+}
+
+/* Text */
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-text-color);
 }
 
 h1 {
@@ -12,32 +161,42 @@ h2 {
     font-size: 30px;
 }
 
-img {
-    /* max-width: 700px; */
-    border-radius: 10px;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
 }
 
-:root {
-    --background-color: #fffffF;
-    --foreground-color: #00ff48;
-    --primary-text-color: #000000;
-    --secondary-text-color: #ffffff;
-    --toggle-bg: #69ce93;
-    --toggle-fg: #d0fae1;
+/* Posts */
+
+.post-menu {
+    fill: var(--primary-text-color)
 }
 
-[data-theme="dark"] {
-    --background-color: #022f0c;
-    --foreground-color: #0f521e;
-    --primary-text-color: #fffdfd;
-    --secondary-text-color: #000000;
-    --toggle-bg: #396446;
-    --toggle-fg: #85a990;
+.post-title {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
 }
 
-.page-wrapper {
-    margin: 0 auto;
-    max-width: 900px;
-    justify-content: center;
-    align-items: center;
+.post-text {
+    margin-bottom: 0.8rem;
+}
+
+.post-tags-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.tag:not(body) {
+    background-color: var(--primary-button-color);
+    border-radius: 50px;
+    color: var(--primary-button-text-color);
+    font-weight: 500;
+}
+
+.post-tags {
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.post-image {
+    margin-bottom: 1rem;
 }

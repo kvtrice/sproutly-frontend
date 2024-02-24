@@ -1,15 +1,16 @@
 import React from 'react'
+import './UserDetails.css'
 
 function UserDetails({post}) {
   const username = post.user.username
   const profilePicture = post.user.profilePicture
 
   return (
-    <div className="is-flex">
-      <div className="image is-48x48 is-inline-block mr-2">
-        <img className="is-rounded" src={profilePicture} alt="profile picture of user" />
+    <div className="user-details-container">
+      <div className="user-image-div">
+        <img className="user-image " src={profilePicture} alt="profile picture of user" />
       </div>
-      <b>{username}</b>
+      <h3>{username}</h3>
     </div>
   )
 }

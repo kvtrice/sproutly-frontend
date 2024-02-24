@@ -15,7 +15,7 @@
     height: 1.5rem;
     width: 3rem;
     border-radius: 1rem;
-    background-color: var(--toggle-bg);
+    background-color: var(--foreground-color);
     margin-right: 0.5rem;
     transition: background-color 250ms ease-in-out;
 }
@@ -25,7 +25,7 @@
     height: 1.3rem;
     width: 1.3rem;
     border-radius: 1rem;
-    background-color: var(--toggle-fg);
+    background-color: var(--primary-button-color);
     position: absolute;
     z-index: 35;
     top: 0.1rem;

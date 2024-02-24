@@ -6,7 +6,7 @@ const Home = ({ isDark, setIsDark, selectedPlantTags, setSelectedPlantTags }) =>
   return (
 		<>
 			<NavBar isDark={isDark} setIsDark={setIsDark} setSelectedPlantTags={setSelectedPlantTags} />
-			<AllThreads isDark={isDark} selectedPlantTags={selectedPlantTags} />
+			<AllThreads selectedPlantTags={selectedPlantTags} />
 		</>
   );
 }
