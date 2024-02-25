@@ -48,7 +48,7 @@ hr {
 }
 
 .signup-buttons-container-mob {
-    padding: 4rem 0 2rem 0;
+    padding: 2rem 0 2rem 0;
 }
 
 .hidden {
@@ -80,13 +80,13 @@ hr {
     padding-right: 2rem;
 }
 
-.hamburger-menu-button {
+.hamburger-menu-button, .mob-search-button {
     display: none;
     cursor: pointer;
 }
 
 .close-hamburger-menu-button {
-    padding-top: 2rem;
+    margin-top: 4rem;
     cursor: pointer;
 }
 
@@ -94,24 +94,53 @@ hr {
     fill: var(--primary-text-color);
 }
 
+.mob-logo {
+    max-width: 70%;
+    margin-top: 1rem;
+}
+
 @media screen and (max-width: 1024px) {
 
-    .hamburger-menu-button {
+    .search-container {
+        width: 70%;
+        margin-left: 0.2rem;
+        margin-right: 0.2rem;
+    }
+
+    .hamburger-menu-button, .mob-search-button {
         display: block;
     }
 
-    .search-container, .dark-mode-toggle, .signup-buttons-container, .dark-mode-toggle-container {
+    .dark-mode-toggle, .signup-buttons-container, .dark-mode-toggle-container {
         display: none;
     }
 
     .nav-items {
-        align-items: center;
+        align-items: end;
+    }
+
+    .logo {
+        width: 100px;
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 
     .mobile-menu {
         width: 70%;
+    }
+
+    .search-container {
+        width: 70%;
+        margin-left: 0.2rem;
+        margin-right: 0.2rem;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .hamburger-menu-button {
+        padding-bottom: 0.4rem;
     }
 }

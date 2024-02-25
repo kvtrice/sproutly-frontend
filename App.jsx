@@ -27,10 +27,6 @@ function App() {
 	// State to handle selected plant tags
 	// Required by Navbar, AllThreads, CreatePost, EditPost & CreateUser Components
 	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
-	// Use State for Setting the search bar tags
-	const [selectedPlants, setSelectedPlants] = useState(
-		selectedPlantTags || []
-	);
 
 	return (
 		<>
@@ -44,8 +40,6 @@ function App() {
 								setIsDark={setIsDark}
 								selectedPlantTags={selectedPlantTags}
 								setSelectedPlantTags={setSelectedPlantTags}
-								selectedPlants={selectedPlants}
-								setSelectedPlants={setSelectedPlants}
 							/>
 						}
 					/>
@@ -67,6 +61,8 @@ function App() {
 								<ProfilePage
 									isDark={isDark}
 									setIsDark={setIsDark}
+									selectedPlantTags={selectedPlantTags}
+									setSelectedPlantTags={setSelectedPlantTags}
 								/>
 							}
 						/>

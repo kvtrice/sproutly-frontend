@@ -6,9 +6,7 @@ const Home = ({
 	isDark,
 	setIsDark,
 	selectedPlantTags,
-	setSelectedPlantTags,
-	selectedPlants,
-	setSelectedPlants,
+	setSelectedPlantTags
 }) => {
 	return (
 		<>
@@ -17,14 +15,10 @@ const Home = ({
 				setIsDark={setIsDark}
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
-				selectedPlants={selectedPlants}
-				setSelectedPlants={setSelectedPlants}
 			/>
 			<AllThreads
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
-				selectedPlants={selectedPlants}
-				setSelectedPlants={setSelectedPlants}
 			/>
 		</>
 	);

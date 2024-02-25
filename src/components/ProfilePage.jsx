@@ -19,7 +19,12 @@ async function Alluserdata() {
 }
 
 
-function ProfilePage({ isDark, setIsDark }) {
+function ProfilePage({
+	isDark,
+	setIsDark,
+	setSelectedPlantTags,
+	selectedPlantTags,
+}) {
 	useEffect(() => {
 		Allpostdata()
 			.then((data) => {
@@ -37,7 +42,12 @@ function ProfilePage({ isDark, setIsDark }) {
 
 	return (
 		<div>
-			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				selectedPlantTags={selectedPlantTags}
+				setSelectedPlantTags={setSelectedPlantTags}
+			/>
 			<div className="page-wrapper">
 				<div className="component-wrapper profile-header">
 					<UserData users={users} user_id={user_id} />

@@ -13,11 +13,7 @@ import EditPostNavigation from "./EditPostNavigation"
 const DisplayPost = ({
 	post,
 	posts,
-	setPosts,
-	setSelectedPlantTags,
-	selectedPlantTags,
-	selectedPlants,
-	setSelectedPlants,
+	setPosts
 }) => {
 	return (
 		<div className="component-wrapper display-post">
@@ -34,10 +30,6 @@ const DisplayPost = ({
 					<PostText post={post} />
 					<PostTag
 						post={post}
-						setSelectedPlantTags={setSelectedPlantTags}
-						selectedPlantTags={selectedPlantTags}
-						selectedPlants={selectedPlants}
-						setSelectedPlants={setSelectedPlants}
 					/>
 				</div>
 				<div className="post-image">
