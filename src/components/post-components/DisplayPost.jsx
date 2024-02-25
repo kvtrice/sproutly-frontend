@@ -10,7 +10,15 @@ import PostTitle from "./PostTitle"
 import PostTag from "./PostTag"
 import EditPostNavigation from "./EditPostNavigation"
 
-const DisplayPost = ({ post, posts, setPosts }) => {
+const DisplayPost = ({
+	post,
+	posts,
+	setPosts,
+	setSelectedPlantTags,
+	selectedPlantTags,
+	selectedPlants,
+	setSelectedPlants,
+}) => {
 	return (
 		<div className="component-wrapper display-post">
 			<div className="post">
@@ -24,10 +32,16 @@ const DisplayPost = ({ post, posts, setPosts }) => {
 				<div className="post-text-tags">
 					<PostTitle post={post} />
 					<PostText post={post} />
-					<PostTag post={post} />
+					<PostTag
+						post={post}
+						setSelectedPlantTags={setSelectedPlantTags}
+						selectedPlantTags={selectedPlantTags}
+						selectedPlants={selectedPlants}
+						setSelectedPlants={setSelectedPlants}
+					/>
 				</div>
 				<div className="post-image">
-					<PostImage post={post}/>
+					<PostImage post={post} />
 				</div>
 				<div className="post-interaction">
 					<LikeButton post={post} posts={posts} setPosts={setPosts} />
@@ -36,6 +50,6 @@ const DisplayPost = ({ post, posts, setPosts }) => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default DisplayPost;
