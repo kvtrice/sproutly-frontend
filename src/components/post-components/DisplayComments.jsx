@@ -6,6 +6,8 @@ import PostImage from "./PostImage";
 import LikeButton from "./LikeButton";
 import SortFilter from "./SortFilter";
 import EditCommentNavigation from "./EditCommentNavigation";
+import "./DisplayPost.css";
+import "./DisplayComments.css";
 
 function DisplayComments({
 	parentID,
@@ -23,31 +25,39 @@ function DisplayComments({
 	//that was passed by the Parent component so posts has to be posts={posts} and not posts={comment} or
 	//at setPosts change of Liking a post it will change the array of posts to that single object clicked. I learnt the hard way
 	return (
-		<>
+		<div>
 			{commentsWithParentID.length > 0 ? (
-				<SortFilter posts={posts} setPosts={setPosts} />
+				<div className="sort-component">
+					<SortFilter posts={posts} setPosts={setPosts} />
+				</div>
 			) : null}
 			{commentsWithParentID.map((comment) => (
 				<div key={comment._id}>
-					<UserDetails post={comment} />
-					<PostDateTime post={comment} />
-					<EditCommentNavigation
-						post={comment}
-						parentID={parentID}
-						isDeleteShowing={isDeleteShowing}
-						setIsDeleteShowing={setIsDeleteShowing}
-						setCommentToDelete={setCommentToDelete}
-					/>
+										<hr />
+					<div className="post-header">
+						<UserDetails post={comment} />
+						<div className="post-right-corner">
+							<PostDateTime post={comment} />
+							<EditCommentNavigation
+								post={comment}
+								parentID={parentID}
+								isDeleteShowing={isDeleteShowing}
+								setIsDeleteShowing={setIsDeleteShowing}
+								setCommentToDelete={setCommentToDelete}
+							/>
+						</div>
+					</div>
 					<PostText post={comment} />
-					<PostImage post={comment} />
+					<div className="post-image">
+						<PostImage post={comment} />
+					</div>
 					<LikeButton
 						post={comment}
 						posts={posts}
-						setPosts={setPosts}
-					/>
+						setPosts={setPosts}/>
 				</div>
 			))}
-		</>
+		</div>
 	);
 }
 

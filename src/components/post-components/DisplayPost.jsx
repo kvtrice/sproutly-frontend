@@ -27,7 +27,7 @@ const DisplayPost = ({ post, posts, setPosts }) => {
 					<PostTag post={post} />
 				</div>
 				<div className="post-image">
-					<PostImage post={post} />
+					<PostImage post={post}/>
 				</div>
 				<div className="post-interaction">
 					<LikeButton post={post} posts={posts} setPosts={setPosts} />
