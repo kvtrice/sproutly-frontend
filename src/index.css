@@ -8,7 +8,7 @@ html {
 
 /* Set global font */
 body, .button, .input, .textarea {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Global Defaults */
@@ -220,6 +220,12 @@ h1, h2, h3, h4, h5, h6 {
 .post-tags {
     margin-right: 0.5rem;
     margin-bottom: 0.3rem;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+
+.post-tags:hover {
+    transform: scale(1.1);
 }
 
 .post-image {

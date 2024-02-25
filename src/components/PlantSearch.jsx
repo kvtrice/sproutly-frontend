@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./PlantSearch.css";
 
-const PlantSearch = ({ selectedPlantTags, setSelectedPlantTags }) => {
+const PlantSearch = ({
+	selectedPlantTags,
+	setSelectedPlantTags,
+	selectedPlants,
+	setSelectedPlants,
+}) => {
 	const plants = [
 		"Aloe vera",
 		"Birds nest fern",
@@ -37,9 +42,9 @@ const PlantSearch = ({ selectedPlantTags, setSelectedPlantTags }) => {
 
 	const [searchQuery, setSearchQuery] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
-	const [selectedPlants, setSelectedPlants] = useState(
-		selectedPlantTags || []
-	);
+	// const [selectedPlants, setSelectedPlants] = useState(
+	// 	selectedPlantTags || []
+	// );
 
 	// Update selectedPlants whenever selectedPlantTags changes
 	useEffect(() => {

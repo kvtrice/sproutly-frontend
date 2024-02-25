@@ -12,8 +12,7 @@ import ProfilePage from "./src/components/ProfilePage";
 import EditUserDetails from "./src/components/UserEdit";
 
 function App() {
-	// State to ahndle dark mode
-	// Required by all components so lifted it to the highest level and passed it down via prop drilling
+	// State to handle dark mode
 	const [isDark, setIsDark] = useLocalStorage("isDark", false);
 
 	// Update the background for root element for the entire application (HTML tag)
@@ -28,6 +27,10 @@ function App() {
 	// State to handle selected plant tags
 	// Required by Navbar, AllThreads, CreatePost, EditPost & CreateUser Components
 	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
+	// Use State for Setting the search bar tags
+	const [selectedPlants, setSelectedPlants] = useState(
+		selectedPlantTags || []
+	);
 
 	return (
 		<>
@@ -41,6 +44,8 @@ function App() {
 								setIsDark={setIsDark}
 								selectedPlantTags={selectedPlantTags}
 								setSelectedPlantTags={setSelectedPlantTags}
+								selectedPlants={selectedPlants}
+								setSelectedPlants={setSelectedPlants}
 							/>
 						}
 					/>
