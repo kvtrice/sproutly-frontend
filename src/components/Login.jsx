@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import PostUsername from "./user-components/PostUsername"
 import PostPassword from "./user-components/PostPassword"
+import "./RegisterUser.css";
 
 
 const Login = () => {
@@ -37,30 +38,52 @@ const Login = () => {
         }
 
     return (
-<>
-    <section className="section">
-        <div className="container">
-            <div className="columns is-centered">       
-                <div className="column is-half">
-                    <h1 className="has-text-centered">Welcome back to Sproutly</h1>
-                    <div className="field">
-                        <label className="label">Username</label>
-                        <PostUsername SetUsername={SetUsername} username={username} />
-                    </div>
-                    <div className="field">
-                        <label className="label">Password</label>
-                        <PostPassword SetPassword={SetPassword} password={password} />
-                        {loginError && <p className="has-text-danger">{loginError}</p>}
-                    </div>
-                    <div className="columns is-centered mt-6">
-                    <button className="button is-primary button is-medium" onClick={() => login(username)}>Login</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</>
-    )
+		<>
+			<section className="section page-wrapper">
+				<div className="component-wrapper login">
+					<div className="page-header">
+						{/* Logo */}
+						<div className="welcome-logo">
+							<a href="#">
+								<img
+									src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
+									alt="Sproutly Logo"
+								/>
+							</a>
+						</div>
+						<h2 className="has-text-centered welcome-text">
+							Welcome back to Sproutly!
+						</h2>
+					</div>
+					<div className="field">
+						<label className="text">Username</label>
+						<PostUsername
+							SetUsername={SetUsername}
+							username={username}
+						/>
+					</div>
+					<div className="field">
+						<label className="text">Password</label>
+						<PostPassword
+							SetPassword={SetPassword}
+							password={password}
+						/>
+						{loginError && (
+							<p className="has-text-danger">{loginError}</p>
+						)}
+					</div>
+					<div className="signup-button">
+						<button
+							className="button is-primary"
+							onClick={() => login(username)}
+						>
+							Login
+						</button>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 }
 
 export default Login

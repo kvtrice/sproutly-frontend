@@ -74,7 +74,7 @@ const EditComment = ({ post, setIsDark, isDark }) => {
 			<NavBar 
 			isDark={isDark} setIsDark={setIsDark} />
 			<div className="page-wrapper has-navbar-fixed-top">
-				<div className="form-wrapper">
+				<div className="component-wrapper">
 					<h2>Edit Comment</h2>
 					<form className="section" onSubmit={handleUpdateComment}>
 						<div className="post-content">
@@ -92,7 +92,7 @@ const EditComment = ({ post, setIsDark, isDark }) => {
 						<div className="field is-grouped is-grouped-right">
 							<p className="control">
 								<a
-									className="button is-danger"
+									className="button is-light"
 									onClick={displayDiscardWarning}
 								>
 									Discard
@@ -100,9 +100,9 @@ const EditComment = ({ post, setIsDark, isDark }) => {
 							</p>
 							<div className="control">
 								<input
-									className="button"
+									className="button is-primary"
 									type="submit"
-									value="Submit"
+									value="Save"
 								></input>
 							</div>
 						</div>

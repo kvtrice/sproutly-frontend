@@ -1,6 +1,6 @@
 .modal-background .discard-container {
     margin-top: 10%;
-    background-color: white;
+    background-color: var(--foreground-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,6 +12,7 @@
 .discard-text {
     text-align: center;
     padding-bottom: 2rem;
+    color: var(--primary-text-color);
 }
 
 .discard-buttons button {

@@ -89,7 +89,7 @@ const EditPost = ({
 		<>
 			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<div className="page-wrapper has-navbar-fixed-top">
-				<div className="form-wrapper">
+				<div className="component-wrapper">
 					<h2>Edit Post</h2>
 					<form className="section" onSubmit={handleUpdatePost}>
 						<div className="field">
@@ -124,7 +124,7 @@ const EditPost = ({
 						<div className="field is-grouped is-grouped-right">
 							<p className="control">
 								<a
-									className="button is-danger"
+									className="button is-light"
 									onClick={displayDiscardWarning}
 								>
 									Discard
@@ -132,9 +132,9 @@ const EditPost = ({
 							</p>
 							<div className="control">
 								<input
-									className="button"
+									className="button is-primary"
 									type="submit"
-									value="Submit"
+									value="Save"
 								></input>
 							</div>
 						</div>
