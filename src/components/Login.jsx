@@ -2,54 +2,62 @@ import React, { useState } from "react"
 import PostUsername from "./user-components/PostUsername"
 import PostPassword from "./user-components/PostPassword"
 import "./RegisterUser.css";
+import NavBar from "./NavBar";
 
-
-const Login = () => {
-    const [username, SetUsername] = useState("")
-    const [password, SetPassword] = useState("")
-    const [loginError, setLoginError] = useState("")
+const Login = ({ isDark, setIsDark }) => {
+	const [username, SetUsername] = useState("");
+	const [password, SetPassword] = useState("");
+	const [loginError, setLoginError] = useState("");
 
 	async function login() {
-        const userDetail = {
-            username : username,
-            password : password,
-        }
-            try {
-            const putLogin= await fetch ("http://localhost:4001/users/login", {
-                method: "POST",
-                headers: {
-                    "content-Type": "application/json"
-                },
-                body: JSON.stringify(userDetail)
-            })
+		const userDetail = {
+			username: username,
+			password: password,
+		};
+		try {
+			const putLogin = await fetch("http://localhost:4001/users/login", {
+				method: "POST",
+				headers: {
+					"content-Type": "application/json",
+				},
+				body: JSON.stringify(userDetail),
+			});
 
-            if (!putLogin.ok) {
-                const errorData = await putLogin.json()
-                setLoginError(errorData.error)            
-            } else {
-                const payload = await putLogin.json()
-                sessionStorage.setItem("user_id", payload.token)
-            }
+			if (!putLogin.ok) {
+				const errorData = await putLogin.json();
+				setLoginError(errorData.error);
+			} else {
+				const payload = await putLogin.json();
+				sessionStorage.setItem("user_id", payload.token);
+			}
+		} catch (err) {
+			console.log(err.message);
+		}
+	}
 
-
-        } catch (err) {
-            console.log(err.message)
-        }
-        }
-
-    return (
+	return (
 		<>
+			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<section className="section page-wrapper">
 				<div className="component-wrapper login">
 					<div className="page-header">
 						{/* Logo */}
 						<div className="welcome-logo">
-							<a href="#">
-								<img
-									src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
-									alt="Sproutly Logo"
-								/>
-							</a>
+							{isDark ? (
+								<a href="/">
+									<img
+										src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-dark_i7f6px.png"
+										alt="Sproutly Logo"
+									/>
+								</a>
+							) : (
+								<a href="/">
+									<img
+										src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
+										alt="Sproutly Logo"
+									/>
+								</a>
+							)}
 						</div>
 						<h2 className="has-text-centered welcome-text">
 							Welcome back to Sproutly!
@@ -84,6 +92,6 @@ const Login = () => {
 			</section>
 		</>
 	);
-}
+};
 
 export default Login

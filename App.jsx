@@ -43,8 +43,21 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/register" element={<RegisterUser />} />
-					<Route path="/login" element={<Login />} />
+					<Route
+						path="/register"
+						element={
+							<RegisterUser
+								isDark={isDark}
+								setIsDark={setIsDark}
+							/>
+						}
+					/>
+					<Route
+						path="/login"
+						element={
+							<Login isDark={isDark} setIsDark={setIsDark} />
+						}
+					/>
 					<Route path="/user">
 						<Route
 							path=":user_id/edit"
