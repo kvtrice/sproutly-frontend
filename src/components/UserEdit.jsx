@@ -4,8 +4,10 @@ import PostPassword from "./user-components/PostPassword.jsx"
 import PlantSearch from "./PlantSearch"
 import ImageUpload from "./ImageUpload"
 import OldPassword from "./user-components/OldPassword.jsx"
+import NavBar from "./NavBar.jsx";
+import './RegisterUser.css'
 
-const EditUserDetails = () => {
+const EditUserDetails = ({ isDark, setIsDark }) => {
     const [username, SetUsername] = useState("")
     const [password, SetPassword] = useState("")
     const [oldPassword, SetoldPassword] = useState("")
@@ -51,43 +53,84 @@ const EditUserDetails = () => {
 
 
     return (
-<>
-    <section className="section">
-        <div className="container">
-            <div className="columns is-centered">       
-                <div className="column is-half">
-                    <h1 className="has-text-centered">Edit Profile</h1>
-                    <div className="field">
-                        <label className="label">Update user name (visible to public)</label>
-                        <PostUsername SetUsername={SetUsername} username={username} />
-                        {usernameError && <p className="has-text-danger">{usernameError}</p>}
-                    </div>
+		<>
+			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<section className="section page-wrapper">
+					<div className="component-wrapper user-edit">
+							<div className="page-header">
+                                <h2 className="welcome-text">Edit Profile</h2>
+                            </div>
+							<div className="field">
+								<label className="text">
+									Update user name (visible to public)
+								</label>
+								<PostUsername
+									SetUsername={SetUsername}
+									username={username}
+								/>
+								{usernameError && (
+									<p className="has-text-danger">
+										{usernameError}
+									</p>
+								)}
+							</div>
 
-                    <div className="field">
-                        <label className="label">Old password</label>
-                        <OldPassword SetoldPassword={SetoldPassword} oldPassword={oldPassword} />
-                        {oldPasswordError && <p className="has-text-danger">{oldPasswordError}</p>}
-                    </div>
-                    <div className="field">
-                        <label className="label">New password</label>
-                        <PostPassword SetPassword={SetPassword} password={password} />
-                        {passwordError && <p className="has-text-danger">{passwordError}</p>}
-                    </div>
-                    <div className="field">
-                        <label className="label" htmlFor="profilePicture">Change Profile Picture:</label>
-                        <ImageUpload setImageUrl={setImageUrl} id="profilePicture" />
-                    </div>
-                    <label className="label mt-5">What plant do you own</label>
-                    <PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
-                    <div className="columns is-centered mt-6">
-                    <button className="button is-primary button is-medium" onClick={() => addUser(username)}>Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</>
-    )
+							<div className="old-new-password">
+                                <div className="field old-password">
+                                    <label className="text old-password">Old password</label>
+                                    <OldPassword
+                                        SetoldPassword={SetoldPassword}
+                                        oldPassword={oldPassword}
+                                    />
+                                    {oldPasswordError && (
+                                        <p className="has-text-danger">
+                                            {oldPasswordError}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="field new-password">
+                                    <label className="text">New password</label>
+                                    <PostPassword
+                                        SetPassword={SetPassword}
+                                        password={password}
+                                    />
+                                    {passwordError && (
+                                        <p className="has-text-danger">
+                                            {passwordError}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+							<div className="field profile-picture-upload">
+								<label
+									className="text"
+									htmlFor="profilePicture"
+								>
+									Change profile picture:
+								</label>
+								<ImageUpload
+									setImageUrl={setImageUrl}
+									id="profilePicture"
+								/>
+							</div>
+							<label className="text">
+								Update the plants you own:
+							</label>
+							<PlantSearch
+								setSelectedPlantTags={setSelectedPlantTags}
+							/>
+							<div className="save-button">
+								<button
+									className="is-primary button"
+									onClick={() => addUser(username)}
+								>
+									Save
+								</button>
+							</div>
+						</div>
+			</section>
+		</>
+	);
 }
 
 export default EditUserDetails

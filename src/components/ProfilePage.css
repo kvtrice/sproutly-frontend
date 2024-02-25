@@ -1,0 +1,43 @@
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-details {
+    padding: 1.5rem;
+}
+
+.profile-details-container {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.profile-details-container .image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.profile-details-container .username {
+    font-size: 30px;
+    margin-left: 1rem;
+}
+
+.profile-likes-count-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.profile-reactions-count {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--primary-text-color);
+}
+
+.profile-reactions-text {
+    color: var(--primary-text-color);
+}
+

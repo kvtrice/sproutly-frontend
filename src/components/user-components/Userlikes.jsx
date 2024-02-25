@@ -6,8 +6,13 @@ function UserLikes({ posts, user_id }) {
     const HowManyLikesTheyReceived = userPostsHistory.reduce((acc, obj) => acc + obj.reactions.length, 0);
 
     return (
-      <p>{HowManyLikesTheyReceived} Likes</p>
-    )
+		<div className="profile-likes-count-container">
+			<div className="profile-reactions-count">
+				{HowManyLikesTheyReceived}
+			</div>{" "}
+			<div className="profile-reactions-text">Reactions</div>
+		</div>
+	);
   }
 
 export default UserLikes

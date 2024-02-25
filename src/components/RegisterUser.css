@@ -10,16 +10,17 @@
     max-width: 50%;
 }
 
-.signup-button {
+.signup-button, .save-button {
     margin: 2rem;
     align-self: center;
 }
 
-.register .text, .login .text {
+.register .text, .login .text, .user-edit .text {
     font-size: 14px;
+    color: var(--primary-text-color);
 }
 
-.register, .login {
+.register, .login, .user-edit {
     padding: 1rem 4rem;
     display: flex;
     flex-direction: column;
@@ -27,5 +28,10 @@
 }
 
 .profile-picture-upload {
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+}
+
+.old-new-password {
+    display: flex;
+    justify-content: space-between;
 }
