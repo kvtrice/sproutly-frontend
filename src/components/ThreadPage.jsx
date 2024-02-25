@@ -29,26 +29,32 @@ function ThreadPage({ isDark, setIsDark }) {
 		<div>
 			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<div className="page-wrapper">
-				<DisplayParent
-					parentID={parentID}
-					posts={posts}
-					setPosts={setPosts}
-				/>
-				<DisplayComments
-					parentID={parentID}
-					posts={posts}
-					setPosts={setPosts}
-					isDeleteShowing={isDeleteShowing}
-					setIsDeleteShowing={setIsDeleteShowing}
-					setCommentToDelete={setCommentToDelete}
-				/>
-				<AddComment parentID={parentID} />
-				{isDeleteShowing && (
-					<DeleteCommentWarning
-						setIsDeleteShowing={setIsDeleteShowing}
-						commentToDelete={commentToDelete}
-					/>
-				)}
+				<div>
+					<div className='component-wrapper'>
+						<DisplayParent
+							parentID={parentID}
+							posts={posts}
+							setPosts={setPosts}
+						/>
+					</div>
+					<div className='component-wrapper'>
+						<DisplayComments
+							parentID={parentID}
+							posts={posts}
+							setPosts={setPosts}
+							isDeleteShowing={isDeleteShowing}
+							setIsDeleteShowing={setIsDeleteShowing}
+							setCommentToDelete={setCommentToDelete}
+						/>
+						<AddComment parentID={parentID} />
+						{isDeleteShowing && (
+							<DeleteCommentWarning
+								setIsDeleteShowing={setIsDeleteShowing}
+								commentToDelete={commentToDelete}
+							/>
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
