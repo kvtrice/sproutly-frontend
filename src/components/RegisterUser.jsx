@@ -4,8 +4,9 @@ import PostPassword from "./user-components/PostPassword.jsx"
 import PlantSearch from "./PlantSearch"
 import ImageUpload from "./ImageUpload"
 import "./RegisterUser.css";
+import NavBar from "./NavBar.jsx";
 
-const RegisterUser = () => {
+const RegisterUser = ({ isDark, setIsDark }) => {
 	const [username, setUsername] = React.useState("");
 	const [password, SetPassword] = useState("");
 	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
@@ -47,17 +48,27 @@ const RegisterUser = () => {
 
 	return (
 		<>
+			<NavBar isDark={isDark} setIsDark={setIsDark} />
 			<section className="section page-wrapper">
 				<div className="component-wrapper register">
 					<div className="page-header">
 						{/* Logo */}
 						<div className="welcome-logo">
-							<a href="#">
-								<img
-									src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
-									alt="Sproutly Logo"
-								/>
-							</a>
+							{isDark ? (
+								<a href="/">
+									<img
+										src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-dark_i7f6px.png"
+										alt="Sproutly Logo"
+									/>
+								</a>
+							) : (
+								<a href="/">
+									<img
+										src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
+										alt="Sproutly Logo"
+									/>
+								</a>
+							)}
 						</div>
 						<h2 className="has-text-centered welcome-text">
 							Welcome to Sproutly!
