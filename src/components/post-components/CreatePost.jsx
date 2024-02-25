@@ -71,8 +71,8 @@ const CreatePost = ({
 	return (
 		<>
 			<NavBar isDark={isDark} setIsDark={setIsDark} />
-			<div className="page-wrapper has-navbar-fixed-top">
-				<div className="form-wrapper">
+			<div className="page-wrapper">
+				<div className="component-wrapper">
 					<h2>New Post</h2>
 					<form className="section" onSubmit={createNewPost}>
 						<div className="field">
@@ -103,15 +103,15 @@ const CreatePost = ({
 						<div className="field is-grouped is-grouped-right">
 							<p className="control">
 								<a
-									className="button is-danger"
+									className="button is-light"
 									onClick={displayDiscardWarning}
 								>
 									Discard
 								</a>
 							</p>
-							<div className="control">
+							<div>
 								<input
-									className="button"
+									className="button is-primary"
 									type="submit"
 									value="Submit"
 								></input>

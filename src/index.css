@@ -7,7 +7,7 @@ html {
 }
 
 /* Set global font */
-body, .button, .input {
+body, .button, .input, .textarea {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -31,6 +31,7 @@ body, .button, .input {
     --primary-button-text-color: #333333;
     --secondary-button-color: #fcfcfc;
     --sort-button-bg-color: #fcfcfc;
+    --danger-button-bg-color: rgb(192, 70, 70);
 
     /* Border colors */
     --border-color: rgb(233, 233, 233);
@@ -38,7 +39,7 @@ body, .button, .input {
 
     /* Input field colors */
     --placeholder-text-color: rgb(199, 199, 199);
-    --post-something-input-color: #fcfcfc;
+    --input-bg-color: #fcfcfc;
 }
 
 /* Dark mode colors */
@@ -59,6 +60,7 @@ body, .button, .input {
     --primary-button-text-color: #fcfcfc;
     --secondary-button-color: #29403a;
     --sort-button-bg-color: #20312C;
+    --danger-button-bg-color: rgb(192, 70, 70);
 
     /* Border colors */
     --border-color: #35524A;
@@ -66,7 +68,7 @@ body, .button, .input {
 
     /* Input field colors */
     --placeholder-text-color: rgba(217, 217, 217, 0.426);
-    --post-something-input-color: #314b43;
+    --input-bg-color: #29423b;
 }
 
 /* Wrappers */
@@ -109,22 +111,43 @@ img {
     background-color: var(--secondary-button-color);
     color: var(--primary-text-color);
     transition: 300ms ease-in-out;
+    border: 1px solid var(--border-color);
 }
 
 .button.is-light a {
     color: var(--primary-text-color);
 }
 
+.button.is-danger {
+    background-color: var(--danger-button-bg-color);
+    transition: 300ms ease-in-out;
+}
+
 .button.is-primary:hover {
     background-color: var(--primary-button-color);
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     transform: scale(1.1);
 }
 
 .button.is-light:hover {
     background-color: var(--secondary-button-color);
     color: var(--primary-text-color);
+    border: 1px solid var(--border-color);
     transform: scale(1.1);
+}
+
+.button.is-danger:hover {
+    background-color: var(--danger-button-bg-color);
+    color: var(--secondary-text-color);
+    transform: scale(1.1);
+}
+
+.button.is-primary:focus {
+    color: var(--primary-text-color);
+}
+
+.button.is-light:focus {
+    color: var(--primary-text-color);
 }
 
 /* Links */
@@ -137,13 +160,15 @@ a:hover {
     color: var(--primary-text-color)
 }
 
+/* Inputs */
+
 .input, .textarea {
     border-color: var(--border-color);
-    background-color: var(--foreground-color);
+    background-color: var(--input-bg-color);
     color: var(--primary-text-color);
 }
 
-.input::placeholder {
+.input::placeholder, .textarea::placeholder {
     color: var(--placeholder-text-color);
 }
 

@@ -27,42 +27,6 @@ li {
     cursor: pointer;
 }
 
-.form-wrapper {
-    padding: 2rem;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-}
-
 .search {
     padding: 1rem 0rem;
-}
-
-.tag-wrapper {
-    padding-bottom: 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 40px;
-}
-
-.tag-wrapper .tag {
-    display: flex;
-    background: rgb(246, 246, 246);
-    border: solid 1px rgb(233, 233, 233);
-    border-radius: 30px;
-    margin-right: 0.3rem;
-    margin-bottom: 0.3rem;
-    align-items: center;
-}
-
-.tag .tag-x-button {
-    background-color: transparent;
-    margin-left: 0.5rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    padding-bottom: 0.2rem;
-}
-
-.tag .tag-x-button:hover {
-    color: red;
 }

@@ -36,7 +36,7 @@ const DiscardWarning = ({
                         deleted.
                     </div>
                     <div className="discard-buttons">
-                        <button className="button" onClick={handleCancel}>No, go back</button>
+                        <button className="button is-light" onClick={handleCancel}>No, go back</button>
                         <button className="button is-danger" onClick={handleConfirm}>Yes, discard</button>
                     </div>
                 </div>
