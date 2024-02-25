@@ -4,12 +4,7 @@ import SortFilter from "./post-components/SortFilter.jsx"
 import PostSomethingCta from './PostSomethingCta'
 
 
-function AllThreads({
-	selectedPlantTags,
-	setSelectedPlantTags,
-	selectedPlants,
-	setSelectedPlants,
-}) {
+function AllThreads({ selectedPlantTags, setSelectedPlantTags }) {
 	const [posts, setPosts] = useState([]);
 	const [filteredPostsByTag, setFilteredPostsByTag] = useState([]);
 
@@ -50,12 +45,6 @@ function AllThreads({
 										posts={posts}
 										setPosts={setPosts}
 										post={post}
-										setSelectedPlantTags={
-											setSelectedPlantTags
-										}
-										selectedPlantTags={selectedPlantTags}
-										selectedPlants={selectedPlants}
-										setSelectedPlants={setSelectedPlants}
 									/>
 								)}
 							</div>
@@ -67,12 +56,6 @@ function AllThreads({
 										posts={posts}
 										setPosts={setPosts}
 										post={post}
-										setSelectedPlantTags={
-											setSelectedPlantTags
-										}
-										selectedPlantTags={selectedPlantTags}
-										selectedPlants={selectedPlants}
-										setSelectedPlants={setSelectedPlants}
 									/>
 								)}
 							</div>

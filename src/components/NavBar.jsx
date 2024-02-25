@@ -10,8 +10,6 @@ const NavBar = ({
 	setIsDark,
 	setSelectedPlantTags,
 	selectedPlantTags,
-	selectedPlants,
-	setSelectedPlants,
 }) => {
 	const [nav, setNav] = useState(false);
 
@@ -46,8 +44,6 @@ const NavBar = ({
 					<PlantSearch
 						selectedPlantTags={selectedPlantTags}
 						setSelectedPlantTags={setSelectedPlantTags}
-						selectedPlants={selectedPlants}
-						setSelectedPlants={setSelectedPlants}
 					/>
 				</div>
 				{/* Dark Mode Toggle */}
@@ -76,6 +72,24 @@ const NavBar = ({
 						className="close-hamburger-menu-button"
 					>
 						<AiOutlineClose size={30} className="mob-menu-button" />
+					</div>
+					{/* Logo */}
+					<div className="mob-logo">
+						{isDark ? (
+							<a href="/">
+								<img
+									src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-dark_i7f6px.png"
+									alt="Sproutly Logo"
+								/>
+							</a>
+						) : (
+							<a href="/">
+								<img
+									src="https://res.cloudinary.com/djtgmjm16/image/upload/v1708755763/logos/logo-light_lo6fnn.png"
+									alt="Sproutly Logo"
+								/>
+							</a>
+						)}
 					</div>
 					{/* Sign up Buttons mobile */}
 					<div className="signup-buttons-container-mob">

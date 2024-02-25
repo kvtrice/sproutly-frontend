@@ -6,44 +6,46 @@ import ImageUpload from "./ImageUpload"
 import "./RegisterUser.css";
 
 const RegisterUser = () => {
-    const [username, setUsername] = React.useState("")
-    const [password, SetPassword] = useState("")
-    const [selectedPlantTags, setSelectedPlantTags] = useState("")
-    const [imageUrl, setImageUrl] = useState("")
-    const [usernameError, setUsernameError] = useState("")
-    const [passwordError, setPasswordError] = useState("")
+	const [username, setUsername] = React.useState("");
+	const [password, SetPassword] = useState("");
+	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
+	const [imageUrl, setImageUrl] = useState("");
+	const [usernameError, setUsernameError] = useState("");
+	const [passwordError, setPasswordError] = useState("");
 
 	async function addUser() {
-        const userDetail = {
-            username : username,
-            password : password,
-            plants :  selectedPlantTags,
-            ProfilePicture : imageUrl
-        }
+		const userDetail = {
+			username: username,
+			password: password,
+			plants: selectedPlantTags,
+			ProfilePicture: imageUrl,
+		};
 
-        try {
-            const putRegister = await fetch ("http://localhost:4001/users/register" , {
-                method: "POST",
-                headers: {
-                    "content-Type": "application/json"
-                },
-                body: JSON.stringify(userDetail)
-            })
+		try {
+			const putRegister = await fetch(
+				"http://localhost:4001/users/register",
+				{
+					method: "POST",
+					headers: {
+						"content-Type": "application/json",
+					},
+					body: JSON.stringify(userDetail),
+				}
+			);
 
-            if (!putRegister.ok) {
-                const errorData = await putRegister.json()
-                errorData.Displayederrors.forEach(error => {
-                    if (error.includes('Username')) setUsernameError(error)
-                    if (error.includes('Password')) setPasswordError(error)
-                })
-            }
-        } catch (err) {
-            console.error(err.message)
-        }
-    }
+			if (!putRegister.ok) {
+				const errorData = await putRegister.json();
+				errorData.Displayederrors.forEach((error) => {
+					if (error.includes("Username")) setUsernameError(error);
+					if (error.includes("Password")) setPasswordError(error);
+				});
+			}
+		} catch (err) {
+			console.error(err.message);
+		}
+	}
 
-
-    return (
+	return (
 		<>
 			<section className="section page-wrapper">
 				<div className="component-wrapper register">
@@ -62,7 +64,9 @@ const RegisterUser = () => {
 						</h2>
 					</div>
 					<div className="field">
-						<label className="text">Choose a user name (visible to public):</label>
+						<label className="text">
+							Choose a user name (visible to public):
+						</label>
 						<PostUsername
 							username={username}
 							SetUsername={setUsername}
@@ -92,8 +96,12 @@ const RegisterUser = () => {
 							/>
 						</div>
 					</div>
-					<label className="text">What plants do you own?</label>
-					<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
+					<div>
+						<label className="text">What plants do you own?</label>
+						<PlantSearch
+							setSelectedPlantTags={setSelectedPlantTags}
+						/>
+					</div>
 					<div className="signup-button">
 						<button
 							className="is-primary button"
@@ -106,6 +114,6 @@ const RegisterUser = () => {
 			</section>
 		</>
 	);
-}
+};
 
 export default RegisterUser

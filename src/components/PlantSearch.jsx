@@ -3,9 +3,7 @@ import "./PlantSearch.css";
 
 const PlantSearch = ({
 	selectedPlantTags,
-	setSelectedPlantTags,
-	selectedPlants,
-	setSelectedPlants,
+	setSelectedPlantTags
 }) => {
 	const plants = [
 		"Aloe vera",
@@ -42,9 +40,9 @@ const PlantSearch = ({
 
 	const [searchQuery, setSearchQuery] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
-	// const [selectedPlants, setSelectedPlants] = useState(
-	// 	selectedPlantTags || []
-	// );
+	const [selectedPlants, setSelectedPlants] = useState(
+		selectedPlantTags || []
+	);
 
 	// Update selectedPlants whenever selectedPlantTags changes
 	useEffect(() => {
