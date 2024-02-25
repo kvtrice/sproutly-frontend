@@ -1,16 +1,23 @@
 import React from "react";
 import "./CommentContent.css"
 
-const CommentContent = ({ content, setContent }) => {
+const CommentContent = ({
+	content,
+	setContent,
+	setIsUploadShowing,
+	isUploadShowing,
+}) => {
+	
 	return (
 		<div className="field">
 			<div className="control comment-control">
 				<textarea
+					onFocus={() => setIsUploadShowing(true)}
 					className="textarea"
 					placeholder="Start typing here..."
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
-                    rows="1"
+					rows={isUploadShowing ? 3 : 1}
 				></textarea>
 			</div>
 		</div>

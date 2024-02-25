@@ -9,6 +9,7 @@ const AddComment = ({ parentID }) => {
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
+	const [isUploadShowing, setIsUploadShowing] = useState(false);
 
 	// Add Comment function
 	async function addComment(content, imageUrl) {
@@ -55,18 +56,32 @@ const AddComment = ({ parentID }) => {
 		<div className="add-comment-wrapper">
 			<div className="comment-elements">
 				<div className="always-visible">
-					<CommentContent content={content} setContent={setContent} />
+					<CommentContent
+						content={content}
+						setContent={setContent}
+						setIsUploadShowing={setIsUploadShowing}
+						isUploadShowing={isUploadShowing}
+					/>
 					<div className="send-icon-container">
 						<IoMdSend
 							className="send-icon"
-							size={35}
+							size={25}
 							onClick={createNewComment}
 						/>
 					</div>
 				</div>
-				<div className="add-image-to-comment-container">
-					<ImageUpload setImageUrl={setImageUrl} />
-				</div>
+				{isUploadShowing ? (
+					<div className="add-image-to-comment-container">
+						<ImageUpload
+							onClick={(e) => e.preventDefault()}
+							setImageUrl={setImageUrl}
+							setIsUploadShowing={setIsUploadShowing}
+							isUploadShowing={isUploadShowing}
+						/>
+					</div>
+				) : (
+					""
+				)}
 			</div>
 		</div>
 	);
