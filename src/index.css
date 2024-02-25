@@ -242,3 +242,10 @@ h1, h2, h3, h4, h5, h6 {
 .edit-menu-wrapper .edit {
     margin-bottom: 0.5rem;
 }
+
+hr {
+    display: block;
+    height: 1px;
+    border-color: var(--border-color);
+    background-color: var(--border-color);
+}

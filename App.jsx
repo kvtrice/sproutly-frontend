@@ -44,9 +44,25 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="user/edit/:user_id" element={<EditUserDetails/>} />
+					<Route
+						path="/user/edit/:user_id"
+						element={
+							<EditUserDetails
+								isDark={isDark}
+								setIsDark={setIsDark}
+							/>
+						}
+					/>
 					<Route path="/register" element={<RegisterUser />} />
-					<Route path="/profile/:user_id" element={<ProfilePage />} />
+					<Route
+						path="/profile/:user_id"
+						element={
+							<ProfilePage
+								isDark={isDark}
+								setIsDark={setIsDark}
+							/>
+						}
+					/>
 					<Route path="/login" element={<Login />} />
 					<Route path="/post">
 						<Route
