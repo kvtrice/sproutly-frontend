@@ -4,26 +4,58 @@
 
 .search-wrapper {
     position: relative;
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-  }
+}
   
-  .plant-list-wrapper {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 50;
-    background-color: #fbfbfb; 
-    border-radius: 10px;
-    width: calc(100% - 2px); 
-    max-height: 200px; 
-    overflow-y: auto; 
-  }
-  
-  .plant-list-items {
-    padding: 5px 10px;
+.plant-list-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  background-color: var(--input-bg-color); 
+  border-radius: 4px;
+  width: calc(100% - 2px); 
+  max-height: 200px; 
+  overflow-y: auto; 
+}
+
+.plant-list-items {
+  color: var(--primary-text-color);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.plant-list-items:hover {
+    background-color: var(--primary-button-color);
+}
+
+.tag-wrapper {
+  padding-bottom: 0.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 35px;
+}
+
+
+.tag-wrapper .tag {
+    display: flex;
+    border-radius: 30px;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+    align-items: center;
+}
+
+.tag .tag-x-button {
+    background-color: transparent;
+    margin-left: 0.5rem;
     cursor: pointer;
-  }
-  
-  .plant-list-items:hover {
-    background-color: #e1f9dd;
-  }
+    border: none;
+    border-radius: 50%;
+    padding-bottom: 0.2rem;
+    color: var(--primary-text-color);
+}
+
+.tag .tag-x-button:hover {
+    color: var(--danger-button-bg-color);
+}

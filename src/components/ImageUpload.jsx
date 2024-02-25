@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./ImageUpload.css";
-import { SpinningCircles } from "react-loading-icons";
+import { ThreeDots } from "react-loading-icons";
 import { FaCheck } from "react-icons/fa";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 	const [image, setImage] = useState(null);
@@ -11,9 +12,9 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 
 	useEffect(() => {
 		if (initialImageUrl) {
-			setFileName("Image")
+			setFileName("Image");
 		}
-	  }, [initialImageUrl]);
+	}, [initialImageUrl]);
 
 	const uploadFile = async () => {
 		const data = new FormData();
@@ -33,13 +34,12 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 			setImageUrl(secure_url);
 			setIsUploading(false);
 			setUploaded(true);
-
 		} catch (err) {
 			console.error(err);
 		}
 	};
 
-	const handleFileChange = (e) => {
+	const handleFileChange = async (e) => {
 		const file = e.target.files[0];
 		setImage(file);
 		setFileName(file.name);
@@ -51,7 +51,7 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 	};
 
 	return (
-		<div className="file has-name">
+		<div className="file is-small has-name">
 			<label className="file-label">
 				<input
 					className="file-input"
@@ -60,20 +60,22 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 				></input>
 				<span className="file-cta">
 					<span className="file-icon">
-						<i className="fas fa-upload"></i>
+						<MdOutlineFileUpload />
 					</span>
-					<span className="file-label">Choose a file…</span>
+					<span className="file-label">Choose image</span>
 				</span>
 				<span className="file-name">{fileName}</span>
 			</label>
-			<button className="button upload-button" onClick={handleUpload}>
+			<button
+				className="button upload-button is-light is-small"
+				onClick={handleUpload}
+			>
 				Upload
 			</button>
 			<div className="uploading-icons-container">
-				{/* Set loading icons for uploading and uploaded to signal to user */}
 				<div className="uploading-icons">
 					{isUploading ? (
-						<SpinningCircles fill="#000000" />
+						<ThreeDots className="icon-loading" />
 					) : uploaded ? (
 						<FaCheck className="check" />
 					) : (
