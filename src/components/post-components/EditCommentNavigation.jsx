@@ -21,17 +21,42 @@ const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete })
     }
 
 	return (
-        <div>
-            <div>
-                {/*  Need to add logic to also check if the comment belongs to the currently logged in user */}
-                {(post.isComment) && (post.isThreadStarter === false) ? <AiOutlineEllipsis onClick={handleMenu} cursor="pointer"/> : ""}
-            </div>
-            <div className={isMenuOpen ? 'menu-button' : 'hidden'}>
-                <button onClick={navigateToEdit}>Edit Comment</button>
-                <button onClick={handleDeleteWarning}>Delete Comment</button>
-            </div>
-        </div>
-    )
+		<div>
+			<div>
+				{/*  Need to add logic to also check if the comment belongs to the currently logged in user */}
+				{post.isComment && post.isThreadStarter === false ? (
+					<AiOutlineEllipsis
+						size={30}
+						className="post-menu"
+						onClick={handleMenu}
+						cursor="pointer"
+					/>
+				) : (
+					""
+				)}
+			</div>
+			<div
+				className={
+					isMenuOpen ? "menu-button edit-menu-wrapper" : "hidden"
+				}
+			>
+				<div className="edit-menu-container">
+					<button
+						className="button is-primary edit is-small"
+						onClick={navigateToEdit}
+					>
+						Edit Comment
+					</button>
+					<button
+						className="button is-primary is-small"
+						onClick={handleDeleteWarning}
+					>
+						Delete Comment
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default EditCommentNavigation;

@@ -1,0 +1,31 @@
+.page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3rem
+}
+
+.welcome-logo {
+    align-self: center;
+    max-width: 50%;
+}
+
+.signup-button {
+    margin: 2rem;
+    align-self: center;
+}
+
+.register .text, .login .text {
+    font-size: 14px;
+}
+
+.register, .login {
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-picture-upload {
+    margin-bottom: 2rem;
+}

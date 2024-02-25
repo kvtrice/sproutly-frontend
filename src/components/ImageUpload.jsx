@@ -75,7 +75,7 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 			<div className="uploading-icons-container">
 				<div className="uploading-icons">
 					{isUploading ? (
-						<ThreeDots className="icon-loading" />
+						<ThreeDots className="icon-loading" fill="#000000" />
 					) : uploaded ? (
 						<FaCheck className="check" />
 					) : (
