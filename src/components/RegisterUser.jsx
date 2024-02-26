@@ -21,6 +21,10 @@ const RegisterUser = ({
 	const [passwordError, setPasswordError] = useState("");
 
 	async function addUser() {
+    // clearing the error message each time addUser is trigerred so that old error message are not displayed as they are fixed.
+	setUsernameError('')
+	setPasswordError('')
+
 		const userDetail = {
 			username: username,
 			password: password,

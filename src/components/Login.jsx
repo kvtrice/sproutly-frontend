@@ -16,10 +16,15 @@ const Login = ({
 	const [loginError, setLoginError] = useState("");
 
 	async function login() {
+	// clearing the error message each time login is trigerred so that old error message are not displayed as they are fixed.
+		setLoginError('')
+
+
 		const userDetail = {
 			username: username,
 			password: password,
-		};
+		}
+
 		try {
 			const putLogin = await fetch("http://localhost:4001/users/login", {
 				method: "POST",
@@ -96,6 +101,7 @@ const Login = ({
 						<button
 							className="button is-primary"
 							onClick={() => login(username)}
+							
 						>
 							Login
 						</button>
