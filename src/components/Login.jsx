@@ -48,6 +48,8 @@ const Login = ({
 			console.log(err.message);
 		}
 		nav(`/`)
+		//trigger a reload of the home page after navigating, without it the components that are meant to show if you log in after navigation from login won't show.
+		window.location.reload()
 	}
 
 	return (
