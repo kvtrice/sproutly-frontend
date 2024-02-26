@@ -3,6 +3,8 @@ import PostUsername from "./user-components/PostUsername"
 import PostPassword from "./user-components/PostPassword"
 import "./RegisterUser.css";
 import NavBar from "./NavBar";
+import { useNavigate} from "react-router-dom"
+
 
 const Login = ({
 	isDark,
@@ -11,6 +13,7 @@ const Login = ({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) => {
+	const nav = useNavigate()
 	const [username, SetUsername] = useState("");
 	const [password, SetPassword] = useState("");
 	const [loginError, setLoginError] = useState("");
@@ -44,6 +47,7 @@ const Login = ({
 		} catch (err) {
 			console.log(err.message);
 		}
+		nav(`/`)
 	}
 
 	return (
