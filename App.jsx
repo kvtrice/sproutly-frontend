@@ -10,10 +10,14 @@ import RegisterUser from "./src/components/RegisterUser";
 import Login from "./src/components/Login";
 import ProfilePage from "./src/components/ProfilePage";
 import EditUserDetails from "./src/components/UserEdit";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
 	// State to handle dark mode
 	const [isDark, setIsDark] = useLocalStorage("isDark", false);
+	const [loggedInUserId, setLoggedInUserId] = useState("");
+	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+	const [loggedInUserPictureUrl, setLoggedInUserPictureUrl] = useState("");
 
 	// Update the background for root element for the entire application (HTML tag)
 	useEffect(() => {
@@ -21,12 +25,58 @@ function App() {
 			"data-theme",
 			isDark ? "dark" : "light"
 		);
-	}),
-		[isDark];
+	}, [isDark]);
 
 	// State to handle selected plant tags
 	// Required by Navbar, AllThreads, CreatePost, EditPost & CreateUser Components
 	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
+
+	// Get the userId from the token in Session Storage, and set it in state. Only update it if the token changes (ie. new login occurs)
+	useEffect(() => {
+		// I have honestly try to use const and try to do const user_id = try {} but it hasn't worked for me in order to use the jwtDecode.
+		// I know we shouldn't have a try block without an error message but it's not an error really, the try block is there so it doesn't crash when there is no token present.
+		// I don't want the user to really see that no token present/ should be a string error message hence why I'm leaving ny catch empty.
+		let user_Id;
+		// It has to be in a try block since if token is null and user are not logged in yet it will throw an error directly and break the page
+		try {
+			const token = sessionStorage.getItem("user_id");
+			user_Id = jwtDecode(token).user_id;
+			setLoggedInUserId(user_Id);
+		} catch (error) {}
+	}, [sessionStorage.getItem("user_id")]);
+
+	const fetchLoggedInUserData = async (loggedInUserId) => {
+		const res = await fetch(
+			`http://127.0.0.1:4001/users/${loggedInUserId}`
+		);
+		const userData = await res.json();
+		return userData;
+	};
+
+	// Fetch user data for the logged in suers profile image
+	useEffect(() => {
+		// Check if loggedInUserId is set before fetching the user data
+		if (loggedInUserId) {
+			fetchLoggedInUserData(loggedInUserId)
+				.then((data) => {
+					setLoggedInUserPictureUrl(data.profilePicture);
+				})
+				.catch((error) => {
+					console.error("Error fetching user data:", error);
+				});
+		}
+	}, [loggedInUserId]);
+
+	// Set isUserLoggedIn to true if the userId is set
+	const handleLoggedIn = (loggedInUserId) => {
+		if (loggedInUserId) {
+			setIsUserLoggedIn(true);
+		}
+	};
+
+	useEffect(() => {
+		handleLoggedIn(loggedInUserId);
+	}, [loggedInUserId]);
 
 	return (
 		<>
@@ -40,6 +90,9 @@ function App() {
 								setIsDark={setIsDark}
 								selectedPlantTags={selectedPlantTags}
 								setSelectedPlantTags={setSelectedPlantTags}
+								loggedInUserPictureUrl={loggedInUserPictureUrl}
+								isUserLoggedIn={isUserLoggedIn}
+								loggedInUserId={loggedInUserId}
 							/>
 						}
 					/>
@@ -49,13 +102,22 @@ function App() {
 							<RegisterUser
 								isDark={isDark}
 								setIsDark={setIsDark}
+								loggedInUserPictureUrl={loggedInUserPictureUrl}
+								isUserLoggedIn={isUserLoggedIn}
+								loggedInUserId={loggedInUserId}
 							/>
 						}
 					/>
 					<Route
 						path="/login"
 						element={
-							<Login isDark={isDark} setIsDark={setIsDark} />
+							<Login
+								isDark={isDark}
+								setIsDark={setIsDark}
+								loggedInUserPictureUrl={loggedInUserPictureUrl}
+								isUserLoggedIn={isUserLoggedIn}
+								loggedInUserId={loggedInUserId}
+							/>
 						}
 					/>
 					<Route path="/user">
@@ -65,6 +127,11 @@ function App() {
 								<EditUserDetails
 									isDark={isDark}
 									setIsDark={setIsDark}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+									isUserLoggedIn={isUserLoggedIn}
+									loggedInUserId={loggedInUserId}
 								/>
 							}
 						/>
@@ -76,6 +143,11 @@ function App() {
 									setIsDark={setIsDark}
 									selectedPlantTags={selectedPlantTags}
 									setSelectedPlantTags={setSelectedPlantTags}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+									isUserLoggedIn={isUserLoggedIn}
+									loggedInUserId={loggedInUserId}
 								/>
 							}
 						/>
@@ -89,6 +161,11 @@ function App() {
 									setSelectedPlantTags={setSelectedPlantTags}
 									isDark={isDark}
 									setIsDark={setIsDark}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+									isUserLoggedIn={isUserLoggedIn}
+									loggedInUserId={loggedInUserId}
 								/>
 							}
 						/>
@@ -98,6 +175,11 @@ function App() {
 								<ThreadPage
 									isDark={isDark}
 									setIsDark={setIsDark}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+									isUserLoggedIn={isUserLoggedIn}
+									loggedInUserId={loggedInUserId}
 								/>
 							}
 						/>
@@ -109,6 +191,11 @@ function App() {
 									setSelectedPlantTags={setSelectedPlantTags}
 									isDark={isDark}
 									setIsDark={setIsDark}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+									isUserLoggedIn={isUserLoggedIn}
+									loggedInUserId={loggedInUserId}
 								/>
 							}
 						/>
@@ -120,6 +207,11 @@ function App() {
 								<EditComment
 									isDark={isDark}
 									setIsDark={setIsDark}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+									isUserLoggedIn={isUserLoggedIn}
+									loggedInUserId={loggedInUserId}
 								/>
 							}
 						/>

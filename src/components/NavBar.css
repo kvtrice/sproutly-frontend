@@ -99,6 +99,30 @@ hr {
     margin-top: 1rem;
 }
 
+.nav-profile-picture {
+    margin-left: 1rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.logged-in-container {
+    display: flex;
+}
+
+.create-post-button-mob {
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.menu-link {
+    line-height: 2.5;
+}
+
+.menu-link:hover {
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1024px) {
 
     .search-container {
@@ -111,7 +135,7 @@ hr {
         display: block;
     }
 
-    .dark-mode-toggle, .signup-buttons-container, .dark-mode-toggle-container {
+    .dark-mode-toggle, .signup-buttons-container, .dark-mode-toggle-container, .create-post-button-container, .profile-picture-container {
         display: none;
     }
 

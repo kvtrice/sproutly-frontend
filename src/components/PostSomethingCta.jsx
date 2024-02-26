@@ -3,6 +3,7 @@ import './PostSomethingCta.css'
 import { useNavigate } from 'react-router-dom'
 
 const PostSomethingCta = () => {
+
     const nav = useNavigate()
     const authenticatedUserProfilePicture = "https://res.cloudinary.com/djtgmjm16/image/upload/v1708403153/samples/woman-on-a-football-field.jpg"
 

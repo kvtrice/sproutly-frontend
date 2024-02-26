@@ -24,6 +24,9 @@ function ProfilePage({
 	setIsDark,
 	setSelectedPlantTags,
 	selectedPlantTags,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
 }) {
 	useEffect(() => {
 		Allpostdata()
@@ -47,6 +50,9 @@ function ProfilePage({
 				setIsDark={setIsDark}
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
 			/>
 			<div className="page-wrapper">
 				<div className="component-wrapper profile-header">

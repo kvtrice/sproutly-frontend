@@ -12,6 +12,9 @@ const EditPost = ({
 	setSelectedPlantTags,
 	setIsDark,
 	isDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
 }) => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
@@ -87,7 +90,13 @@ const EditPost = ({
 
 	return (
 		<>
-			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
+			/>
 			<div className="page-wrapper has-navbar-fixed-top">
 				<div className="component-wrapper">
 					<h2>Edit Post</h2>

@@ -7,7 +7,13 @@ import OldPassword from "./user-components/OldPassword.jsx"
 import NavBar from "./NavBar.jsx";
 import './RegisterUser.css'
 
-const EditUserDetails = ({ isDark, setIsDark }) => {
+const EditUserDetails = ({
+	isDark,
+	setIsDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) => {
 	const [username, SetUsername] = useState("");
 	const [password, SetPassword] = useState("");
 	const [oldPassword, SetoldPassword] = useState("");
@@ -61,6 +67,9 @@ const EditUserDetails = ({ isDark, setIsDark }) => {
 				setIsDark={setIsDark}
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
 			/>
 			<section className="section page-wrapper">
 				<div className="component-wrapper user-edit">
@@ -118,9 +127,7 @@ const EditUserDetails = ({ isDark, setIsDark }) => {
 						/>
 					</div>
 					<label className="text">Update the plants you own:</label>
-					<PlantSearch
-						setSelectedPlantTags={setSelectedPlantTags}
-					/>
+					<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
 					<div className="save-button">
 						<button
 							className="is-primary button"
