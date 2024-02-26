@@ -5,6 +5,9 @@ import "./LikeButton.css";
 
 function LikeButton({ post, posts, setPosts }) {
   const [likes, setLikes] = useState()
+  const [liked, setLiked] = useState(false)
+  
+
 
   const token = sessionStorage.getItem("user_id")
 
@@ -22,11 +25,11 @@ function LikeButton({ post, posts, setPosts }) {
   useEffect(() => {
     const reactionsLength = post.reactions.length
     setLikes(reactionsLength)
+    setLiked(post.reactions.includes(user_Id))
   }, [post])
 
   const handleAddLike =async () => {
     await addLike(post._id, user_Id)
-    setPosts
   }
 
   // Add like function
@@ -54,11 +57,13 @@ function LikeButton({ post, posts, setPosts }) {
 		const updatedPosts = [...posts]
 		updatedPosts[postIndex] = updatedPost
 		setPosts(updatedPosts)
+    setLiked(!liked)
   }
 
   return (
 		<div className='reaction-container'>
-			<button className="like-button-container" onClick={handleAddLike}>
+			<button className={`like-button-container ${liked ? 'liked' : 'unliked'}`}
+        onClick={handleAddLike}>
 				<FaThumbsUp className="like-button" size={22}/>
 			</button>
 			<p className="reaction-count">{likes} reactions</p>
