@@ -60,21 +60,25 @@ function ProfilePage({
 					<UserLikes posts={posts} user_id={user_id} />
 				</div>
 				<div className="component-wrapper">
-					{posts.map((post) => (
-						<div key={post._id}>
-							{post.isThreadStarter &&
-								post.user._id === user_id && (
-									<>
-										<DisplayPost
-											post={post}
-											posts={posts}
-											setPosts={setPosts}
-										/>
-										<hr />
-									</>
-								)}
-						</div>
-					))}
+					{(posts.filter(post => post.isThreadStarter && post.user._id === user_id)).length === 0 ? (
+						<p className='empty-text'>No posts yet</p>
+					) : (
+						posts.map((post) => (
+							<div key={post._id}>
+								{post.isThreadStarter &&
+									post.user._id === user_id && (
+										<>
+											<DisplayPost
+												post={post}
+												posts={posts}
+												setPosts={setPosts}
+											/>
+											<hr />
+										</>
+									)}
+							</div>
+						))
+					)}
 				</div>
 			</div>
 		</div>

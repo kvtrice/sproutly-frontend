@@ -52,16 +52,23 @@ function ThreadPage({
 						/>
 					</div>
 					<div className="component-wrapper">
-						<DisplayComments
-							parentID={parentID}
-							posts={posts}
-							setPosts={setPosts}
-							isDeleteShowing={isDeleteShowing}
-							setIsDeleteShowing={setIsDeleteShowing}
-							setCommentToDelete={setCommentToDelete}
-							loggedInUserId={loggedInUserId}
-							isUserLoggedIn={isUserLoggedIn}
-						/>
+						{isUserLoggedIn === false &&
+						posts.filter((item) => item.parentID === parentID) <
+							1 ? (
+							<p className="empty-text">No comments yet. Login or Sign up to start commenting.</p>
+						) : (
+							<DisplayComments
+								parentID={parentID}
+								posts={posts}
+								setPosts={setPosts}
+								isDeleteShowing={isDeleteShowing}
+								setIsDeleteShowing={setIsDeleteShowing}
+								setCommentToDelete={setCommentToDelete}
+								loggedInUserId={loggedInUserId}
+								isUserLoggedIn={isUserLoggedIn}
+							/>
+						)}
+
 						{isUserLoggedIn && (
 							<AddComment
 								parentID={parentID}
