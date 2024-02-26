@@ -17,7 +17,9 @@ function App() {
 	const [isDark, setIsDark] = useLocalStorage("isDark", false);
 	const [loggedInUserId, setLoggedInUserId] = useState("");
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-	const [loggedInUserPictureUrl, setLoggedInUserPictureUrl] = useState("");
+	const [loggedInUserPictureUrl, setLoggedInUserPictureUrl] = useState(
+		"https://pics.craiyon.com/2023-07-02/fa5dc6ea1a0d4c6fa9294b54c6edf1e9.webp"
+	);
 
 	// Update the background for root element for the entire application (HTML tag)
 	useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CommentContent from "./CommentContent";
 import { IoMdSend } from "react-icons/io";
@@ -10,6 +10,8 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
 	const [isUploadShowing, setIsUploadShowing] = useState(false);
+	const [error, setError] = useState("");
+	const commentWrapperRef = useRef(null);
 
 	// Add Comment function
 	async function addComment(content, imageUrl) {
@@ -47,13 +49,35 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			setContent("");
 			setImageUrl("");
 
-			// Reload page when posts change
+			// Reload page after submit to display new comment
 			window.location.reload();
+		} else {
+			setError("Comment must contain text");
 		}
 	};
 
+	// Event listener to handle clicks outside Add Comment component - collapses it
+	const handleClickOutside = (event) => {
+		if (!event.target.closest(".add-comment-wrapper")) {
+			setIsUploadShowing(false);
+			setError('')
+		}
+	};
+
+	// Attaches the handleClickOutside event listener when the Add Comment component mounts
+	useEffect(() => {
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	return (
-		<div className="add-comment-wrapper">
+		<div
+			className="add-comment-wrapper"
+			ref={commentWrapperRef}
+			onClick={() => setIsUploadShowing(true)}
+		>
 			<div className="comment-elements">
 				<div className="always-visible">
 					<CommentContent
@@ -70,6 +94,7 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 						/>
 					</div>
 				</div>
+				<div className="error-container">{error && <p className="error-message">{error}</p>}</div>
 				{isUploadShowing ? (
 					<div className="add-image-to-comment-container">
 						<ImageUpload
