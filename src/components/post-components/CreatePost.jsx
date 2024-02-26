@@ -25,10 +25,10 @@ const CreatePost = ({
 	const nav = useNavigate();
 
 	// Add Post function
-	async function addPost(title, content, imageUrl, tags) {
+	async function addPost(userId, title, content, imageUrl, tags) {
 		// Defined new post data
 		const newPost = {
-			user: "65d469278aaa81f8f6af8499",
+			user: userId,
 			title: title,
 			content: content,
 			image: imageUrl,
@@ -55,7 +55,13 @@ const CreatePost = ({
 	const createNewPost = async (e) => {
 		if (title && content) {
 			e.preventDefault();
-			await addPost(title, content, imageUrl, selectedPlantTags);
+			await addPost(
+				loggedInUserId,
+				title,
+				content,
+				imageUrl,
+				selectedPlantTags
+			);
 			// Clear post entry fields
 			setTitle("");
 			setContent("");
@@ -106,6 +112,7 @@ const CreatePost = ({
 						</div>
 						<div className="search">
 							<PlantSearch
+								selectedPlantTags={selectedPlantTags}
 								setSelectedPlantTags={setSelectedPlantTags}
 							/>
 						</div>

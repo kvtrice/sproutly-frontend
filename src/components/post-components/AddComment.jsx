@@ -5,7 +5,7 @@ import { IoMdSend } from "react-icons/io";
 import "./AddComment.css";
 import ImageUpload from "../ImageUpload";
 
-const AddComment = ({ parentID }) => {
+const AddComment = ({ parentID, loggedInUserId }) => {
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
@@ -15,7 +15,7 @@ const AddComment = ({ parentID }) => {
 	async function addComment(content, imageUrl) {
 		// Defined new comment data
 		const newComment = {
-			user: "65d469278aaa81f8f6af8499",
+			user: loggedInUserId,
 			title: null,
 			content: content,
 			image: imageUrl,
