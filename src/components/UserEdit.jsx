@@ -26,7 +26,7 @@ const EditUserDetails = ({
 	const [usernameError, setUsernameError] = useState("")
 
     //hardcoding for testing purpose
-	const user_id = "65d469278aaa81f8f6af8498"
+	const user_id = "65d469278aaa81f8f6af8499"
 
     useEffect(() => {
         const fetchPost = async () => {
