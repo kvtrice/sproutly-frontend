@@ -63,6 +63,7 @@ const EditPost = ({
 					method: "PUT",
 					headers: {
 						"content-Type": "application/json",
+						"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
 					},
 					body: JSON.stringify(updatedPost),
 				}

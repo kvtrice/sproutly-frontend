@@ -43,6 +43,7 @@ function LikeButton({ post, posts, setPosts, isUserLoggedIn }) {
 		await fetch(`http://localhost:4001/posts/${postId}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
+			"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`,
 			body: JSON.stringify({ reactions: updatedReactions }),
 		});
 

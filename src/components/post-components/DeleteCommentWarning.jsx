@@ -9,11 +9,12 @@ const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete }) => {
 		const deleteComment = async (commentId) => {
 			try {
 				const result = await fetch(
-					`http://127.0.0.1:4001/posts/${commentId}`,
+					`http://localhost:4001/posts/${commentId}`,
 					{
 						method: "DELETE",
 						headers: {
 							"content-Type": "application/json",
+							"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
 						},
 					}
 				);
