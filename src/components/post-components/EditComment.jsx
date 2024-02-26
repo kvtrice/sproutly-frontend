@@ -25,7 +25,7 @@ const EditComment = ({
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
-				`http://127.0.0.1:4001/posts/${commentId}`
+				`http://localhost:4001/posts/${commentId}`
 			);
 			const post = await response.json();
 			setContent(post.content || "");
@@ -46,11 +46,12 @@ const EditComment = ({
 		// POST the updated post to API
 		try {
 			const result = await fetch(
-				`http://127.0.0.1:4001/posts/${commentId}`,
+				`http://localhost:4001/posts/${commentId}`,
 				{
 					method: "PUT",
 					headers: {
 						"content-Type": "application/json",
+						"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
 					},
 					body: JSON.stringify(updatedComment),
 				}

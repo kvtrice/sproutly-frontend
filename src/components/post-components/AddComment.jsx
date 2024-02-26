@@ -28,10 +28,11 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 		};
 
 		// POST the new comment to API
-		const result = await fetch("http://127.0.0.1:4001/posts", {
+		const result = await fetch("http://localhost:4001/posts", {
 			method: "POST",
 			headers: {
 				"content-Type": "application/json",
+				"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
 			},
 			body: JSON.stringify(newComment),
 		});
