@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import PostUsername from "./user-components/PostUsername.jsx"
 import PostPassword from "./user-components/PostPassword.jsx"
 import PlantSearch from "./PlantSearch"
@@ -7,6 +7,8 @@ import OldPassword from "./user-components/OldPassword.jsx"
 import NavBar from "./NavBar.jsx";
 import './RegisterUser.css'
 
+
+
 const EditUserDetails = ({
 	isDark,
 	setIsDark,
@@ -14,26 +16,47 @@ const EditUserDetails = ({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) => {
-	const [username, SetUsername] = useState("");
-	const [password, SetPassword] = useState("");
-	const [oldPassword, SetoldPassword] = useState("");
-	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
-	const [imageUrl, setImageUrl] = useState("");
-	const [passwordError, setPasswordError] = useState("");
-	const [oldPasswordError, setoldPasswordError] = useState("");
-	const [usernameError, setUsernameError] = useState("");
+	const [username, SetUsername] = useState("")
+	const [password, SetPassword] = useState("")
+	const [oldPassword, SetoldPassword] = useState("")
+	const [selectedPlantTags, setSelectedPlantTags] = useState([])
+	const [imageUrl, setImageUrl] = useState("")
+	const [passwordError, setPasswordError] = useState("")
+	const [oldPasswordError, setoldPasswordError] = useState("")
+	const [usernameError, setUsernameError] = useState("")
+
+    //hardcoding for testing purpose
+	const user_id = "65d469278aaa81f8f6af8498"
+
+    useEffect(() => {
+        const fetchPost = async () => {
+            const response = await fetch(
+                `http://localhost:4001/users/${user_id}`
+            )
+            const data = await response.json()
+            SetUsername(data.username)
+            setSelectedPlantTags(data.plants|| [])
+        }
+        fetchPost()
+    }, [user_id])
+
+
 
 	async function addUser() {
+        // clearing the error message each time addUser is trigerred so that old error message are not displayed as they are fixed.
+        setUsernameError('')
+        setPasswordError('')
+        setoldPasswordError('')
+
 		const userDetail = {
 			username: username,
 			newPassword: password,
 			oldPassword: oldPassword,
 			plants: selectedPlantTags,
 			ProfilePicture: imageUrl,
-		};
+		}
 
-		//hardcoding for testing purpose
-		const user_id = "65dabd945908f0ac0831035d";
+
 		try {
 			const putRegister = await fetch(
 				`http://localhost:4001/users/${user_id}`,
@@ -44,19 +67,19 @@ const EditUserDetails = ({
 					},
 					body: JSON.stringify(userDetail),
 				}
-			);
+			)
 
 			if (!putRegister.ok) {
-				const errorData = await putRegister.json();
-				console.log("errorData:", errorData);
+				const errorData = await putRegister.json()
+				console.log("errorData:", errorData)
 				errorData.Displayederrors.forEach((error) => {
-					if (error.includes("Incorrect")) setoldPasswordError(error);
-					if (error.includes("minimum")) setPasswordError(error);
-					if (error.includes("Username")) setUsernameError(error);
-				});
+					if (error.includes("Incorrect")) setoldPasswordError(error)
+					if (error.includes("minimum")) setPasswordError(error)
+					if (error.includes("Username")) setUsernameError(error)
+				})
 			}
 		} catch (err) {
-			console.error(err.message);
+			console.error(err.message)
 		}
 	}
 
@@ -92,7 +115,7 @@ const EditUserDetails = ({
 					<div className="old-new-password">
 						<div className="field old-password">
 							<label className="text old-password">
-								Old password
+								Confirm old password
 							</label>
 							<OldPassword
 								SetoldPassword={SetoldPassword}
@@ -104,6 +127,7 @@ const EditUserDetails = ({
 								</p>
 							)}
 						</div>
+
 						<div className="field new-password">
 							<label className="text">New password</label>
 							<PostPassword
@@ -116,6 +140,8 @@ const EditUserDetails = ({
 								</p>
 							)}
 						</div>
+
+                        
 					</div>
 					<div className="field profile-picture-upload">
 						<label className="text" htmlFor="profilePicture">
@@ -127,7 +153,10 @@ const EditUserDetails = ({
 						/>
 					</div>
 					<label className="text">Update the plants you own:</label>
-					<PlantSearch setSelectedPlantTags={setSelectedPlantTags} />
+					<PlantSearch
+					setSelectedPlantTags={setSelectedPlantTags}
+                    selectedPlantTags={selectedPlantTags}
+					/>
 					<div className="save-button">
 						<button
 							className="is-primary button"
