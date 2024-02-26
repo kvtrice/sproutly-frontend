@@ -47,7 +47,7 @@ function App() {
 
 	const fetchLoggedInUserData = async (loggedInUserId) => {
 		const res = await fetch(
-			`http://127.0.0.1:4001/users/${loggedInUserId}`
+			`http://localhost:4001/users/${loggedInUserId}`
 		);
 		const userData = await res.json();
 		return userData;
