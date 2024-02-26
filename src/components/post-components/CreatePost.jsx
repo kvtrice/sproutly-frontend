@@ -67,7 +67,7 @@ const CreatePost = ({
 			setTitle("");
 			setContent("");
 			setImageUrl("");
-			setSelectedPlantTags("");
+			setSelectedPlantTags([]);
 			// Navigate home after creation
 			nav("/");
 		} else {
