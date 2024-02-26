@@ -8,7 +8,7 @@ function UserDetails({post}) {
   const profilePicture = post.user.profilePicture
 
   return (
-    <Link to={`user/${user_id}`}>
+    <Link to={`http://localhost:5173/user/${user_id}`}>
     <div className="user-details-container">
       <div className="user-image-div">
         <img className="user-image " src={profilePicture} alt="profile picture of user" />
