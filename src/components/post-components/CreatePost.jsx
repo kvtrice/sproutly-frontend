@@ -12,6 +12,9 @@ const CreatePost = ({
 	setSelectedPlantTags,
 	setIsDark,
 	isDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
 }) => {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
@@ -70,7 +73,13 @@ const CreatePost = ({
 
 	return (
 		<>
-			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
+			/>
 			<div className="page-wrapper">
 				<div className="component-wrapper">
 					<h2>New Post</h2>

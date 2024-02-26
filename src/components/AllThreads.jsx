@@ -15,7 +15,7 @@ function AllThreads({ selectedPlantTags, setSelectedPlantTags }) {
 		return data;
 	}
 
-	// set posts based on the fetched data
+	// Set posts based on the fetched data
 	useEffect(() => {
 		fetchAllPostData().then((data) => {
 			setPosts(data);

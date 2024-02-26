@@ -6,7 +6,13 @@ import ImageUpload from "./ImageUpload"
 import "./RegisterUser.css";
 import NavBar from "./NavBar.jsx";
 
-const RegisterUser = ({ isDark, setIsDark }) => {
+const RegisterUser = ({
+	isDark,
+	setIsDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) => {
 	const [username, setUsername] = React.useState("");
 	const [password, SetPassword] = useState("");
 	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
@@ -48,7 +54,13 @@ const RegisterUser = ({ isDark, setIsDark }) => {
 
 	return (
 		<>
-			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
+			/>
 			<section className="section page-wrapper">
 				<div className="component-wrapper register">
 					<div className="page-header">

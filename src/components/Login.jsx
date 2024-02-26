@@ -4,7 +4,13 @@ import PostPassword from "./user-components/PostPassword"
 import "./RegisterUser.css";
 import NavBar from "./NavBar";
 
-const Login = ({ isDark, setIsDark }) => {
+const Login = ({
+	isDark,
+	setIsDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) => {
 	const [username, SetUsername] = useState("");
 	const [password, SetPassword] = useState("");
 	const [loginError, setLoginError] = useState("");
@@ -37,7 +43,13 @@ const Login = ({ isDark, setIsDark }) => {
 
 	return (
 		<>
-			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
+			/>
 			<section className="section page-wrapper">
 				<div className="component-wrapper login">
 					<div className="page-header">

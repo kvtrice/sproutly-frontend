@@ -4,18 +4,26 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import NavBarSignUp from "./NavBarSignUp";
 import PlantSearch from "./PlantSearch";
 import DarkModeToggle from "./DarkModeToggle";
+import NavBarCreatePost from "./NavBarCreatePost";
+import NavBarProfilePicture from "./NavBarProfilePicture";
 
 const NavBar = ({
 	isDark,
 	setIsDark,
 	setSelectedPlantTags,
 	selectedPlantTags,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId
 }) => {
 	const [nav, setNav] = useState(false);
 
 	const handleNav = () => {
 		setNav(!nav);
 	};
+
+	const editProfileLink = `/user/${loggedInUserId}/edit`;
+	const viewProfileLink = `/user/${loggedInUserId}`;
 
 	return (
 		// Desktop Nav
@@ -53,10 +61,37 @@ const NavBar = ({
 						handleDarkMode={() => setIsDark(!isDark)}
 					/>
 				</div>
-				{/* Sign up Buttons */}
-				<div className="signup-buttons-container">
-					<NavBarSignUp />
+
+				{/* Switch which components are shown based on if the user is logged in or not */}
+
+				<div className="logged-in-switch">
+					{isUserLoggedIn ? (
+						<div className="logged-in-container">
+							{/* Create Post Button */}
+							<div className="create-post-button-container">
+								<NavBarCreatePost />
+							</div>
+							{/* LoggedIn User's Profile Picture */}
+							<div className="profile-picture-container">
+								<NavBarProfilePicture
+									editProfileLink={editProfileLink}
+									viewProfileLink={viewProfileLink}
+									loggedInUserPictureUrl={
+										loggedInUserPictureUrl
+									}
+								/>
+							</div>
+						</div>
+					) : (
+						<div className="logged-out-container">
+							{/* Sign up Buttons */}
+							<div className="signup-buttons-container">
+								<NavBarSignUp />
+							</div>
+						</div>
+					)}
 				</div>
+
 				{/* Menu icon */}
 				<div onClick={handleNav} className="hamburger-menu-button">
 					<AiOutlineMenu size={30} className="mob-menu-button" />
@@ -91,10 +126,52 @@ const NavBar = ({
 							</a>
 						)}
 					</div>
-					{/* Sign up Buttons mobile */}
+
+					<div>
+						{isUserLoggedIn ? (
+							<div>
+								<div className="create-post-button-mob">
+									<a href="/post/new">
+										<button className="button is-primary">
+											Create Post
+										</button>
+									</a>
+								</div>
+								<div className="user-menu-container">
+									<a href={viewProfileLink}>
+										<p className="menu-link">
+											View Profile
+										</p>
+									</a>
+									<a href={editProfileLink}>
+										<p className="menu-link">
+											Edit Profile
+										</p>
+									</a>
+								</div>
+							</div>
+						) : (
+							<div className="signup-buttons-container-mob">
+								<NavBarSignUp />
+							</div>
+						)}
+					</div>
+
+					{/* Sign up Buttons mobile
 					<div className="signup-buttons-container-mob">
 						<NavBarSignUp />
 					</div>
+					<div>
+						<div className="edit-menu-container">
+							<a href={viewProfileLink}>
+								<p className="menu-button">View Profile</p>
+							</a>
+							<a href={editProfileLink}>
+								<p className="menu-button">Edit Profile</p>
+							</a>
+						</div>
+					</div> */}
+
 					<hr className="line" />
 					{/* Dark Mode Toggle */}
 					<div className="dark-mode-toggle-container-mob">

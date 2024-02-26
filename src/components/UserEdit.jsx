@@ -9,7 +9,13 @@ import './RegisterUser.css'
 
 
 
-const EditUserDetails = ({ isDark, setIsDark }) => {
+const EditUserDetails = ({
+	isDark,
+	setIsDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) => {
 	const [username, SetUsername] = useState("")
 	const [password, SetPassword] = useState("")
 	const [oldPassword, SetoldPassword] = useState("")
@@ -84,6 +90,9 @@ const EditUserDetails = ({ isDark, setIsDark }) => {
 				setIsDark={setIsDark}
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
 			/>
 			<section className="section page-wrapper">
 				<div className="component-wrapper user-edit">

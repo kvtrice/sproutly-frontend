@@ -232,11 +232,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .edit-menu-container {
     background-color: var(--input-bg-color);
+    border: 1px solid var(--border-color);
+    width: fit-content;
     border-radius: 5px;
-    padding: 1rem 2rem;
+    padding: 0.5rem;
     display: flex;
+    width: 160px;
     flex-direction: column;
-    border-color: var(--border-color);
     position: absolute;
     right: 0;
     top: 0;
@@ -245,6 +247,17 @@ h1, h2, h3, h4, h5, h6 {
 .edit-menu-wrapper .edit {
     margin-bottom: 0.5rem;
 }
+
+.menu-button {
+    line-height: 1.8;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu-button:hover {
+    text-decoration: underline;
+}
+
 
 hr {
     display: block;

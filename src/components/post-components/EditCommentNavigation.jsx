@@ -41,18 +41,15 @@ const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete })
 				}
 			>
 				<div className="edit-menu-container">
-					<button
-						className="button is-primary edit is-small"
-						onClick={navigateToEdit}
-					>
+					<p className="menu-button" onClick={navigateToEdit}>
 						Edit Comment
-					</button>
-					<button
-						className="button is-primary is-small"
+					</p>
+					<p
+						className="menu-button"
 						onClick={handleDeleteWarning}
 					>
 						Delete Comment
-					</button>
+					</p>
 				</div>
 			</div>
 		</div>
