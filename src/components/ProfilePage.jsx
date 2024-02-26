@@ -7,13 +7,13 @@ import NavBar from "./NavBar";
 import "./ProfilePage.css";
 
 async function Allpostdata() {
-	const response = await fetch("http://localhost:4001/posts/");
+	const response = await fetch("https://sproutly-api.onrender.com/posts/");
 	const data = await response.json();
 	return data;
 }
 
 async function Alluserdata() {
-	const response = await fetch("http://localhost:4001/users/");
+	const response = await fetch("https://sproutly-api.onrender.com/users/");
 	const userData = await response.json();
 	return userData;
 }

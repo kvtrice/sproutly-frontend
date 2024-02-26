@@ -58,7 +58,7 @@ const EditPost = ({
 		// POST the updated post to API
 		try {
 			const result = await fetch(
-				`http://127.0.0.1:4001/posts/${postId}`,
+				`https://sproutly-api.onrender.com/posts/${postId}`,
 				{
 					method: "PUT",
 					headers: {

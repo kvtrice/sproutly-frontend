@@ -40,7 +40,7 @@ function LikeButton({ post, posts, setPosts, isUserLoggedIn }) {
 			: [...post.reactions, user_Id];
 
 		// Update the backend with the updated reactions
-		await fetch(`http://localhost:4001/posts/${postId}`, {
+		await fetch(`https://sproutly-api.onrender.com/posts/${postId}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
 			"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`,
@@ -48,7 +48,7 @@ function LikeButton({ post, posts, setPosts, isUserLoggedIn }) {
 		});
 
 		// Fetch the updated post data
-		const response = await fetch(`http://localhost:4001/posts/${postId}`);
+		const response = await fetch(`https://sproutly-api.onrender.com/posts/${postId}`);
 		const updatedPost = await response.json();
 
 		// Update the posts state with the updated post

@@ -28,7 +28,7 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 		};
 
 		// POST the new comment to API
-		const result = await fetch("http://localhost:4001/posts", {
+		const result = await fetch("https://sproutly-api.onrender.com/posts", {
 			method: "POST",
 			headers: {
 				"content-Type": "application/json",

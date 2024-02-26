@@ -49,7 +49,7 @@ function App() {
 
 	const fetchLoggedInUserData = async (loggedInUserId) => {
 		const res = await fetch(
-			`http://localhost:4001/users/${loggedInUserId}`
+			`https://sproutly-api.onrender.com/users/${loggedInUserId}`
 		);
 		const userData = await res.json();
 		return userData;

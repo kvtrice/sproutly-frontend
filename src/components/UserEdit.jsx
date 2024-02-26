@@ -31,7 +31,7 @@ const EditUserDetails = ({
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
-				`http://localhost:4001/users/${loggedInUserId}`
+				`https://sproutly-api.onrender.com/users/${loggedInUserId}`
 			)
 			const data = await response.json()
 			SetUsername(data.username);
@@ -56,7 +56,7 @@ const EditUserDetails = ({
 
 		try {
 			const putRegister = await fetch(
-				`http://localhost:4001/users/${loggedInUserId}`,
+				`https://sproutly-api.onrender.com/users/${loggedInUserId}`,
 				{
 					method: "PUT",
 					headers: {

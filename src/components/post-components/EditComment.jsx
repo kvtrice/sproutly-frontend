@@ -46,7 +46,7 @@ const EditComment = ({
 		// POST the updated post to API
 		try {
 			const result = await fetch(
-				`http://localhost:4001/posts/${commentId}`,
+				`https://sproutly-api.onrender.com/posts/${commentId}`,
 				{
 					method: "PUT",
 					headers: {

@@ -9,7 +9,7 @@ const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete }) => {
 		const deleteComment = async (commentId) => {
 			try {
 				const result = await fetch(
-					`http://localhost:4001/posts/${commentId}`,
+					`https://sproutly-api.onrender.com/posts/${commentId}`,
 					{
 						method: "DELETE",
 						headers: {
