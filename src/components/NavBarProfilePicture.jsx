@@ -1,11 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavBarProfilePicture = ({ viewProfileLink, editProfileLink, loggedInUserPictureUrl }) => {
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+	const nav = useNavigate()
 
 	const handleUserMenu = () => {
 		setIsUserMenuOpen(!isUserMenuOpen);
 	};
+
+	const handleNavigateUserEditProfile = () => {
+		nav(`${editProfileLink}`)
+	}
+
+	const handleNavigateUserViewProfile = () => {
+		nav(`${viewProfileLink}`)
+	}
+
 
 	return (
 		<div>
@@ -19,12 +30,8 @@ const NavBarProfilePicture = ({ viewProfileLink, editProfileLink, loggedInUserPi
 			</div>
 			<div className={isUserMenuOpen ? "edit-menu-wrapper" : "hidden"}>
 				<div className="edit-menu-container">
-					<a href={viewProfileLink}>
-						<p className="menu-button">View Profile</p>
-					</a>
-					<a href={editProfileLink}>
-						<p className="menu-button">Edit Profile</p>
-					</a>
+						<p onClick={handleNavigateUserViewProfile} className="menu-button">View Profile</p>
+						<p onClick={handleNavigateUserEditProfile} className="menu-button">Edit Profile</p>
 				</div>
 			</div>
 		</div>
