@@ -35,3 +35,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.old-password {
+    margin-right: 1rem;
+}
