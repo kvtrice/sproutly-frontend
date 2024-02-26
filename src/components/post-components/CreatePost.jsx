@@ -21,6 +21,7 @@ const CreatePost = ({
 	const [imageUrl, setImageUrl] = useState("");
 	const [posts, setPosts] = useState([]);
 	const [isDiscardShowing, setIsDiscardShowing] = useState(false);
+	const [error, setError] = useState("");
 
 	const nav = useNavigate();
 
@@ -69,6 +70,9 @@ const CreatePost = ({
 			setSelectedPlantTags("");
 			// Navigate home after creation
 			nav("/");
+		} else {
+			e.preventDefault();
+			setError("Post must contain a title and text content");
 		}
 	};
 
@@ -106,6 +110,9 @@ const CreatePost = ({
 								setContent={setContent}
 								content={content}
 							/>
+						</div>
+						<div className="post-error-container">
+							{error && <p className="error-message">{error}</p>}
 						</div>
 						<div className="upload-image">
 							<ImageUpload setImageUrl={setImageUrl} />

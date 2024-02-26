@@ -30,3 +30,12 @@ li {
 .search {
     padding: 1rem 0rem;
 }
+
+.post-error-container {
+    margin-bottom: 0.5rem;
+}
+
+.post-error-container p {
+    color: var(--danger-button-bg-color);
+    font-size: 0.8rem;
+}
