@@ -13,12 +13,12 @@ const RegisterUser = ({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) => {
-	const [username, setUsername] = React.useState("");
-	const [password, SetPassword] = useState("");
-	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
-	const [imageUrl, setImageUrl] = useState("");
-	const [usernameError, setUsernameError] = useState("");
-	const [passwordError, setPasswordError] = useState("");
+	const [username, setUsername] = React.useState("")
+	const [password, SetPassword] = useState("")
+	const [selectedPlantTags, setSelectedPlantTags] = useState([])
+	const [imageUrl, setImageUrl] = useState("")
+	const [usernameError, setUsernameError] = useState("")
+	const [passwordError, setPasswordError] = useState("")
 
 	async function addUser() {
     // clearing the error message each time addUser is trigerred so that old error message are not displayed as they are fixed.
@@ -30,7 +30,7 @@ const RegisterUser = ({
 			password: password,
 			plants: selectedPlantTags,
 			ProfilePicture: imageUrl,
-		};
+		}
 
 		try {
 			const putRegister = await fetch(
@@ -47,12 +47,13 @@ const RegisterUser = ({
 			if (!putRegister.ok) {
 				const errorData = await putRegister.json();
 				errorData.Displayederrors.forEach((error) => {
-					if (error.includes("Username")) setUsernameError(error);
-					if (error.includes("Password")) setPasswordError(error);
-				});
+					if (error.includes("Username")) setUsernameError(error)
+					if (error.includes("Password")) setPasswordError(error)
+					if (error.includes("required")) setUsernameError(error)
+				})
 			}
 		} catch (err) {
-			console.error(err.message);
+			console.error(err.message)
 		}
 	}
 

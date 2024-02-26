@@ -14,26 +14,26 @@ const EditUserDetails = ({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) => {
-	const [username, SetUsername] = useState("");
-	const [password, SetPassword] = useState("");
-	const [oldPassword, SetoldPassword] = useState("");
-	const [selectedPlantTags, setSelectedPlantTags] = useState([]);
-	const [imageUrl, setImageUrl] = useState("");
-	const [passwordError, setPasswordError] = useState("");
-	const [oldPasswordError, setoldPasswordError] = useState("");
-	const [usernameError, setUsernameError] = useState("");
+	const [username, SetUsername] = useState("")
+	const [password, SetPassword] = useState("")
+	const [oldPassword, SetoldPassword] = useState("")
+	const [selectedPlantTags, setSelectedPlantTags] = useState([])
+	const [imageUrl, setImageUrl] = useState("")
+	const [passwordError, setPasswordError] = useState("")
+	const [oldPasswordError, setoldPasswordError] = useState("")
+	const [usernameError, setUsernameError] = useState("")
 
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
 				`http://localhost:4001/users/${loggedInUserId}`
-			);
-			const data = await response.json();
+			)
+			const data = await response.json()
 			SetUsername(data.username);
 			setSelectedPlantTags(data.plants || []);
-		};
-		fetchPost();
-	}, [loggedInUserId]);
+		}
+		fetchPost()
+	}, [loggedInUserId])
 
 	async function editUser() {
 		// clearing the error message each time addUser is trigerred so that old error message are not displayed as they are fixed.
@@ -65,13 +65,14 @@ const EditUserDetails = ({
 				const errorData = await putRegister.json();
 				console.log("errorData:", errorData);
 				errorData.Displayederrors.forEach((error) => {
-					if (error.includes("Incorrect")) setoldPasswordError(error);
-					if (error.includes("minimum")) setPasswordError(error);
-					if (error.includes("Username")) setUsernameError(error);
-				});
+					if (error.includes("Incorrect")) setoldPasswordError(error)
+					if (error.includes("minimum")) setPasswordError(error)
+					if (error.includes("Username")) setUsernameError(error)
+					if (error.includes("required")) setUsernameError(error)
+				})
 			}
 		} catch (err) {
-			console.error(err.message);
+			console.error(err.message)
 		}
 	}
 
