@@ -41,7 +41,9 @@ function AllThreads({
 	return (
 		<div className="page-wrapper">
 			<SortFilter posts={posts} setPosts={setPosts} />
-			<PostSomethingCta loggedInUserPictureUrl={loggedInUserPictureUrl} />
+			<div>
+				{isUserLoggedIn ? (<PostSomethingCta loggedInUserPictureUrl={loggedInUserPictureUrl}/> ) : ''}
+			</div>
 			<div>
 				{filteredPostsByTag.length > 0
 					? filteredPostsByTag.map((post) => (
