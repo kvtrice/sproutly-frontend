@@ -6,6 +6,8 @@ import ImageUpload from "./ImageUpload"
 import OldPassword from "./user-components/OldPassword.jsx"
 import NavBar from "./NavBar.jsx";
 import './RegisterUser.css'
+import { useNavigate} from "react-router-dom"
+
 
 const EditUserDetails = ({
 	isDark,
@@ -14,6 +16,7 @@ const EditUserDetails = ({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) => {
+	const nav = useNavigate()
 	const [username, SetUsername] = useState("")
 	const [password, SetPassword] = useState("")
 	const [oldPassword, SetoldPassword] = useState("")
@@ -22,6 +25,8 @@ const EditUserDetails = ({
 	const [passwordError, setPasswordError] = useState("")
 	const [oldPasswordError, setoldPasswordError] = useState("")
 	const [usernameError, setUsernameError] = useState("")
+
+	
 
 	useEffect(() => {
 		const fetchPost = async () => {
@@ -74,6 +79,7 @@ const EditUserDetails = ({
 		} catch (err) {
 			console.error(err.message)
 		}
+		nav(`/user/${loggedInUserId}`)
 	}
 
 	return (
