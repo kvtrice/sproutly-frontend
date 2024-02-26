@@ -37,12 +37,9 @@ const EditPostNavigation = ({ post }) => {
 				}
 			>
 				<div className="edit-menu-container">
-					<button
-						className="button is-primary is-small"
-						onClick={navigateToEdit}
-					>
+					<p className="menu-button" onClick={navigateToEdit}>
 						Edit Post
-					</button>
+					</p>
 				</div>
 			</div>
 		</div>

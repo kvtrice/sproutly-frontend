@@ -7,7 +7,13 @@ import NavBar from "./NavBar";
 import DeleteCommentWarning from './post-components/DeleteCommentWarning'
 
 
-function ThreadPage({ isDark, setIsDark }) {
+function ThreadPage({
+	isDark,
+	setIsDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) {
 	const { parentID } = useParams();
 	const [posts, setPosts] = useState([]);
 	const [commentToDelete, setCommentToDelete] = useState("");
@@ -27,17 +33,23 @@ function ThreadPage({ isDark, setIsDark }) {
 
 	return (
 		<div>
-			<NavBar isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
+			/>
 			<div className="page-wrapper">
 				<div>
-					<div className='component-wrapper'>
+					<div className="component-wrapper">
 						<DisplayParent
 							parentID={parentID}
 							posts={posts}
 							setPosts={setPosts}
 						/>
 					</div>
-					<div className='component-wrapper'>
+					<div className="component-wrapper">
 						<DisplayComments
 							parentID={parentID}
 							posts={posts}

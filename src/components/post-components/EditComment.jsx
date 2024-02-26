@@ -6,7 +6,14 @@ import DiscardWarning from "./DiscardWarning";
 import NavBar from "../NavBar";
 import PostContent from "./PostContent";
 
-const EditComment = ({ post, setIsDark, isDark }) => {
+const EditComment = ({
+	post,
+	setIsDark,
+	isDark,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) => {
 	const [content, setContent] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [isDiscardShowing, setIsDiscardShowing] = useState(false);
@@ -71,8 +78,13 @@ const EditComment = ({ post, setIsDark, isDark }) => {
 
 	return (
 		<>
-			<NavBar 
-			isDark={isDark} setIsDark={setIsDark} />
+			<NavBar
+				isDark={isDark}
+				setIsDark={setIsDark}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
+			/>
 			<div className="page-wrapper has-navbar-fixed-top">
 				<div className="component-wrapper">
 					<h2>Edit Comment</h2>

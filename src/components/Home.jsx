@@ -6,7 +6,10 @@ const Home = ({
 	isDark,
 	setIsDark,
 	selectedPlantTags,
-	setSelectedPlantTags
+	setSelectedPlantTags,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId
 }) => {
 	return (
 		<>
@@ -15,10 +18,16 @@ const Home = ({
 				setIsDark={setIsDark}
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
 			/>
 			<AllThreads
 				selectedPlantTags={selectedPlantTags}
 				setSelectedPlantTags={setSelectedPlantTags}
+				loggedInUserPictureUrl={loggedInUserPictureUrl}
+				isUserLoggedIn={isUserLoggedIn}
+				loggedInUserId={loggedInUserId}
 			/>
 		</>
 	);
