@@ -37,7 +37,7 @@ const RegisterUser = ({
 
 		try {
 			const putRegister = await fetch(
-				"http://localhost:4001/users/register",
+				"https://sproutly-api.onrender.com/users/register",
 				{
 					method: "POST",
 					headers: {

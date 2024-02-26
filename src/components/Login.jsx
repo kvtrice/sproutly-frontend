@@ -29,7 +29,7 @@ const Login = ({
 		}
 
 		try {
-			const putLogin = await fetch("http://localhost:4001/users/login", {
+			const putLogin = await fetch("https://sproutly-api.onrender.com/users/login", {
 				method: "POST",
 				headers: {
 					"content-Type": "application/json",
