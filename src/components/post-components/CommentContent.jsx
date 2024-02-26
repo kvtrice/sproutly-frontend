@@ -4,15 +4,13 @@ import "./CommentContent.css"
 const CommentContent = ({
 	content,
 	setContent,
-	setIsUploadShowing,
-	isUploadShowing,
+	isUploadShowing
 }) => {
 	
 	return (
 		<div className="field">
 			<div className="control comment-control">
 				<textarea
-					onFocus={() => setIsUploadShowing(true)}
 					className="textarea"
 					placeholder="Start typing here..."
 					value={content}
