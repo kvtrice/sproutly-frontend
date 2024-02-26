@@ -24,19 +24,20 @@ function LikeButton({ post, posts, setPosts }) {
     setLikes(reactionsLength)
   }, [post])
 
-  const handleAddLike = () => {
-    addLike(post._id, user_Id)
-    setLikes(likes + 1)
+  const handleAddLike =async () => {
+    await addLike(post._id, user_Id)
+    setPosts
   }
 
   // Add like function
   const addLike = async (postId, user_Id) => {
-    const postIndex = posts.findIndex((post) => post._id === postId)
+    const postIndex = posts.findIndex((post) => post._id === postId);
     const post = posts[postIndex]
-		const updatedReactions = [
-			...post.reactions,
-			user_Id,
-		]
+
+    // Check if user ID exists in reactions
+    const updatedReactions = post.reactions.includes(user_Id)
+      ? post.reactions.filter((id) => id !== user_Id) // Remove user ID
+      : [...post.reactions, user_Id]
 
     // Update the backend with the updated reactions
 		await fetch(`http://localhost:4001/posts/${postId}`, {
@@ -62,7 +63,7 @@ function LikeButton({ post, posts, setPosts }) {
 			</button>
 			<p className="reaction-count">{likes} reactions</p>
 		</div>
-  );
+  )
 }
 
 export default LikeButton
