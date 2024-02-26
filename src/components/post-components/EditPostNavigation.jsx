@@ -3,7 +3,7 @@ import { AiOutlineEllipsis } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 
-const EditPostNavigation = ({ post }) => {
+const EditPostNavigation = ({ post, loggedInUserId }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const nav = useNavigate()
@@ -19,8 +19,7 @@ const EditPostNavigation = ({ post }) => {
 	return (
 		<div>
 			<div>
-				{/*  Need to add logic to also check if the post belong to the currently logged in user */}
-				{post.isThreadStarter ? (
+				{(post.isThreadStarter && loggedInUserId === post.user._id) ? (
 					<AiOutlineEllipsis
 						className="post-menu"
 						size={30}

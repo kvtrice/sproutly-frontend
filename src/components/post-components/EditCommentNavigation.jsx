@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete }) => {
+const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete, loggedInUserId }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const nav = useNavigate()
@@ -24,7 +24,7 @@ const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete })
 		<div>
 			<div>
 				{/*  Need to add logic to also check if the comment belongs to the currently logged in user */}
-				{post.isComment && post.isThreadStarter === false ? (
+				{(post.isComment && loggedInUserId === post.user._id) ? (
 					<AiOutlineEllipsis
 						size={30}
 						className="post-menu"
