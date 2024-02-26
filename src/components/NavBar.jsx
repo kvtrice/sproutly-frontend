@@ -6,6 +6,7 @@ import PlantSearch from "./PlantSearch";
 import DarkModeToggle from "./DarkModeToggle";
 import NavBarCreatePost from "./NavBarCreatePost";
 import NavBarProfilePicture from "./NavBarProfilePicture";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({
 	isDark,
@@ -14,9 +15,10 @@ const NavBar = ({
 	selectedPlantTags,
 	isUserLoggedIn,
 	loggedInUserPictureUrl,
-	loggedInUserId
+	loggedInUserId,
 }) => {
 	const [nav, setNav] = useState(false);
+	const navigate = useNavigate();
 
 	const handleNav = () => {
 		setNav(!nav);
@@ -24,6 +26,14 @@ const NavBar = ({
 
 	const editProfileLink = `/user/${loggedInUserId}/edit`;
 	const viewProfileLink = `/user/${loggedInUserId}`;
+
+	const handleNavigateUserEditProfile = () => {
+		navigate(`/user/${loggedInUserId}/edit`);
+	};
+
+	const handleNavigateUserViewProfile = () => {
+		navigate(`/user/${loggedInUserId}`);
+	};
 
 	return (
 		// Desktop Nav
@@ -138,16 +148,18 @@ const NavBar = ({
 									</a>
 								</div>
 								<div className="user-menu-container">
-									<a href={viewProfileLink}>
-										<p className="menu-link">
-											View Profile
-										</p>
-									</a>
-									<a href={editProfileLink}>
-										<p className="menu-link">
-											Edit Profile
-										</p>
-									</a>
+									<p
+										onClick={handleNavigateUserViewProfile}
+										className="menu-link"
+									>
+										View Profile
+									</p>
+									<p
+										onClick={handleNavigateUserEditProfile}
+										className="menu-link"
+									>
+										Edit Profile
+									</p>
 								</div>
 							</div>
 						) : (
@@ -156,21 +168,6 @@ const NavBar = ({
 							</div>
 						)}
 					</div>
-
-					{/* Sign up Buttons mobile
-					<div className="signup-buttons-container-mob">
-						<NavBarSignUp />
-					</div>
-					<div>
-						<div className="edit-menu-container">
-							<a href={viewProfileLink}>
-								<p className="menu-button">View Profile</p>
-							</a>
-							<a href={editProfileLink}>
-								<p className="menu-button">Edit Profile</p>
-							</a>
-						</div>
-					</div> */}
 
 					<hr className="line" />
 					{/* Dark Mode Toggle */}
