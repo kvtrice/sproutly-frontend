@@ -25,6 +25,6 @@
 }
 
 
-.like-button-container.liked {
-    background-color: red
+.like-button.liked {
+    fill: var(--primary-button-color)
 }

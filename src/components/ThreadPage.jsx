@@ -58,7 +58,10 @@ function ThreadPage({
 							setIsDeleteShowing={setIsDeleteShowing}
 							setCommentToDelete={setCommentToDelete}
 						/>
-						<AddComment parentID={parentID} />
+						<AddComment
+							parentID={parentID}
+							loggedInUserId={loggedInUserId}
+						/>
 						{isDeleteShowing && (
 							<DeleteCommentWarning
 								setIsDeleteShowing={setIsDeleteShowing}

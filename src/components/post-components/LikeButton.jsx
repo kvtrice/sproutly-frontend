@@ -61,14 +61,16 @@ function LikeButton({ post, posts, setPosts }) {
   }
 
   return (
-		<div className='reaction-container'>
-			<button className={`like-button-container ${liked ? 'liked' : 'unliked'}`}
-        onClick={handleAddLike}>
-				<FaThumbsUp className="like-button" size={22}/>
+		<div className="reaction-container">
+			<button className="like-button-container" onClick={handleAddLike}>
+				<FaThumbsUp
+					className={`like-button ${liked ? "liked" : "unliked"}`}
+					size={22}
+				/>
 			</button>
 			<p className="reaction-count">{likes} reactions</p>
 		</div>
-  )
+  );
 }
 
 export default LikeButton

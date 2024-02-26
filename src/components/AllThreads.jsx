@@ -4,7 +4,13 @@ import SortFilter from "./post-components/SortFilter.jsx"
 import PostSomethingCta from './PostSomethingCta'
 
 
-function AllThreads({ selectedPlantTags, setSelectedPlantTags }) {
+function AllThreads({
+	selectedPlantTags,
+	setSelectedPlantTags,
+	isUserLoggedIn,
+	loggedInUserPictureUrl,
+	loggedInUserId,
+}) {
 	const [posts, setPosts] = useState([]);
 	const [filteredPostsByTag, setFilteredPostsByTag] = useState([]);
 
@@ -35,7 +41,7 @@ function AllThreads({ selectedPlantTags, setSelectedPlantTags }) {
 	return (
 		<div className="page-wrapper">
 			<SortFilter posts={posts} setPosts={setPosts} />
-			<PostSomethingCta />
+			<PostSomethingCta loggedInUserPictureUrl={loggedInUserPictureUrl} />
 			<div>
 				{filteredPostsByTag.length > 0
 					? filteredPostsByTag.map((post) => (
