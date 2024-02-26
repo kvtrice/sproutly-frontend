@@ -19,7 +19,7 @@ const DiscardWarning = ({
 		setSelectedPlantTags([]);
 		setIsDiscardShowing(false);
 		// Navigate back
-		nav(-1)
+		nav(-1);
 	};
 
 	const handleCancel = () => {
