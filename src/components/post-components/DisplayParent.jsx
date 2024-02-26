@@ -7,32 +7,46 @@ import CommentsCount from './CommentsCount'
 import LikeButton from './LikeButton'
 import PostTitle from './PostTitle'
 import PostTag from './PostTag'
+import EditPostNavigation from "./EditPostNavigation";
 import "./DisplayPost.css";
 
-function DisplayParent({ parentID, posts,setPosts }) {
-    const parents = posts.filter((item) => item._id === parentID)
-    
-    return (
+function DisplayParent({
+	parentID,
+	posts,
+	setPosts,
+	isUserLoggedIn,
+	loggedInUserId,
+}) {
+	const parents = posts.filter((item) => item._id === parentID);
+
+	return (
 		<div>
 			{parents.map((parent) => (
-				<div key={parent._id} className='post'>
+				<div key={parent._id} className="post">
 					<div className="post-header">
 						<UserDetails post={parent} />
-						<PostDateTime post={parent} />
+						<div className="post-right-corner">
+							<PostDateTime post={parent} />
+							<EditPostNavigation
+								post={parent}
+								loggedInUserId={loggedInUserId}
+							/>
+						</div>
 					</div>
 					<div className="post-text-tags">
-                        <PostTitle post={parent} />
-                        <PostText post={parent} />
-                        <PostTag post={parent} />
-                    </div>
-					<div className='post-image'>
-                        <PostImage post={parent} />
-                    </div>
+						<PostTitle post={parent} />
+						<PostText post={parent} />
+						<PostTag post={parent} />
+					</div>
+					<div className="post-image">
+						<PostImage post={parent} />
+					</div>
 					<div className="post-interaction">
 						<LikeButton
 							post={parent}
 							posts={posts}
 							setPosts={setPosts}
+							isUserLoggedIn={isUserLoggedIn}
 						/>
 						<CommentsCount posts={posts} parentID={parent._id} />
 					</div>

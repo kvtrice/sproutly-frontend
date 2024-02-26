@@ -13,7 +13,9 @@ import EditPostNavigation from "./EditPostNavigation"
 const DisplayPost = ({
 	post,
 	posts,
-	setPosts
+	setPosts,
+	isUserLoggedIn,
+	loggedInUserId,
 }) => {
 	return (
 		<div className="component-wrapper display-post">
@@ -22,21 +24,22 @@ const DisplayPost = ({
 					<UserDetails post={post} />
 					<div className="post-right-corner">
 						<PostDateTime post={post} />
-						<EditPostNavigation post={post} />
+						<EditPostNavigation
+							post={post}
+							loggedInUserId={loggedInUserId}
+						/>
 					</div>
 				</div>
 				<div className="post-text-tags">
 					<PostTitle post={post} />
 					<PostText post={post} />
-					<PostTag
-						post={post}
-					/>
+					<PostTag post={post} />
 				</div>
 				<div className="post-image">
 					<PostImage post={post} />
 				</div>
 				<div className="post-interaction">
-					<LikeButton post={post} posts={posts} setPosts={setPosts} />
+					<LikeButton post={post} posts={posts} setPosts={setPosts} isUserLoggedIn={isUserLoggedIn}/>
 					<CommentsCount posts={posts} parentID={post._id} />
 				</div>
 			</div>

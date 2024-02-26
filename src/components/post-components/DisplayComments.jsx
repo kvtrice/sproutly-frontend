@@ -16,6 +16,8 @@ function DisplayComments({
 	isDeleteShowing,
 	setIsDeleteShowing,
 	setCommentToDelete,
+	loggedInUserId,
+	isUserLoggedIn
 }) {
 	const commentsWithParentID = posts.filter(
 		(item) => item.parentID === parentID
@@ -33,7 +35,7 @@ function DisplayComments({
 			) : null}
 			{commentsWithParentID.map((comment) => (
 				<div key={comment._id}>
-										<hr />
+					<hr />
 					<div className="post-header">
 						<UserDetails post={comment} />
 						<div className="post-right-corner">
@@ -44,6 +46,7 @@ function DisplayComments({
 								isDeleteShowing={isDeleteShowing}
 								setIsDeleteShowing={setIsDeleteShowing}
 								setCommentToDelete={setCommentToDelete}
+								loggedInUserId={loggedInUserId}
 							/>
 						</div>
 					</div>
@@ -54,7 +57,9 @@ function DisplayComments({
 					<LikeButton
 						post={comment}
 						posts={posts}
-						setPosts={setPosts}/>
+						setPosts={setPosts}
+						isUserLoggedIn={isUserLoggedIn}
+					/>
 				</div>
 			))}
 		</div>

@@ -47,6 +47,8 @@ function ThreadPage({
 							parentID={parentID}
 							posts={posts}
 							setPosts={setPosts}
+							isUserLoggedIn={isUserLoggedIn}
+							loggedInUserId={loggedInUserId}
 						/>
 					</div>
 					<div className="component-wrapper">
@@ -57,11 +59,15 @@ function ThreadPage({
 							isDeleteShowing={isDeleteShowing}
 							setIsDeleteShowing={setIsDeleteShowing}
 							setCommentToDelete={setCommentToDelete}
-						/>
-						<AddComment
-							parentID={parentID}
 							loggedInUserId={loggedInUserId}
+							isUserLoggedIn={isUserLoggedIn}
 						/>
+						{isUserLoggedIn && (
+							<AddComment
+								parentID={parentID}
+								loggedInUserId={loggedInUserId}
+							/>
+						)}
 						{isDeleteShowing && (
 							<DeleteCommentWarning
 								setIsDeleteShowing={setIsDeleteShowing}

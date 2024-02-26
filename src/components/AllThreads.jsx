@@ -51,6 +51,8 @@ function AllThreads({
 										posts={posts}
 										setPosts={setPosts}
 										post={post}
+										isUserLoggedIn={isUserLoggedIn}
+										loggedInUserId={loggedInUserId}
 									/>
 								)}
 							</div>
@@ -62,6 +64,8 @@ function AllThreads({
 										posts={posts}
 										setPosts={setPosts}
 										post={post}
+										isUserLoggedIn={isUserLoggedIn}
+										loggedInUserId={loggedInUserId}
 									/>
 								)}
 							</div>
