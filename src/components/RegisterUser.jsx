@@ -5,6 +5,8 @@ import PlantSearch from "./PlantSearch"
 import ImageUpload from "./ImageUpload"
 import "./RegisterUser.css";
 import NavBar from "./NavBar.jsx";
+import { useNavigate} from "react-router-dom"
+
 
 const RegisterUser = ({
 	isDark,
@@ -13,6 +15,7 @@ const RegisterUser = ({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) => {
+	const nav = useNavigate()
 	const [username, setUsername] = React.useState("")
 	const [password, SetPassword] = useState("")
 	const [selectedPlantTags, setSelectedPlantTags] = useState([])
@@ -55,6 +58,7 @@ const RegisterUser = ({
 		} catch (err) {
 			console.error(err.message)
 		}
+		nav(`/login`)
 	}
 
 	return (
