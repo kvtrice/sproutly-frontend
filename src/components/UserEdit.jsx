@@ -27,7 +27,7 @@ const EditUserDetails = ({ isDark, setIsDark }) => {
 		};
 
 		//hardcoding for testing purpose
-		const user_id = "65d469278aaa81f8f6af8497";
+		const user_id = "65dabd945908f0ac0831035d";
 		try {
 			const putRegister = await fetch(
 				`http://localhost:4001/users/${user_id}`,
