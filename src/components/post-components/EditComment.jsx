@@ -25,7 +25,7 @@ const EditComment = ({
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
-				`http://localhost:4001/posts/${commentId}`
+				`https://sproutly-api.onrender.com/posts/${commentId}`
 			);
 			const post = await response.json();
 			setContent(post.content || "");

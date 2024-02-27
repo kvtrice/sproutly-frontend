@@ -2,29 +2,41 @@ import React, { useState } from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete, loggedInUserId }) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+const EditCommentNavigation = ({
+	post,
+	setIsDeleteShowing,
+	commentToDelete,
+	setCommentToDelete,
+	loggedInUserId,
+}) => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const nav = useNavigate()
+	const nav = useNavigate();
 
-    const handleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
+	const handleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
 
-    const navigateToEdit = () => {
-        nav(`/comment/${post._id}/edit`)
-    }
+	const navigateToEdit = () => {
+		nav(`/comment/${post._id}/edit`);
+	};
 
-    const handleDeleteWarning = () => {
-        setIsDeleteShowing(true)
-        setCommentToDelete(post._id)
-    }
+	const handleDeleteWarning = () => {
+		setIsDeleteShowing(true);
+		setCommentToDelete((prevCommentToDelete) => {
+			console.log(prevCommentToDelete);
+
+			const newCommentToDelete = post._id;
+			console.log(newCommentToDelete);
+			return newCommentToDelete;
+		});
+	};
 
 	return (
 		<div>
 			<div>
 				{/*  Need to add logic to also check if the comment belongs to the currently logged in user */}
-				{(post.isComment && loggedInUserId === post.user._id) ? (
+				{post.isComment && loggedInUserId === post.user._id ? (
 					<AiOutlineEllipsis
 						size={30}
 						className="post-menu"
@@ -44,10 +56,7 @@ const EditCommentNavigation = ({ post, setIsDeleteShowing, setCommentToDelete, l
 					<p className="menu-button" onClick={navigateToEdit}>
 						Edit Comment
 					</p>
-					<p
-						className="menu-button"
-						onClick={handleDeleteWarning}
-					>
+					<p className="menu-button" onClick={handleDeleteWarning}>
 						Delete Comment
 					</p>
 				</div>

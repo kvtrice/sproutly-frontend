@@ -45,7 +45,7 @@ function App() {
 			user_Id = jwtDecode(token).user_id;
 			setLoggedInUserId(user_Id);
 		} catch (error) {}
-	}, [sessionStorage.getItem("user_id")]);
+	}, [sessionStorage.getItem("user_id")])
 
 	const fetchLoggedInUserData = async (loggedInUserId) => {
 		const res = await fetch(
