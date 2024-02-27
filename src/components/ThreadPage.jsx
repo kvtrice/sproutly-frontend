@@ -63,6 +63,7 @@ function ThreadPage({
 								setPosts={setPosts}
 								isDeleteShowing={isDeleteShowing}
 								setIsDeleteShowing={setIsDeleteShowing}
+								commentToDelete={commentToDelete}
 								setCommentToDelete={setCommentToDelete}
 								loggedInUserId={loggedInUserId}
 								isUserLoggedIn={isUserLoggedIn}

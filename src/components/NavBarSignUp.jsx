@@ -5,12 +5,16 @@ import { Link } from "react-router-dom"
 const NavBarSignUp = () => {
 	return (
 		<div className="signup-buttons">
-			<button className="button is-primary signup">
-				<Link to={`/register`}>
+			<Link to={`/register`}>
+				<button className="button is-primary signup">
 					<strong>Sign up</strong>
-				</Link>
-			</button>
-			<button className="button is-light login"><Link to={`/login`}><strong>Log in</strong></Link></button>
+				</button>
+			</Link>
+			<Link to={`/login`}>
+				<button className="button is-light login">
+					<strong>Log in</strong>
+				</button>
+			</Link>
 		</div>
 	);
 };

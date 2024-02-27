@@ -27,7 +27,7 @@ const EditPost = ({
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
-				`http://127.0.0.1:4001/posts/${postId}`
+				`https://sproutly-api.onrender.com/posts/${postId}`
 			);
 			const post = await response.json();
 			setTitle(post.title || "");

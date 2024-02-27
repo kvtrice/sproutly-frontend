@@ -1,20 +1,24 @@
 import React from "react";
 import "./DiscardWarning.css";
+import CommentContent from "./CommentContent";
 
-const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete, setCommentToDelete }) => {
-    // Id ofthe comment the user is interacting with
-	const commentId = commentToDelete;
-
+const DeleteCommentWarning = ({
+	setIsDeleteShowing,
+	commentToDelete,
+	setCommentToDelete,
+}) => {
 	const handleConfirm = () => {
-		const deleteComment = async (commentId) => {
+		const deleteComment = async () => {
 			try {
 				const result = await fetch(
-					`https://sproutly-api.onrender.com/posts/${commentId}`,
+					`https://sproutly-api.onrender.com/posts/${commentToDelete}`,
 					{
 						method: "DELETE",
 						headers: {
 							"content-Type": "application/json",
-							"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
+							Authorization: `Bearer ${sessionStorage.getItem(
+								"user_id"
+							)}`,
 						},
 					}
 				);
@@ -28,15 +32,20 @@ const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete, setCommentT
 		};
 
 		async function handleDelete() {
-			await deleteComment(commentId);
+			await deleteComment();
+			setCommentToDelete("");
+			setIsDeleteShowing(false);
+
+			// Reload page after deletion
+			window.location.reload();
 		}
 
 		handleDelete();
-		setCommentToDelete("")
+		// setCommentToDelete("");
 
-		setIsDeleteShowing(false);
-		// Reload page after deletion
-		window.location.reload();
+		// setIsDeleteShowing(false);
+		// // Reload page after deletion
+		// // window.location.reload();
 	};
 
 	const handleCancel = () => {

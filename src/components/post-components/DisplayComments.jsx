@@ -14,10 +14,11 @@ function DisplayComments({
 	posts,
 	setPosts,
 	isDeleteShowing,
+	commentToDelete,
 	setIsDeleteShowing,
 	setCommentToDelete,
 	loggedInUserId,
-	isUserLoggedIn
+	isUserLoggedIn,
 }) {
 	const commentsWithParentID = posts.filter(
 		(item) => item.parentID === parentID
@@ -47,6 +48,7 @@ function DisplayComments({
 								setIsDeleteShowing={setIsDeleteShowing}
 								setCommentToDelete={setCommentToDelete}
 								loggedInUserId={loggedInUserId}
+								commentToDelete={commentToDelete}
 							/>
 						</div>
 					</div>
