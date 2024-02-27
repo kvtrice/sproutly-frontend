@@ -11,6 +11,7 @@ import Login from "./src/components/Login";
 import ProfilePage from "./src/components/ProfilePage";
 import EditUserDetails from "./src/components/UserEdit";
 import { jwtDecode } from "jwt-decode";
+import Threads from "./src/components/Threads";
 
 function App() {
 	// State to handle dark mode
@@ -174,7 +175,7 @@ function App() {
 						<Route
 							path=":parentID"
 							element={
-								<ThreadPage
+								<Threads
 									isDark={isDark}
 									setIsDark={setIsDark}
 									loggedInUserPictureUrl={
