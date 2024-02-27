@@ -47,6 +47,7 @@ function DisplayParent({
 							posts={posts}
 							setPosts={setPosts}
 							isUserLoggedIn={isUserLoggedIn}
+							loggedInUserId={loggedInUserId}
 						/>
 						<CommentsCount posts={posts} parentID={parent._id} />
 					</div>
