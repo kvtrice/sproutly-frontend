@@ -43,7 +43,6 @@ describe('PostTag Component', () => {
 
 
   it('renders the post tags', () => {
-    console.log(document.innerHTML)
     expect(document.querySelector("div")).toHaveTextContent("Boston fern")
     expect(document.querySelector("div")).toHaveTextContent("Fiddle leaf fig")
     expect(document.querySelector("div")).toHaveTextContent("Calathea")
