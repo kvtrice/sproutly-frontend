@@ -15,8 +15,7 @@ function LikeButton({ post, posts, setPosts, isUserLoggedIn }) {
 	let user_Id;
 	// it has to be in a try block since if token is null and user are not logged in yet it will throw an error directly and break the page
 	try {
-		user_Id = jwtDecode(token).user_id;
-		console.log(user_Id);
+		user_Id = jwtDecode(token).user_id
 	} catch (error) {}
 
 	useEffect(() => {

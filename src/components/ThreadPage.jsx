@@ -15,10 +15,10 @@ function ThreadPage({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) {
-	const { parentID } = useParams();
+	const { parentID } =  useParams();
 	const [posts, setPosts] = useState([]);
-	const [commentToDelete, setCommentToDelete] = useState("");
-	const [isDeleteShowing, setIsDeleteShowing] = useState(false);
+	const [commentToDelete, setCommentToDelete] = useState("")
+	const [isDeleteShowing, setIsDeleteShowing] = useState(false)
 
 	useEffect(() => {
 		fetchAllPostData()
