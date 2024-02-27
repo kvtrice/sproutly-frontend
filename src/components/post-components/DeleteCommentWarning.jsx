@@ -1,7 +1,7 @@
 import React from "react";
 import "./DiscardWarning.css";
 
-const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete }) => {
+const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete, setCommentToDelete }) => {
     // Id ofthe comment the user is interacting with
 	const commentId = commentToDelete;
 
@@ -32,6 +32,7 @@ const DeleteCommentWarning = ({ setIsDeleteShowing, commentToDelete }) => {
 		}
 
 		handleDelete();
+		setCommentToDelete("")
 
 		setIsDeleteShowing(false);
 		// Reload page after deletion
