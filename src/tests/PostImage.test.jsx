@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom"
 import { render} from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import PostText from "../components/post-components/PostText"
+import PostImage from "../components/post-components/PostImage"
 
 
 const mockPost = [
@@ -40,10 +40,11 @@ describe('PostText Component', () => {
 
     document = render(
     //have to pass the index of the single post object for it to render properly
-    <PostText post={mockPost[0]} /> ).container
+    <PostImage post={mockPost[0]} /> ).container
 
 
   it('renders the post content', () => {
-    expect(document.querySelector("p")).toHaveTextContent("I don't understand why it's dying - help!!")
+    const imageElement = document.querySelector("img");
+    expect(imageElement).toHaveAttribute("src", "https://images.pexels.com/photos/1407305/pexels-photo-1407305.jpeg")
   })
 })
