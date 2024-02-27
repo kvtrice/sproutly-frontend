@@ -113,7 +113,7 @@ const EditUserDetails = ({
 
 					<div className="old-new-password">
 						<div className="field old-password">
-							<label className="text old-password">
+							<label className="text">
 								Confirm old password
 							</label>
 							<OldPassword
