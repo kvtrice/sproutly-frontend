@@ -10,6 +10,8 @@ function SortFilter({
 	const [sortOrder, setSortOrder] = useState("ascending");
 	// const [sortedPosts, setSortedPosts] = useState([])
 
+	console.log(setPosts)
+	console.log(posts)
 	// Update the sortedPosts when the sortOrder ot filtered plantTags Changes
 	useEffect(() => {
 		const sortedData = [...posts].sort((a, b) => {
