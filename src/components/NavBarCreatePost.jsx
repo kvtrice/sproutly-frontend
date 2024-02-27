@@ -1,11 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const NavBarCreatePost = () => {
+
+	const nav = useNavigate();
+
+	const handleNavigateToCreatePost = () => {
+		nav("/post/new");
+	};
+
 	return (
 		<div>
-			<a href="/post/new">
-				<button className="button is-primary">Create Post</button>
-			</a>
+			<button
+				onClick={handleNavigateToCreatePost}
+				className="button is-primary"
+			>
+				Create Post
+			</button>
 		</div>
 	);
 };

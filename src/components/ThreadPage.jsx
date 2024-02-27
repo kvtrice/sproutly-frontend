@@ -5,6 +5,7 @@ import DisplayParent from './post-components/DisplayParent'
 import AddComment from './post-components/AddComment'
 import NavBar from "./NavBar";
 import DeleteCommentWarning from './post-components/DeleteCommentWarning'
+import CommentContent from './post-components/CommentContent';
 
 
 function ThreadPage({
@@ -20,15 +21,14 @@ function ThreadPage({
 	const [isDeleteShowing, setIsDeleteShowing] = useState(false)
 
 	useEffect(() => {
-		fetchAllPostData().then((data) => {
-			setPosts(data)
-		})
+		fetchAllPostData()
+			.then((data) => {setPosts(data)})
 	}, [])
 
 	async function fetchAllPostData() {
-		const response = await fetch("https://sproutly-api.onrender.com/posts/");
+		const response = await fetch("https://sproutly-api.onrender.com/posts/")
 		const data = await response.json()
-		return data;
+		return data
 	}
 
 	return (
@@ -79,6 +79,7 @@ function ThreadPage({
 							<DeleteCommentWarning
 								setIsDeleteShowing={setIsDeleteShowing}
 								commentToDelete={commentToDelete}
+								setCommentToDelete={setCommentToDelete}
 							/>
 						)}
 					</div>

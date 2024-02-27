@@ -200,6 +200,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 0.5rem;
+    color: var(--primary-button-text-color)
+}
+
+.post-title:hover {
+    cursor: pointer;
 }
 
 .post-text {
