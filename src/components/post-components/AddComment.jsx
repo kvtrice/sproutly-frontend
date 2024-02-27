@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CommentContent from "./CommentContent";
 import { IoMdSend } from "react-icons/io";
 import "./AddComment.css";
@@ -12,6 +12,11 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 	const [isUploadShowing, setIsUploadShowing] = useState(false);
 	const [error, setError] = useState("");
 	const commentWrapperRef = useRef(null);
+	const nav = useNavigate()
+
+	const handleReturnToParent = () => {
+		nav(`/post/${parentID}`)
+	}
 
 	// Add Comment function
 	async function addComment(content, imageUrl) {
@@ -37,8 +42,12 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			body: JSON.stringify(newComment),
 		});
 
-		const commentData = await result.json();
-		setPosts([...posts, commentData]);
+		if (result.ok) {
+			const commentData = await result.json();
+			setPosts([...posts, commentData]);
+		} else {
+			throw new Error("Failed to add comment")
+		}
 	}
 
 	// Create Comment only if there's some Content entered (mandatory)
@@ -49,9 +58,9 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			// Clear post entry fields
 			setContent("");
 			setImageUrl("");
-
-			// Reload page after submit to display new comment
-			window.location.reload();
+			setError("")
+			setIsUploadShowing(false)
+			handleReturnToParent()
 		} else {
 			setError("Comment must contain text");
 		}
