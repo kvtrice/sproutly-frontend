@@ -14,20 +14,20 @@ function ThreadPage({
 	loggedInUserPictureUrl,
 	loggedInUserId,
 }) {
-	const { parentID } = useParams();
+	const { parentID } =  useParams();
 	const [posts, setPosts] = useState([]);
-	const [commentToDelete, setCommentToDelete] = useState("");
-	const [isDeleteShowing, setIsDeleteShowing] = useState(false);
+	const [commentToDelete, setCommentToDelete] = useState("")
+	const [isDeleteShowing, setIsDeleteShowing] = useState(false)
 
 	useEffect(() => {
 		fetchAllPostData().then((data) => {
-			setPosts(data);
-		});
-	}, []);
+			setPosts(data)
+		})
+	}, [])
 
 	async function fetchAllPostData() {
 		const response = await fetch("https://sproutly-api.onrender.com/posts/");
-		const data = await response.json();
+		const data = await response.json()
 		return data;
 	}
 
