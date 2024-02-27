@@ -57,10 +57,10 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			e.preventDefault();
 			await addComment(content, imageUrl);
 			// Clear post entry fields
-			setContent("");
-			setImageUrl("");
+			setContent("")
+			setImageUrl("")
 			setIsUploadShowing(false)
-			// handleReturnToParent()
+			window.location.reload()
 		} else {
 			setError("Comment must contain text");
 		}
