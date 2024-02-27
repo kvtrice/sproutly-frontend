@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CreatePost from "./src/components/post-components/CreatePost";
-import Home from "./src/components/Home";
-import ThreadPage from './src/components/ThreadPage'
-import EditPost from "./src/components/post-components/EditPost";
-import EditComment from "./src/components/post-components/EditComment";
+import CreatePost from "./post-components/CreatePost";
+import Home from "./Home";
+import ThreadPage from './ThreadPage'
+import EditPost from "./post-components/EditPost";
+import EditComment from "./post-components/EditComment";
 import useLocalStorage from "use-local-storage";
 import { useState, useEffect } from "react";
-import RegisterUser from "./src/components/RegisterUser";
-import Login from "./src/components/Login";
-import ProfilePage from "./src/components/ProfilePage";
-import EditUserDetails from "./src/components/UserEdit";
+import RegisterUser from "./RegisterUser";
+import Login from "./Login";
+import ProfilePage from "./ProfilePage";
+import EditUserDetails from "./UserEdit";
 import { jwtDecode } from "jwt-decode";
 
 function App() {
