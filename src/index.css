@@ -235,6 +235,10 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
+.comment-text {
+    color: var(--primary-button-text-color);
+}
+
 .edit-menu-container {
     background-color: var(--input-bg-color);
     border: 1px solid var(--border-color);
