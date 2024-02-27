@@ -17,6 +17,7 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 	const handleReturnToParent = () => {
 		nav('/')
 		nav(`/post/${parentID}`)
+		window.location.reload()
 	}
 
 	// Add Comment function
@@ -61,7 +62,6 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			setImageUrl("");
 			setIsUploadShowing(false)
 			handleReturnToParent()
-			window.location.reload()
 		} else {
 			setError("Comment must contain text");
 		}
