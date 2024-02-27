@@ -45,6 +45,6 @@ describe('PostText Component', () => {
 
   it('renders the post content', () => {
     console.log(document.innerHTML)
-    expect(document.querySelector("div")).toHaveTextContent("Monstera")
+    expect(document.querySelector("p")).toHaveTextContent("I don't understand why it's dying - help!!")
   })
 })
