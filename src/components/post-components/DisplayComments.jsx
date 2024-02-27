@@ -61,6 +61,7 @@ function DisplayComments({
 						posts={posts}
 						setPosts={setPosts}
 						isUserLoggedIn={isUserLoggedIn}
+						loggedInUserId= {loggedInUserId}
 					/>
 				</div>
 			))}

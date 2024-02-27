@@ -39,7 +39,7 @@ const DisplayPost = ({
 					<PostImage post={post} />
 				</div>
 				<div className="post-interaction">
-					<LikeButton post={post} posts={posts} setPosts={setPosts} isUserLoggedIn={isUserLoggedIn}/>
+					<LikeButton post={post} posts={posts} setPosts={setPosts} isUserLoggedIn={isUserLoggedIn} loggedInUserId={loggedInUserId}/>
 					<CommentsCount posts={posts} parentID={post._id} />
 				</div>
 			</div>

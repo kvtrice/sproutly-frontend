@@ -1,10 +1,10 @@
 import { render, screen,fireEvent } from "@testing-library/react"
 import { describe, it, expect } from "vitest"
 import "@testing-library/jest-dom"
-import SortFilter from "../components/post-components/SortFilter"
+import SortFilter from "../compo/post-components/SortFilter"
 
 describe("SortFilter component", () => {
-  it("renders correctly with 'Newest to Oldest'", () => {
+  it("renders correctly with 'Newest to Oldest' button ", () => {
 
     const mockPosts = [
       {
@@ -76,7 +76,7 @@ describe("SortFilter component", () => {
 })
 
 describe("SortFilter component", () => {
-  it("changes the order of setPosts when sorting button is clicked", () => {
+  it("Changes the order of setPosts when sorting button is clicked", () => {
 
     const mockPosts = [
       {
