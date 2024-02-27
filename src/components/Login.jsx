@@ -43,14 +43,15 @@ const Login = ({
 			} else {
 				const payload = await putLogin.json();
 				sessionStorage.setItem("user_id", payload.token);
+				nav(`/`)
+				//trigger a reload of the home page after navigating, without it the components that are meant to show if you log in after navigation from login won't show.
+				window.location.reload()
 			}
 		} catch (err) {
 			console.log(err.message);
 		}
-		nav(`/`)
-		//trigger a reload of the home page after navigating, without it the components that are meant to show if you log in after navigation from login won't show.
-		window.location.reload()
 	}
+
 
 	return (
 		<>

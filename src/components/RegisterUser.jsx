@@ -54,11 +54,12 @@ const RegisterUser = ({
 					if (error.includes("Password")) setPasswordError(error)
 					if (error.includes("required")) setUsernameError(error)
 				})
+			} else {
+				nav(`/login`)
 			}
 		} catch (err) {
 			console.error(err.message)
 		}
-		nav(`/login`)
 	}
 
 	return (
