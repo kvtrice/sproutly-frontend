@@ -35,7 +35,7 @@ const mockPost = [
       }
 ]
 
-describe('PostText Component', () => {
+describe('PostImage Component', () => {
   let document
 
     document = render(
@@ -43,8 +43,8 @@ describe('PostText Component', () => {
     <PostImage post={mockPost[0]} /> ).container
 
 
-  it('renders the post content', () => {
-    const imageElement = document.querySelector("img");
+  it('renders the post Image', () => {
+    const imageElement = document.querySelector("img")
     expect(imageElement).toHaveAttribute("src", "https://images.pexels.com/photos/1407305/pexels-photo-1407305.jpeg")
   })
 })
