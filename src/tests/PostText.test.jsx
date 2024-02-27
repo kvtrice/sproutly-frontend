@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom"
 import { render} from "@testing-library/react"
-import { describe, expect, it, beforeEach } from "vitest"
+import { describe, expect, it } from "vitest"
 import PostText from "../components/post-components/PostText"
 
 
-const mockPosts = [
+const mockPost = [
     {
         "_id": "65d469278aaa81f8f6af849d",
         "user": {
@@ -39,8 +39,8 @@ describe('PostText Component', () => {
   let document
 
     document = render(
-        //have to pass the index of the post object for it to render properly
-    <PostText post={mockPosts[0]} /> ).container
+    //have to pass the index of the single post object for it to render properly
+    <PostText post={mockPost[0]} /> ).container
 
 
   it('renders the post content', () => {
