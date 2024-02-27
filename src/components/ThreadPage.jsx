@@ -22,13 +22,13 @@ function ThreadPage({
 
 	useEffect(() => {
 		fetchAllPostData()
-			.then((data) => {setPosts(data);})
-	}, []);
+			.then((data) => {setPosts(data)})
+	}, [])
 
 	async function fetchAllPostData() {
-		const response = await fetch("https://sproutly-api.onrender.com/posts/");
-		const data = await response.json();
-		return data;
+		const response = await fetch("https://sproutly-api.onrender.com/posts/")
+		const data = await response.json()
+		return data
 	}
 
 	return (
@@ -79,6 +79,7 @@ function ThreadPage({
 							<DeleteCommentWarning
 								setIsDeleteShowing={setIsDeleteShowing}
 								commentToDelete={commentToDelete}
+								setCommentToDelete={setCommentToDelete}
 							/>
 						)}
 					</div>

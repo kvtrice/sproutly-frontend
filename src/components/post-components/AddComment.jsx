@@ -12,13 +12,12 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 	const [isUploadShowing, setIsUploadShowing] = useState(false);
 	const [error, setError] = useState("");
 	const commentWrapperRef = useRef(null);
-	const nav = useNavigate()
+	// const nav = useNavigate()
 
-	const handleReturnToParent = () => {
-		nav('/')
-		nav(`/post/${parentID}`)
-		window.location.reload()
-	}
+	// const handleReturnToParent = () => {
+	// 	nav('/')
+	// 	nav(`/post/${parentID}`)
+	// }
 
 	// Add Comment function
 	async function addComment(content, imageUrl) {
@@ -61,7 +60,7 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			setContent("");
 			setImageUrl("");
 			setIsUploadShowing(false)
-			handleReturnToParent()
+			// handleReturnToParent()
 		} else {
 			setError("Comment must contain text");
 		}
