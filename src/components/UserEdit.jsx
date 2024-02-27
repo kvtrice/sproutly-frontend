@@ -36,7 +36,7 @@ const EditUserDetails = ({
 			const data = await response.json()
 			SetUsername(data.username);
 			setSelectedPlantTags(data.plants || []);
-			setImageUrl(data.profilePicture || "https://res.cloudinary.com/djtgmjm16/image/upload/v1708990921/logos/Sproutly_oy8o8l.png")
+			setImageUrl(data.profilePicture || "https://pics.craiyon.com/2023-07-02/fa5dc6ea1a0d4c6fa9294b54c6edf1e9.webp")
 		}
 		fetchPost()
 	}, [loggedInUserId])

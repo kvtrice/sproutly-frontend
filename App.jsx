@@ -18,7 +18,7 @@ function App() {
 	const [loggedInUserId, setLoggedInUserId] = useState("");
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 	const [loggedInUserPictureUrl, setLoggedInUserPictureUrl] = useState(
-		"https://res.cloudinary.com/djtgmjm16/image/upload/v1708990921/logos/Sproutly_oy8o8l.png"
+		"https://pics.craiyon.com/2023-07-02/fa5dc6ea1a0d4c6fa9294b54c6edf1e9.webp"
 	);
 
 	// Update the background for root element for the entire application (HTML tag)
