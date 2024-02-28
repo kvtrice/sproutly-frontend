@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest"
 import PostTag from "../components/post-components/PostTag"
 
 
-const mockPost = [
+const mockPost = 
     {
         "_id": "65d52727f8f2d25e2d002988",
         "user": {
@@ -33,13 +33,13 @@ const mockPost = [
         "createdDateTime": "2024-02-20T22:26:47.071Z",
         "__v": 0
       }
-  ]
+  
 
 describe('PostTag Component', () => {
   let document
 
     document = render(
-    <PostTag post={mockPost[0]} /> ).container
+    <PostTag post={mockPost} /> ).container
 
 
   it('renders the post tags', () => {
