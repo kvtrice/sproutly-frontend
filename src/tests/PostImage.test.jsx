@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest"
 import PostImage from "../components/post-components/PostImage"
 
 
-const mockPost = [
+const mockPost = 
     {
         "_id": "65d469278aaa81f8f6af849d",
         "user": {
@@ -33,14 +33,14 @@ const mockPost = [
         "createdDateTime": "2024-02-20T08:56:07.925Z",
         "__v": 0
       }
-]
+
 
 describe('PostImage Component', () => {
   let document
 
     document = render(
-    //have to pass the index of the single post object for it to render properly
-    <PostImage post={mockPost[0]} /> ).container
+
+    <PostImage post={mockPost} /> ).container
 
 
   it('renders the post Image', () => {

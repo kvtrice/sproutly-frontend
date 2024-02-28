@@ -138,21 +138,23 @@ describe("SortFilter component", () => {
       }
     ]
 
-    let callCount = 0;
-    let calledWith = null;
+    // variable that keeps track of how mnay times the mockSetPost is called. It is called twice since the sortOrder is asceding and then a 
+    //second time when we filtered from Newest to Older
+    let callCount = 0
+    // this allowed us to store the value of MockSetPost during the sorting
+    let calledWith = null
     
-    // Define your mock function
     const mockSetPosts = (...args) => {
-      callCount++;
-      calledWith = args;
+      callCount++
+      calledWith = args
     }
     
-    render(<SortFilter posts={mockPosts} setPosts={mockSetPosts} sortOrder="ascending " />)
+    render(<SortFilter posts={mockPosts} setPosts={mockSetPosts} sortOrder="ascending" />)
     const sortingButton = screen.getByText("Newest to Oldest")
     fireEvent.click(sortingButton)
     
-    // Check the call count and arguments
-    expect(callCount).toBe(2);
+
+    expect(callCount).toBe(2)
     expect(calledWith).toEqual([[
 
       {
