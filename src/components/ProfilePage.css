@@ -8,6 +8,12 @@
     padding: 1.5rem;
 }
 
+.plants-owned-text {
+    font-size: 14px;
+    padding-bottom: 0.5rem;
+    padding-left: 0.1rem;
+}
+
 .profile-details-container {
     margin-bottom: 2rem;
     display: flex;
@@ -28,7 +34,11 @@
 .profile-likes-count-container {
     display: flex;
     flex-direction: column;
+    padding: 1.5rem;
     margin-right: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .profile-reactions-count {
@@ -38,6 +48,26 @@
 }
 
 .profile-reactions-text {
+    text-align: center;
     color: var(--primary-text-color);
 }
 
+@media screen and (max-width: 500px) {
+    .profile-details, .profile-likes-count-container {
+        padding: 0.5rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .plants-owned-text {
+        text-align: center;
+    }
+
+    .profile-likes-count-container {
+        margin-right: 0;
+    }
+}

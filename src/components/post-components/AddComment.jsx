@@ -12,12 +12,6 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 	const [isUploadShowing, setIsUploadShowing] = useState(false);
 	const [error, setError] = useState("");
 	const commentWrapperRef = useRef(null);
-	// const nav = useNavigate()
-
-	// const handleReturnToParent = () => {
-	// 	nav('/')
-	// 	nav(`/post/${parentID}`)
-	// }
 
 	// Add Comment function
 	async function addComment(content, imageUrl) {
@@ -88,32 +82,41 @@ const AddComment = ({ parentID, loggedInUserId }) => {
 			ref={commentWrapperRef}
 			onClick={() => setIsUploadShowing(true)}
 		>
-			<div className="comment-elements">
+			<div
+				className={
+					isUploadShowing
+						? "comment-elements-expanded"
+						: "comment-elements"
+				}
+			>
 				<div className="always-visible">
-					<CommentContent
-						content={content}
-						setContent={setContent}
-						setIsUploadShowing={setIsUploadShowing}
-						isUploadShowing={isUploadShowing}
-					/>
-					<div className="send-icon-container">
-						<IoMdSend
-							className="send-icon"
-							size={25}
-							onClick={createNewComment}
-						/>
-					</div>
-				</div>
-				<div className="error-container">{error && <p className="error-message">{error}</p>}</div>
-				{isUploadShowing ? (
-					<div className="add-image-to-comment-container">
-						<ImageUpload
-							onClick={(e) => e.preventDefault()}
-							setImageUrl={setImageUrl}
+					<div className="comment-content">
+						<CommentContent
+							content={content}
+							setContent={setContent}
 							setIsUploadShowing={setIsUploadShowing}
 							isUploadShowing={isUploadShowing}
 						/>
 					</div>
+					<div
+						className="send-icon-container"
+						onClick={createNewComment}
+					>
+						<IoMdSend className="send-icon" size={30} />
+					</div>
+				</div>
+				<div className="error-container">
+					{error && <p className="error-message">{error}</p>}
+				</div>
+				{isUploadShowing ? (
+						<div className="add-image-to-comment-container">
+							<ImageUpload
+								onClick={(e) => e.preventDefault()}
+								setImageUrl={setImageUrl}
+								setIsUploadShowing={setIsUploadShowing}
+								isUploadShowing={isUploadShowing}
+							/>
+						</div>
 				) : (
 					""
 				)}

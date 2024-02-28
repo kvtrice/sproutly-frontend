@@ -1,7 +1,6 @@
 .page-wrapper {
     margin-top: 50px;
 }
-
 form {
     padding-top: 1rem;
 }
@@ -38,4 +37,10 @@ li {
 .post-error-container p {
     color: var(--danger-button-bg-color);
     font-size: 0.8rem;
+}
+
+@media screen and (max-width: 600px) {
+    .component-wrapper .create-post-section {
+        padding: 1rem 0.5rem;
+    }
 }

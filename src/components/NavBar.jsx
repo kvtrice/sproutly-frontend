@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import NavBarSignUp from "./NavBarSignUp";
@@ -34,6 +34,25 @@ const NavBar = ({
 	const handleNavigateUserViewProfile = () => {
 		navigate(`/user/${loggedInUserId}`);
 	};
+
+	const handleNavigateHome = () => {
+		navigate("/");
+	};
+
+	useEffect(() => {
+		const handleResize = () => {
+			// Close the mobile menu if the screen width is greater 1024 (tablet size)
+			if (window.innerWidth > 1024) {
+				setNav(false);
+			}
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
 	return (
 		// Desktop Nav
@@ -149,6 +168,12 @@ const NavBar = ({
 								</div>
 								<div className="user-menu-container">
 									<p
+										onClick={handleNavigateHome}
+										className="menu-link"
+									>
+										Home
+									</p>
+									<p
 										onClick={handleNavigateUserViewProfile}
 										className="menu-link"
 									>
@@ -163,8 +188,16 @@ const NavBar = ({
 								</div>
 							</div>
 						) : (
-							<div className="signup-buttons-container-mob">
-								<NavBarSignUp />
+							<div>
+								<p
+									onClick={handleNavigateHome}
+									className="menu-link"
+								>
+									Home
+								</p>
+								<div className="signup-buttons-container-mob">
+									<NavBarSignUp />
+								</div>
 							</div>
 						)}
 					</div>
