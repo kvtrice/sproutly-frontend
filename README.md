@@ -3,7 +3,7 @@
 A full stack web application by **Alice Tram & Katrice Mountford**
 
 ## Links
-- [Sproutly Deployed Website](https://sproutly-five.vercel.app)
+- [Sproutly Deployed Website](https://sproutlyapp.vercel.app/)
 - [Sproutly Deployed API](https://sproutly-api.onrender.com)
 - [Backend Github Repo](https://github.com/alicetra/Plant-Forum-Backend)
 - [Frontend Github Repo](https://github.com/kvtrice/sproutly-frontend)
