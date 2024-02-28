@@ -1,10 +1,13 @@
 # Sproutly 🌱
 
-A full stack web application by **Alice Tram, Katrice Mountford & Ali Eideh**
+A full stack web application by **Alice Tram & Katrice Mountford**
 
 ## Links
+- [Sproutly Deployed Website](https://sproutly-five.vercel.app)
+- [Sproutly Deployed API](https://sproutly-api.onrender.com)
 - [Backend Github Repo](https://github.com/alicetra/Plant-Forum-Backend)
 - [Frontend Github Repo](https://github.com/kvtrice/sproutly-frontend)
+- [Link to Trello Board](https://trello.com/b/wTWqIemQ/alice-kat) 
 
 # Table of Contents
 - [General](#general)
@@ -16,7 +19,13 @@ A full stack web application by **Alice Tram, Katrice Mountford & Ali Eideh**
 - [Application Architecture Diagram](#application-architecture-diagram)
 - [User Stories](#user-stories)
 - [Wireframes](#wireframes)
+- [User Testing](#user-testing)
+  - [Development Environment](#development-environment)
+  - [Production Environment](#production-environment)
 - [Development Plan (Trello Board)](#trello-board)
+  - [Part A](#part-a)
+  - [Part B](#part-b)
+- [Development Plan (Stand-ups)](#stand-ups)
 - [References](#references)
 
 
@@ -50,13 +59,14 @@ Sproutly is a solution to this problem, providing a unified forum platform where
 - All Users ware able to search threads universally by tags.
 - All users are able to filter their homepage by date. This will be a limited choice between either ascending or descending order. This functionality also extends to comments on thread posts.
 
-
 **Reactions**
 - Users that are logged in are able to react (e.g. 'like') to comments and thread posts.
 - All users are able to view the number of reactions on a given thread post or comment.
 
 **Infinite scroll**
-- To enhance the user experience we will implement an infinite scroll feature on the user home page rather than pagination. This is in line with current industry standards and is a common user flow in similar applications in the market today.
+- To enhance the user experience we will implement an infinite scroll feature on the user home page rather than pagination. This is in line with current industry standards and is a common user flow in similar applications in the market today. 
+
+*Update: Due to time constrain infinite scroll was taken out of the scope of our project*
 
 **Dark Mode**
 - To enhance user experience and prevent eyestrain we will implement a dark mode option which is a very popular web design feature.
@@ -86,6 +96,45 @@ React is a frontend Javascript library that will enable us to build dynamic user
 #### Node.js
 Node.js is a server-side JavaScript runtime that enables the running of JavaScript code outside of a web browser. It provides an event-driven, non-blocking model, making it efficient for handling asynchronous requests. Node.js will be used alongside Express.js to help develop our server-side tasks.
 
+## Project libraries
+
+#### bcrypt
+Used to safety hash and salt user password.
+
+#### cors
+Middleware that enable cross-origin resource sharing to allow us to connect our api with our frontend in development and production environment.
+
+#### dotenv
+Allowed us to load environment variables in an .env file and protect app secret keys and configurations 
+
+#### jsonwebtoken
+Used as a library to create and verify JWT for stateless and safe authentication. 
+
+#### mongoose
+Allowed us to do object modeling and enforce structure and validation on our MongoDB collections.
+
+#### react-router-dom & react router dom
+Enable client-side navigation for our react application. 
+
+#### Jest & SuperTest
+Javascript formal testing frameworks. We used it extensively to for backing testings.
+
+#### React Icons
+A library that provided us with our thumb up icon to used within our react component 
+
+#### Bulma
+Used as a frontend CSS framework. Bulma provided a base for our styles to which we then added custom CSS on top of in order to create a bespoke design suitable for our target audience.
+
+#### jwt-decode
+A javascript library that was used to decode our JWT in our react application. It allowed us to extract the payload information from the provided JWT.
+
+#### Cloudinary
+Cloud-based platform that we used to managed the upload of our images.
+
+#### Testing Library & Vitest
+Testing libraries for React component. It integrate Jest and allowed us to replicate user-experience formally in a testing environment.
+
+
 # Data Flow Diagrams
 We developed a Level 0 Data Flow Diagram (DFD) in the context of our project to provide an overarching view of our data. This highest level DFD represents major processes, data flows, and database within the system without delving into their intricate details.
 
@@ -100,6 +149,7 @@ The need for flexibility drives our choice to utilize a Level 0 DFD: we aim to g
 ![Alt text](docs/part-a/Dataflow/Filtering.svg)
 ![Alt text](docs/part-a/Dataflow/Liking.svg)
 ![Alt text](docs/part-a/Dataflow/Picture.svg)
+*Update: This diagram no longer reflect the image dataflow. We went with Cloudinary as a host cloud image. Therefore the image gets directly uploaded to their database,bypassing ours first and then the URL is returned directly from Cloudinary to our database*
 ![Alt text](docs/part-a/Dataflow/Thread.svg)
 ![Alt text](docs/part-a/Dataflow/User.svg)
 ![Alt text](docs/part-a/Dataflow/View.svg)
@@ -202,7 +252,9 @@ Upon discussion and further development of our ideas, the need to delineate spec
 
 - As a *registered Sproutly user*, I would like to be able to edit my profile on a dedicated page, in a manner familiar to me (i.e. exact fields and presentation of the sign-up page), so that I can keep my profile relevant and my plant keeping record up to date.
 
-- As a *registered Sproutly user* with a desire to delete my profile, I would like an option on the edit profile page to facilitate this, so that I can erase my data from the forum and leave the community if I so choose.
+- As a *registered Sproutly user* with a desire to delete my profile, I would like an option on the edit profile page to facilitate this, so that I can erase my data from the forum and leave the community if I so choose.  
+
+  *Update: Due to time constrain we have removed the user ablity to delete their account*
 
 - As a *browser* or *registered user* who is interested in a particular user's contributions, I would like to be able to view a page dedicated to their post history and total like count, so that I can view their contributions and engage more deeply with the community.
 
@@ -276,9 +328,44 @@ All users are able to view another users public profile through clicking on thei
 
 ![Alt text](docs/part-a/Wireframes/Annotated/11-view-profile.png)
 
+# User Testing
+
+## Development Environment
+Before deployment we conducted the following testing scenarios based on our user stories in order to determine whether we had full app functionality completed.
+
+![Alt text](docs/part-b/Testing/Dev-Environment/dev-1.jpg)
+![Alt text](docs/part-b/Testing/Dev-Environment/dev-2.jpg)
+![Alt text](docs/part-b/Testing/Dev-Environment/dev-3.jpg)
+
+
+## Production Environment
+Once we were comfortable that we'd met user needs based on our user stories we deployed out application and conducted thorough user testing. Below are the testing frameworks provided to the users. We conducted testing across both logged in and not logged in users ('browsers') as well as across both desktop and mobile devices.
+
+### User 1 - Browser (Not logged in)
+![Alt text](docs/part-b/Testing/Production-Environment/user1/browser/browser-1-1.jpg)
+![Alt text](docs/part-b/Testing/Production-Environment/user1/browser/browser-1-2.jpg)
+
+### User 1 - Logged In
+![Alt text](docs/part-b/Testing/Production-Environment/user1/logged-in/loggedin-1-1.jpg)
+![Alt text](docs/part-b/Testing/Production-Environment/user1/logged-in/loggedin-1-2.jpg)
+![Alt text](docs/part-b/Testing/Production-Environment/user1/logged-in/loggedin-1-3.jpg)
+
+### User 2 - Browser (Not logged in)
+![Alt text](docs/part-b/Testing/Production-Environment/user2/browser/browser-2-1.jpg)
+![Alt text](docs/part-b/Testing/Production-Environment/user2/browser/browser-2-2.jpg)
+
+
+### User 2 - Logged In
+![Alt text](docs/part-b/Testing/Production-Environment/user2/logged-in/loggedin-2-1.jpg)
+![Alt text](docs/part-b/Testing/Production-Environment/user2/logged-in/loggedin-2-2.jpg)
+![Alt text](docs/part-b/Testing/Production-Environment/user2/logged-in/loggedin-2-3.jpg)
+
+
 # Trello Board
 
-Link to live board
+## Part A
+
+[Link to Trello Board](https://trello.com/b/wTWqIemQ/alice-kat)
 
 ### Friday 9 Feb
 ![Alt text](docs/part-a/Trello/Alice/09022024AT1.JPG)
@@ -311,8 +398,101 @@ Link to live board
 ![Alt text](docs/part-a/Trello/Alice/15022024AT.JPG)
 ![Alt text](docs/part-a/Trello/Alice/15022024AT1.JPG)
 
+## Part B
+
 ### Friday 16 Feb
 ![Alt text](docs/part-a/Trello/Kat/fri-16-feb/16-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Alice/16022024.PNG)
+![Alt text](docs/part-b/Trello/Kat/16-feb-fri/feb-16-2.jpg)
+![Alt text](docs/part-b/Trello/Kat/16-feb-fri/feb-16-3.jpg)
+
+### Monday 19 Feb
+![Alt text](docs/part-b/Trello/Alice/190202024.PNG)
+![Alt text](docs/part-b/Trello/Alice/19022024p2.PNG)
+![Alt text](docs/part-b/Trello/Alice/19022024p1.PNG)
+![Alt text](docs/part-b/Trello/Kat/19-feb-mon/19-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/19-feb-mon/19-feb-2.jpg)
+![Alt text](docs/part-b/Trello/Kat/19-feb-mon/19-feb-3.jpg)
+![Alt text](docs/part-b/Trello/Kat/19-feb-mon/19-feb-4.jpg)
+
+### Tuesday 20 Feb
+![Alt text](docs/part-b/Trello/Alice/20022024.PNG)
+![Alt text](docs/part-b/Trello/Alice/20022024p1.PNG)
+![Alt text](docs/part-b/Trello/Kat/20-feb-tue/20-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/20-feb-tue/20-feb-2.jpg)
+![Alt text](docs/part-b/Trello/Kat/20-feb-tue/20-feb-3.jpg)
+![Alt text](docs/part-b/Trello/Kat/20-feb-tue/20-feb-4.jpg)
+
+### Wednesday 21 Feb
+![Alt text](docs/part-b/Trello/Kat/21-feb-wed/21-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/21-feb-wed/21-feb-2.jpg)
+![Alt text](docs/part-b/Trello/Kat/21-feb-wed/21-feb-3.jpg)
+
+### Thursday 22 Feb
+![Alt text](docs/part-b/Trello/Alice/22022024p1.PNG)
+![Alt text](docs/part-b/Trello/Kat/22-feb-thur/22-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/22-feb-thur/22-feb-2.jpg)
+
+### Friday 23 Feb
+![Alt text](docs/part-b/Trello/Alice/23022024.PNG)</br> 
+![Alt text](docs/part-b/Trello/Alice/23022024p3.PNG)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-2.jpg)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-3.jpg)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-4.jpg)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-5.jpg)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-6.jpg)
+![Alt text](docs/part-b/Trello/Kat/23-feb-fri/23-feb-7.jpg)
+
+### Saturday 24 Feb
+![Alt text](docs/part-b/Trello/Alice/24022024.PNG)
+
+### Sunday 25 Feb
+![Alt text](docs/part-b/Trello/Kat/25-feb-sun/25-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/25-feb-sun/25-feb-2.jpg)
+
+### Monday 26 Feb
+![Alt text](docs/part-b/Trello/Alice/26022024.PNG)
+![Alt text](docs/part-b/Trello/Kat/26-feb-mon/26-feb-1.jpg)
+![Alt text](docs/part-b/Trello/Kat/26-feb-mon/26-feb-2.jpg)
+![Alt text](docs/part-b/Trello/Kat/26-feb-mon/26-feb-3.jpg)
+![Alt text](docs/part-b/Trello/Kat/26-feb-mon/26-feb-4.jpg)
+
+### Tuesday 27 Feb
+![Alt text](docs/part-b/Trello/Alice/27022027.PNG)
+![Alt text](docs/part-b/Trello/Kat/27-feb-tue/27-feb-1.jpg)
+
+### Wednesday 28 Feb
+![Alt text](docs/part-b/Trello/Alice/28022024.PNG)
+![Alt text](docs/part-b/Trello/Alice/28022024p1.PNG)
+![Alt text](docs/part-b/Trello/Kat/28-feb-wed/28-feb-wed.jpg)
+
+# Stand-ups 
+As part of our agile methodology project management, we participated in daily-stands as a team. We would meet daily at 9am on discord to discuss and share what each members did yesterday, what struggles if any we were encountering and what were planning to do next. We would take turns among team members to share the responsibility of posting updates in the Coder Academy channel for our team stand-up message. Below are our stand-ups screenshot throughout the course of our project.
+
+### Monday 19 Feb
+![Alt text](docs/part-b/Stand-ups/19022024.PNG)
+
+### Tuesday 20 Feb
+![Alt text](docs/part-b/Stand-ups/2002024.PNG)
+
+### Wednesday 21 Feb
+![Alt text](docs/part-b/Stand-ups/21022024.PNG)
+
+### Thursday 22 Feb
+![Alt text](docs/part-b/Stand-ups/22022024.PNG)
+
+### Friday 23 Feb
+![Alt text](docs/part-b/Stand-ups/23022024.PNG)
+
+### Monday 26 Feb
+![Alt text](docs/part-b/Stand-ups/26022024.PNG)
+
+### Tuesday 27 Feb
+![Alt text](docs/part-b/Stand-ups/27022024.PNG)
+
+### Wednesday 28 Feb
+![Alt text](docs/part-b/Stand-ups/28022024.PNG)
 
 # References 
 GeeksforGeeks. (n.d.). Levels in Data Flow Diagrams (DFD). Available at: https://www.geeksforgeeks.org/levels-in-data-flow-diagrams-dfd/
