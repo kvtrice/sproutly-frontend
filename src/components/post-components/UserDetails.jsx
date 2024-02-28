@@ -8,6 +8,7 @@ function UserDetails({post}) {
   const profilePicture = post.user.profilePicture
   const nav = useNavigate()
 
+    // allow user to click on the profilePicture or username of the creator of a of the post to then navigate to the user profile page
   const handleNaviageToProfilePage = () => {
     nav(`/user/${user_id}`)
   }

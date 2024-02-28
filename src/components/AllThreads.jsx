@@ -82,6 +82,8 @@ function AllThreads({
 							  ))
 							: posts.map((post) => (
 									<div key={post._id}>
+										 {/* only give to the DisplayPost component posts objects that are threadstarter since this is the home page and we dont want to display comments out of the context 
+										 of the single ThreadPage in the home page*/}
 										{post.isThreadStarter && (
 											<DisplayPost
 												posts={posts}

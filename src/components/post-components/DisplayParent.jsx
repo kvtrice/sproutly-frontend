@@ -10,6 +10,7 @@ import PostTag from './PostTag'
 import EditPostNavigation from "./EditPostNavigation";
 import "./DisplayPost.css";
 
+// this is a componen that was created to be used in the context of a single thread page.
 function DisplayParent({
 	parentID,
 	posts,
@@ -17,6 +18,7 @@ function DisplayParent({
 	isUserLoggedIn,
 	loggedInUserId,
 }) {
+	// this is to define from the posts prop objects received from parents component to filter to that specific parentID aka the single parent post.
 	const parents = posts.filter((item) => item._id === parentID);
 
 	return (
