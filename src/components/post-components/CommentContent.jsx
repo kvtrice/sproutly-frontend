@@ -1,6 +1,7 @@
 import React from "react";
 import "./CommentContent.css"
 
+
 const CommentContent = ({
 	content,
 	setContent,

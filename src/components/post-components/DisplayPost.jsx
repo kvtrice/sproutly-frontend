@@ -10,6 +10,7 @@ import PostTitle from "./PostTitle"
 import PostTag from "./PostTag"
 import EditPostNavigation from "./EditPostNavigation"
 
+// this component is being used in the home page, AllThread and Thread Page. It display a collections of post objects
 const DisplayPost = ({
 	post,
 	posts,

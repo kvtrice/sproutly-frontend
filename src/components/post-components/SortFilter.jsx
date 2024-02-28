@@ -7,6 +7,7 @@ function SortFilter({
 	posts,
 	setPosts
 }) {
+	// the default is ascending as it is the order that the posts come directly form the database, where the oldest post is the first object at index 0
 	const [sortOrder, setSortOrder] = useState("ascending");
 	// const [sortedPosts, setSortedPosts] = useState([])
 
@@ -28,6 +29,7 @@ function SortFilter({
 
 	const toggleSortOrder = () => {
 		setSortOrder((prevOrder) =>
+		 // If the previous order was "ascending," set it to "descending"; otherwise, set it to "ascending.". This is the rendeering of the button option. 
 			prevOrder === "ascending" ? "descending" : "ascending"
 		);
 	};
