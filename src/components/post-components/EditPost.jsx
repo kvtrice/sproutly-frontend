@@ -21,15 +21,18 @@ const EditPost = ({
 	const [imageUrl, setImageUrl] = useState("");
 	const [isDiscardShowing, setIsDiscardShowing] = useState(false);
 	const nav = useNavigate();
+	// use params to get the postID of the post
 	const { postId } = useParams();
 
-	// Fetch the details of the selected post
+	// Fetch the details of the selected post, trigger on mount and if the postId changes
 	useEffect(() => {
 		const fetchPost = async () => {
+			// fetch URL based on the params
 			const response = await fetch(
 				`https://sproutly-api.onrender.com/posts/${postId}`
 			);
 			const post = await response.json();
+			// Set all fields to display the current / existing data
 			setTitle(post.title || "");
 			setContent(post.content || "");
 			setImageUrl(post.image || "");
@@ -63,7 +66,9 @@ const EditPost = ({
 					method: "PUT",
 					headers: {
 						"content-Type": "application/json",
-						"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
+						Authorization: `Bearer ${sessionStorage.getItem(
+							"user_id"
+						)}`,
 					},
 					body: JSON.stringify(updatedPost),
 				}
@@ -77,10 +82,12 @@ const EditPost = ({
 		}
 	};
 
+	// Update post handle
 	const handleUpdatePost = async (e) => {
 		e.preventDefault();
+		// Call the editpost function
 		await editPost(postId, title, content, imageUrl, selectedPlantTags);
-		// Navigate to the URL or the updated post if successfully updated
+		// Navigate to the URL of the updated post if successfully updated
 		nav(`/post/${postId}`);
 	};
 
@@ -113,24 +120,28 @@ const EditPost = ({
 								></input>
 							</div>
 						</div>
+						{/* Post content component */}
 						<div className="post-content">
 							<PostContent
 								setContent={setContent}
 								content={content}
 							/>
 						</div>
+						{/* Image upload component */}
 						<div className="upload-image">
 							<ImageUpload
 								setImageUrl={setImageUrl}
 								initialImageUrl={imageUrl}
 							/>
 						</div>
+						{/* Plant search component */}
 						<div className="search">
 							<PlantSearch
 								setSelectedPlantTags={setSelectedPlantTags}
 								selectedPlantTags={selectedPlantTags}
 							/>
 						</div>
+						{/* Action Buttons - Discard / Submit */}
 						<div className="field is-grouped is-grouped-right">
 							<p className="control">
 								<a

@@ -2,9 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router";
 
 const NavBarCreatePost = () => {
-
+	// Define useNavigate
 	const nav = useNavigate();
 
+	// Handler to navigate to the create post screen
+	// Using useNavigate due to routing issues following deployment
 	const handleNavigateToCreatePost = () => {
 		nav("/post/new");
 	};

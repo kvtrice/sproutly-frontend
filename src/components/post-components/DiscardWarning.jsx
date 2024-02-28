@@ -12,18 +12,18 @@ const DiscardWarning = ({
     const nav = useNavigate()
 
 	const handleConfirm = () => {
-        // Clear all entry fields
+		// Clear all entry fields that have been entered
 		setTitle("");
 		setContent("");
 		setImageUrl("");
 		setSelectedPlantTags([]);
 		setIsDiscardShowing(false);
-		// Navigate back
+		// Navigate back to the previous page
 		nav(-1);
 	};
 
 	const handleCancel = () => {
-        // Hide discard warning
+		// Hide the discard warning if the user cancels their discard
 		setIsDiscardShowing(false);
 	};
 

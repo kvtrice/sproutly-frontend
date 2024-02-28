@@ -20,6 +20,7 @@ const NavBar = ({
 	const [nav, setNav] = useState(false);
 	const navigate = useNavigate();
 
+	// Function to handle opening and closing the mobile menu
 	const handleNav = () => {
 		setNav(!nav);
 	};
@@ -27,19 +28,27 @@ const NavBar = ({
 	const editProfileLink = `/user/${loggedInUserId}/edit`;
 	const viewProfileLink = `/user/${loggedInUserId}`;
 
+	// Function to navigate to the edit profile page
+	// Using useNavigate due to numerous routing issues after deployment
 	const handleNavigateUserEditProfile = () => {
 		navigate(`/user/${loggedInUserId}/edit`);
 	};
 
+	// function to navigate to the view profile page
+	// Using useNavigate due to numerous routing issues after deployment
 	const handleNavigateUserViewProfile = () => {
 		navigate(`/user/${loggedInUserId}`);
 	};
 
+	// Function to navigate to the home page
+	// Using useNavigate due to numerous routing issues after deployment
 	const handleNavigateHome = () => {
 		navigate("/");
 	};
 
+	// To trigger when mounted
 	useEffect(() => {
+		// Function to handle the use case of someone being in a web browser, having the window small enough to trigger the mobile nav, then they open the mobile nav and expand their window - without this the mobile nav would remain open even on a large desktop screen
 		const handleResize = () => {
 			// Close the mobile menu if the screen width is greater 1024 (tablet size)
 			if (window.innerWidth > 1024) {
@@ -47,8 +56,10 @@ const NavBar = ({
 			}
 		};
 
+		// Add an event listener to the window and listen to the resize event
 		window.addEventListener("resize", handleResize);
 
+		// Remove the event listener
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
@@ -156,6 +167,7 @@ const NavBar = ({
 						)}
 					</div>
 
+					{/* Switch which components to display based on if the user is logged in or not */}
 					<div>
 						{isUserLoggedIn ? (
 							<div>

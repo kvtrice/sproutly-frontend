@@ -94,7 +94,10 @@ const CreatePost = ({
 			<div className="page-wrapper">
 				<div className="component-wrapper">
 					<h2>New Post</h2>
-					<form className="section create-post-section" onSubmit={createNewPost}>
+					<form
+						className="section create-post-section"
+						onSubmit={createNewPost}
+					>
 						<div className="field">
 							<div className="control">
 								<input
@@ -106,6 +109,7 @@ const CreatePost = ({
 								></input>
 							</div>
 						</div>
+						{/* Post content component */}
 						<div className="post-content">
 							<PostContent
 								setContent={setContent}
@@ -115,9 +119,11 @@ const CreatePost = ({
 						<div className="post-error-container">
 							{error && <p className="error-message">{error}</p>}
 						</div>
+						{/* Image upload component */}
 						<div className="upload-image">
 							<ImageUpload setImageUrl={setImageUrl} />
 						</div>
+						{/* Plant search component */}
 						<div className="search">
 							<PlantSearch
 								selectedPlantTags={selectedPlantTags}
@@ -144,7 +150,7 @@ const CreatePost = ({
 					</form>
 				</div>
 
-				{/* Discard Warning */}
+				{/* Discard Warning, only displays based on id isDiscardShowing is true*/}
 				<div>
 					{isDiscardShowing && (
 						<DiscardWarning
