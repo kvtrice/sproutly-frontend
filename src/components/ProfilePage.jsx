@@ -61,14 +61,23 @@ function ProfilePage({
 				loggedInUserId={loggedInUserId}
 			/>
 			<div className="page-wrapper">
-				<div className="component-wrapper profile-header">
-					<UserData users={users} user_id={user_id} />
-					<UserLikes posts={posts} user_id={user_id} />
+				<div className="component-wrapper profile-wrapper">
+					<h2>User Profile</h2>
+					<hr />
+					<div className="profile-header">
+						<UserData users={users} user_id={user_id} />
+						<UserLikes posts={posts} user_id={user_id} />
+					</div>
 				</div>
 				<div className="component-wrapper">
-					  {/* only give to the DisplayPost component posts objects that are threadstarter and belong to that specific user that we are rendeering the profile page of */}
-					{(posts.filter(post => post.isThreadStarter && post.user._id === user_id)).length === 0 ? (
-						<p className='empty-text'>No posts yet</p>
+					<h2>Post History</h2>
+					<hr />
+					{/* only give to the DisplayPost component posts objects that are threadstarter and belong to that specific user that we are rendeering the profile page of */}
+					{posts.filter(
+						(post) =>
+							post.isThreadStarter && post.user._id === user_id
+					).length === 0 ? (
+						<p className="empty-text">No posts yet</p>
 					) : (
 						posts.map((post) => (
 							<div key={post._id}>
