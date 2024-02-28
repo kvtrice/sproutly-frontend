@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import DisplayPost from './post-components/DisplayPost.jsx'
 import SortFilter from "./post-components/SortFilter.jsx"
 import PostSomethingCta from './PostSomethingCta'
+import { ThreeDots } from "react-loading-icons";
 
-// grabbing the props passed from the app.jsx
 function AllThreads({
 	selectedPlantTags,
 	setSelectedPlantTags,
@@ -13,10 +13,13 @@ function AllThreads({
 }) {
 	const [posts, setPosts] = useState([]);
 	const [filteredPostsByTag, setFilteredPostsByTag] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	// declaring my fetch function as async since we don't know how long the api call will take
 	async function fetchAllPostData() {
-		const response = await fetch("https://sproutly-api.onrender.com/posts/");
+		const response = await fetch(
+			"https://sproutly-api.onrender.com/posts/"
+		);
 		const data = await response.json();
 		return data;
 	}
@@ -24,8 +27,10 @@ function AllThreads({
 	/// putting my fetch function into a useEffect and setting the useEffect with an empty array dependency to prevent infinite looping of fetching
 	// Set posts based on the fetched data
 	useEffect(() => {
+		setIsLoading(true);
 		fetchAllPostData().then((data) => {
 			setPosts(data);
+			setIsLoading(false);
 		});
 	}, []);
 
@@ -43,38 +48,53 @@ function AllThreads({
 		<div className="page-wrapper">
 			<SortFilter posts={posts} setPosts={setPosts} />
 			<div>
-				{isUserLoggedIn ? (<PostSomethingCta loggedInUserPictureUrl={loggedInUserPictureUrl}/> ) : ''}
+				{isUserLoggedIn ? (
+					<PostSomethingCta
+						loggedInUserPictureUrl={loggedInUserPictureUrl}
+					/>
+				) : (
+					""
+				)}
 			</div>
 			<div>
-				{filteredPostsByTag.length > 0
-					? filteredPostsByTag.map((post) => (
-							<div key={post._id}>
-								{/* only render from the DisplayPost the posts  that are threadstarter since this is hte home page and we don't want to render comments 
-								outside of the context of the single ThreadPage */}
-								{post.isThreadStarter && (
-									<DisplayPost
-										posts={posts}
-										setPosts={setPosts}
-										post={post}
-										isUserLoggedIn={isUserLoggedIn}
-										loggedInUserId={loggedInUserId}
-									/>
-								)}
-							</div>
-					  ))
-					: posts.map((post) => (
-							<div key={post._id}>
-								{post.isThreadStarter && (
-									<DisplayPost
-										posts={posts}
-										setPosts={setPosts}
-										post={post}
-										isUserLoggedIn={isUserLoggedIn}
-										loggedInUserId={loggedInUserId}
-									/>
-								)}
-							</div>
-					  ))}
+				{isLoading ? (
+					<div className="home-loader">
+						<div className="home-loading-container">
+							<ThreeDots fill="#B7E4C7" size={20} />
+						</div>
+						<p>Page loading, this should only be a few moments</p>
+					</div>
+				) : (
+					<div>
+						{filteredPostsByTag.length > 0
+							? filteredPostsByTag.map((post) => (
+									<div key={post._id}>
+										{post.isThreadStarter && (
+											<DisplayPost
+												posts={posts}
+												setPosts={setPosts}
+												post={post}
+												isUserLoggedIn={isUserLoggedIn}
+												loggedInUserId={loggedInUserId}
+											/>
+										)}
+									</div>
+							  ))
+							: posts.map((post) => (
+									<div key={post._id}>
+										{post.isThreadStarter && (
+											<DisplayPost
+												posts={posts}
+												setPosts={setPosts}
+												post={post}
+												isUserLoggedIn={isUserLoggedIn}
+												loggedInUserId={loggedInUserId}
+											/>
+										)}
+									</div>
+							  ))}
+					</div>
+				)}
 			</div>
 		</div>
 	);

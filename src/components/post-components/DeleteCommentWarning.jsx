@@ -55,14 +55,14 @@ const DeleteCommentWarning = ({
 
 	return (
 		<div className="modal is-active">
-			<div className="modal-background">
+			<div className="modal-background discard-bg">
 				<div className="modal-content discard-container">
 					<div className="discard-text">
 						Are you sure you want to delete your comment? This
 						cannot be reversed.
 					</div>
 					<div className="discard-buttons">
-						<button className="button" onClick={handleCancel}>
+						<button className="button is-light" onClick={handleCancel}>
 							No, go back
 						</button>
 						<button

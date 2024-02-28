@@ -94,7 +94,7 @@ const CreatePost = ({
 			<div className="page-wrapper">
 				<div className="component-wrapper">
 					<h2>New Post</h2>
-					<form className="section" onSubmit={createNewPost}>
+					<form className="section create-post-section" onSubmit={createNewPost}>
 						<div className="field">
 							<div className="control">
 								<input

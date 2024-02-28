@@ -10,7 +10,7 @@ function UserLikes({ posts, user_id }) {
 			<div className="profile-reactions-count">
 				{HowManyLikesTheyReceived}
 			</div>{" "}
-			<div className="profile-reactions-text">Reactions</div>
+			<div className="profile-reactions-text">Likes Received</div>
 		</div>
 	);
   }
