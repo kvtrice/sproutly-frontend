@@ -27,7 +27,6 @@ const EditUserDetails = ({
 	const [usernameError, setUsernameError] = useState("")
 
 	
-
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
@@ -53,7 +52,7 @@ const EditUserDetails = ({
 			oldPassword: oldPassword,
 			plants: selectedPlantTags,
 			profilePicture: imageUrl,
-		}
+		};
 
 		try {
 			const putRegister = await fetch(
@@ -83,7 +82,8 @@ const EditUserDetails = ({
 		} catch (err) {
 			console.error(err.message)
 		}
-
+	}
+	
 	return (
 		<>
 			<NavBar
