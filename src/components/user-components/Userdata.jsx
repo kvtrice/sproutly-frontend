@@ -19,12 +19,17 @@ function UserData({users,user_id}) {
 				</div>
 				<h3 className='username'>{username}</h3>
 			</div>
-			<div className="profile-plants-wrapper">
-				{plants?.map((plant, index) => (
-					<span key={index} className="post-tags tag">
-						{plant}
-					</span>
-				))}
+			<div>
+				<div className='plants-owned-text'>
+					<p>Plants owned by {username}:</p>
+				</div>
+				<div className="profile-plants-wrapper">
+					{plants?.map((plant, index) => (
+						<span key={index} className="post-tags tag">
+							{plant}
+						</span>
+					))}
+				</div>
 			</div>
 		</div>
   );

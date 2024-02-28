@@ -9,6 +9,11 @@
     border-radius: 10px;
 }
 
+.discard-bg .modal-content {
+    max-width: 800px;
+    width: auto;
+}
+
 .discard-text {
     text-align: center;
     padding-bottom: 2rem;
@@ -18,4 +23,22 @@
 .discard-buttons button {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 500px) {
+    .modal-background .discard-container {
+        margin: 1rem;
+        margin-top: 50%;
+        padding: 1rem;
+    }
+
+    .discard-buttons {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .discard-buttons .is-light {
+        margin-bottom: 0.8rem;
+    }
 }

@@ -279,3 +279,28 @@ hr {
     border-color: var(--border-color);
     background-color: var(--border-color);
 }
+
+.home-loading-container {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 150px;
+}
+
+.home-loader p {
+    text-align: center;
+    color: var(--primary-text-color);
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+/* Media Query mobile */
+
+@media screen and (max-width: 500px) {
+    .component-wrapper {
+        padding: 1rem 0.5rem;
+    }
+}

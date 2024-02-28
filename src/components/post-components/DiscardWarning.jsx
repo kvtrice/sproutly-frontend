@@ -29,7 +29,7 @@ const DiscardWarning = ({
 
 	return (
 		<div className="modal is-active">
-			<div className="modal-background">
+			<div className="modal-background discard-bg">
                 <div className="modal-content discard-container">
                     <div className="discard-text">
                         Are you sure you want to discard your post? All content will be

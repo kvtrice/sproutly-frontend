@@ -15,7 +15,7 @@ const CommentContent = ({
 					placeholder="Start typing here..."
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
-					rows={isUploadShowing ? 3 : 1}
+					rows={isUploadShowing ? 2 : 1}
 				></textarea>
 			</div>
 		</div>

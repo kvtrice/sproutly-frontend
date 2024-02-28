@@ -1,5 +1,5 @@
 .file .upload-button {
-    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .file .file-label .file-cta, .file .file-label .file-name, .file.has-name .file-cta, span .file-label, span .file-name {
@@ -18,12 +18,22 @@
     fill: var(--primary-text-color);
 }
 
+.image-file {
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
+}
+
 .uploading-icons-container {
     display: flex;
     align-items: center;
     margin-left: 1rem;
     width: 2.5rem;
     height: 2rem;
+}
+
+.image-upload-wrapper {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .uploading-icons {
@@ -38,7 +48,11 @@
 }
 
 .check {
-    fill: var(--primary-text-color);
     width: 100%;
     height: 100%;
+}
+
+.error-container .image {
+    padding-left: 0;
+
 }

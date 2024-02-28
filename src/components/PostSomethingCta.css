@@ -34,3 +34,9 @@
     height: 60px;
     margin-right: 1rem;
 }
+
+@media screen and (max-width: 500px) {
+    .post-something-wrapper .post-something-container {
+        padding: 1rem 0.5rem;
+    }
+}

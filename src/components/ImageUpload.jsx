@@ -9,6 +9,7 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 	const [fileName, setFileName] = useState("...");
 	const [isUploading, setIsUploading] = useState(false);
 	const [uploaded, setUploaded] = useState(false);
+	const [imageError, setImageError] = useState("");
 
 	useEffect(() => {
 		if (initialImageUrl) {
@@ -43,6 +44,7 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 		const file = e.target.files[0];
 		setImage(file);
 		setFileName(file.name);
+		setImageError("Click 'upload' to upload your image");
 	};
 
 	const handleUpload = (e) => {
@@ -51,36 +53,45 @@ const ImageUpload = ({ setImageUrl, initialImageUrl }) => {
 	};
 
 	return (
-		<div className="file is-small has-name">
-			<label className="file-label">
-				<input
-					className="file-input"
-					type="file"
-					onChange={(e) => handleFileChange(e)}
-				></input>
-				<span className="file-cta">
-					<span className="file-icon">
-						<MdOutlineFileUpload />
+		<div>
+			<div className="error-container">
+				{imageError && uploaded ? "" : <p className="error-message image">{imageError}</p>}
+			</div>
+			<div className="file is-small has-name image-upload-wrapper">
+				<label className="file-label image-file">
+					<input
+						className="file-input"
+						type="file"
+						onChange={(e) => handleFileChange(e)}
+					></input>
+					<span className="file-cta">
+						<span className="file-icon">
+							<MdOutlineFileUpload />
+						</span>
+						<span className="file-label">Choose image</span>
 					</span>
-					<span className="file-label">Choose image</span>
-				</span>
-				<span className="file-name">{fileName}</span>
-			</label>
-			<button
-				className="button upload-button is-light is-small"
-				onClick={handleUpload}
-			>
-				Upload
-			</button>
-			<div className="uploading-icons-container">
-				<div className="uploading-icons">
-					{isUploading ? (
-						<ThreeDots className="icon-loading" fill="#000000" />
-					) : uploaded ? (
-						<FaCheck className="check" />
-					) : (
-						""
-					)}
+					<span className="file-name">{fileName}</span>
+				</label>
+				<button
+					className="button upload-button is-light is-small"
+					onClick={handleUpload}
+				>
+					Upload
+				</button>
+				<div className="uploading-icons-container">
+					<div className="uploading-icons">
+						{isUploading ? (
+							<ThreeDots
+								className="icon-loading"
+								fill="#B7E4C7"
+								size={20}
+							/>
+						) : uploaded ? (
+							<FaCheck className="check" size={20} fill="#B7E4C7" />
+						) : (
+							""
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
