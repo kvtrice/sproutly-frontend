@@ -118,6 +118,5 @@ describe("Plant Search component", () => {
 
 			expect(selectedTag).toBeNull();
 		});
-
 	});
 });
