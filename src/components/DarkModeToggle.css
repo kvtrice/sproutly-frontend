@@ -2,6 +2,7 @@
     visibility: hidden;
 }
 
+/* Parent container for the dark mode toggle */
 .dark-toggle + label {
     display: flex;
     align-items: center;
@@ -10,6 +11,7 @@
     color: var(--primary-text-color);
 }
 
+/* Setting the outer background for the toggle component */
 .dark-toggle + label::before {
     content: "";
     height: 1.5rem;
@@ -20,6 +22,7 @@
     transition: background-color 250ms ease-in-out;
 }
 
+/* Setting the inner circle for the toggle */
 .dark-toggle + label::after {
     content: "";
     height: 1.3rem;
@@ -33,6 +36,7 @@
     transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
+/* CSS to ,ove the inner circle when isChecked is true */
 .dark-toggle:checked + label::after {
     transform: translateX(100%);
 }

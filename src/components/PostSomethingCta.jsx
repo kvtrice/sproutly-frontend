@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const PostSomethingCta = ({ loggedInUserPictureUrl }) => {
 	const nav = useNavigate();
 
+	// Handler to navigate to create post on click
 	const handleNavToCreatePost = () => {
 		nav("/post/new");
 	};

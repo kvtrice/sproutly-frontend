@@ -13,7 +13,7 @@ import EditUserDetails from "./UserEdit";
 import { jwtDecode } from "jwt-decode";
 
 function App() {
-	// State to handle dark mode
+	// State to handle dark mode and store in local storage
 	const [isDark, setIsDark] = useLocalStorage("isDark", false);
 	const [loggedInUserId, setLoggedInUserId] = useState("");
 	const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);

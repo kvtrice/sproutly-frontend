@@ -2,18 +2,21 @@
     margin-right: 1rem;
 }
 
+/* Reset some Bulma defaults so the component can be dynamically colored across both light and dark mode */
 .file .file-label .file-cta, .file .file-label .file-name, .file.has-name .file-cta, span .file-label, span .file-name {
     border-color: var(--border-color);
     color: var(--primary-text-color);
     background-color: var(--input-bg-color);
 }
 
+/* Reset some Bulma defaults so the component can be dynamically colored across both light and dark mode */
 .file .file-label .file-cta:hover, .file .file-label .file-name:hover, .file.has-name .file-cta:hover, span .file-label:hover, span .file-name:hover, .file-input:hover, .file .file-label:hover .file-cta, .file .file-label:hover .file-name {
     border-color: var(--border-color-hover-color);
     color: var(--primary-text-color);
     background-color: var(--input-bg-color);
 }
 
+/* Reset some Bulma defaults so the component can be dynamically colored across both light and dark mode */
 .file-icon {
     fill: var(--primary-text-color);
 }
@@ -54,5 +57,4 @@
 
 .error-container .image {
     padding-left: 0;
-
 }

@@ -1,15 +1,17 @@
 import React from "react";
 import "./DiscardWarning.css";
-import CommentContent from "./CommentContent";
 
 const DeleteCommentWarning = ({
 	setIsDeleteShowing,
 	commentToDelete,
 	setCommentToDelete,
 }) => {
+	// Function to handle if a user confirms their choice to delete the comment
 	const handleConfirm = () => {
+		// Function to delete the comment
 		const deleteComment = async () => {
 			try {
+				// Fetches the comment based on the commentID that's been passed through commetnToDelete (This comes from the EditCommentNavigation Component)
 				const result = await fetch(
 					`https://sproutly-api.onrender.com/posts/${commentToDelete}`,
 					{
@@ -31,6 +33,7 @@ const DeleteCommentWarning = ({
 			}
 		};
 
+		// Function to handle the deletion, reset state and reload the page (to display the thread with the comment now deleted)
 		async function handleDelete() {
 			await deleteComment();
 			setCommentToDelete("");
@@ -40,16 +43,12 @@ const DeleteCommentWarning = ({
 			window.location.reload();
 		}
 
+		// Run the delete handler function
 		handleDelete();
-		// setCommentToDelete("");
-
-		// setIsDeleteShowing(false);
-		// // Reload page after deletion
-		// // window.location.reload();
 	};
 
 	const handleCancel = () => {
-		// Hide delete warning
+		// Hide delete warning if the user cancels the delete
 		setIsDeleteShowing(false);
 	};
 
@@ -62,7 +61,10 @@ const DeleteCommentWarning = ({
 						cannot be reversed.
 					</div>
 					<div className="discard-buttons">
-						<button className="button is-light" onClick={handleCancel}>
+						<button
+							className="button is-light"
+							onClick={handleCancel}
+						>
 							No, go back
 						</button>
 						<button

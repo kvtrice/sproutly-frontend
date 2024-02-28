@@ -21,13 +21,14 @@ const EditComment = ({
 
 	const { commentId } = useParams();
 
-	// Fetch the details of the selected comment
+	// Fetch the details of the selected comment based on the commentId
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
 				`https://sproutly-api.onrender.com/posts/${commentId}`
 			);
 			const post = await response.json();
+			// Display the existing data / state initially
 			setContent(post.content || "");
 			setImageUrl(post.image || "");
 		};
@@ -43,7 +44,7 @@ const EditComment = ({
 			image: imageUrl,
 		};
 
-		// POST the updated post to API
+		// POST the updated comment to the API
 		try {
 			const result = await fetch(
 				`https://sproutly-api.onrender.com/posts/${commentId}`,
@@ -51,7 +52,9 @@ const EditComment = ({
 					method: "PUT",
 					headers: {
 						"content-Type": "application/json",
-						"Authorization": `Bearer ${sessionStorage.getItem('user_id')}`
+						Authorization: `Bearer ${sessionStorage.getItem(
+							"user_id"
+						)}`,
 					},
 					body: JSON.stringify(updatedComment),
 				}
@@ -68,12 +71,13 @@ const EditComment = ({
 	const handleUpdateComment = async (e) => {
 		e.preventDefault();
 		await editComment(commentId, content, imageUrl);
-		// Navigate to the URL or the parent post if successfully updated
+		// Navigate back to the previous post if successfully updated
 		nav(-1);
 	};
 
 	// Discard warning handler
 	const displayDiscardWarning = () => {
+		// Show the discard warning when triggered
 		setIsDiscardShowing(true);
 	};
 
