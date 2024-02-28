@@ -33,7 +33,7 @@ const RegisterUser = ({
 			username: username,
 			password: password,
 			plants: selectedPlantTags,
-			ProfilePicture: imageUrl,
+			profilePicture: imageUrl,
 		}
 
 		try {
