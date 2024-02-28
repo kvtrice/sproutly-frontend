@@ -15,7 +15,7 @@ function AllThreads({
 	const [filteredPostsByTag, setFilteredPostsByTag] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 
-	// Fetch all posts
+	// declaring my fetch function as async since we don't know how long the api call will take
 	async function fetchAllPostData() {
 		const response = await fetch(
 			"https://sproutly-api.onrender.com/posts/"
@@ -24,6 +24,7 @@ function AllThreads({
 		return data;
 	}
 
+	/// putting my fetch function into a useEffect and setting the useEffect with an empty array dependency to prevent infinite looping of fetching
 	// Set posts based on the fetched data
 	useEffect(() => {
 		setIsLoading(true);

@@ -7,7 +7,7 @@ import "./RegisterUser.css";
 import NavBar from "./NavBar.jsx";
 import { useNavigate} from "react-router-dom"
 
-
+// grabbing the props passed from the app.jsx
 const RegisterUser = ({
 	isDark,
 	setIsDark,
@@ -23,6 +23,7 @@ const RegisterUser = ({
 	const [usernameError, setUsernameError] = useState("")
 	const [passwordError, setPasswordError] = useState("")
 
+	// there is no need to do a useEffect when we are posting since there is no rendering side effect from a post component
 	async function addUser() {
     // clearing the error message each time addUser is trigerred so that old error message are not displayed as they are fixed.
 	setUsernameError('')
@@ -50,10 +51,12 @@ const RegisterUser = ({
 			if (!putRegister.ok) {
 				const errorData = await putRegister.json();
 				errorData.Displayederrors.forEach((error) => {
+					// set the different error messages so that they can be individually returned
 					if (error.includes("Username")) setUsernameError(error)
 					if (error.includes("Password")) setPasswordError(error)
 					if (error.includes("required")) setUsernameError(error)
 				})
+			//only navigate if there is no error message
 			} else {
 				nav(`/login`)
 			}

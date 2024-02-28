@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'
 import NavBar from "./NavBar";
 import "./ProfilePage.css";
 
+
+//For the profile page I need to do grab two sets of data my user data and my posts data since the page display a history of a user post
 async function Allpostdata() {
 	const response = await fetch("https://sproutly-api.onrender.com/posts/");
 	const data = await response.json();
@@ -18,7 +20,7 @@ async function Alluserdata() {
 	return userData;
 }
 
-
+// grabbing the props passed from the app.jsx
 function ProfilePage({
 	isDark,
 	setIsDark,
@@ -27,14 +29,18 @@ function ProfilePage({
 	isUserLoggedIn,
 	loggedInUserPictureUrl,
 	loggedInUserId,
-}) {
+}) 
+	/// putting my fetch into a useEffect and setting the useEffect with an empty array dependency to prevent infinite looping of fetching
+{
 	useEffect(() => {
 		Allpostdata()
 			.then((data) => {
+				// once the fetch occurs and promise is return set the return of the fetch to Setposts so that Posts becomes my post objects from the api fetching.
 				setPosts(data);
 				return Alluserdata(); // Chain the next promise
 			})
 			.then((userData) => {
+				// once the fetch occurs and promise is return set the return of the fetch to setUsers so that User becomes my user objects from the api fetching.
 				setUsers(userData);
 			});
 	}, []);
@@ -60,6 +66,7 @@ function ProfilePage({
 					<UserLikes posts={posts} user_id={user_id} />
 				</div>
 				<div className="component-wrapper">
+					  {/* only give to the DisplayPost component posts objects that are threadstarter and belong to that specific user that we are rendeering the profile page of */}
 					{(posts.filter(post => post.isThreadStarter && post.user._id === user_id)).length === 0 ? (
 						<p className='empty-text'>No posts yet</p>
 					) : (
