@@ -53,7 +53,7 @@ const EditUserDetails = ({
 			oldPassword: oldPassword,
 			plants: selectedPlantTags,
 			profilePicture: imageUrl,
-		};
+		}
 
 		try {
 			const putRegister = await fetch(
@@ -66,23 +66,23 @@ const EditUserDetails = ({
 					},
 					body: JSON.stringify(userDetail),
 				}
-			);
-
+			)
+		
 			if (!putRegister.ok) {
-				const errorData = await putRegister.json();
-				console.log("errorData:", errorData);
+				const errorData = await putRegister.json()
+				console.log("errorData:", errorData)
 				errorData.Displayederrors.forEach((error) => {
 					if (error.includes("Incorrect")) setoldPasswordError(error)
 					if (error.includes("minimum")) setPasswordError(error)
 					if (error.includes("Username")) setUsernameError(error)
 					if (error.includes("required")) setUsernameError(error)
 				})
+			} else {
+				nav(`/user/${loggedInUserId}`)
 			}
 		} catch (err) {
 			console.error(err.message)
 		}
-		nav(`/user/${loggedInUserId}`)
-	}
 
 	return (
 		<>
