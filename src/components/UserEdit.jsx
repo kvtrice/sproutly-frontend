@@ -8,7 +8,7 @@ import NavBar from "./NavBar.jsx";
 import './RegisterUser.css'
 import { useNavigate} from "react-router-dom"
 
-
+// grabbing the props passed from the app.jsx
 const EditUserDetails = ({
 	isDark,
 	setIsDark,
@@ -26,18 +26,21 @@ const EditUserDetails = ({
 	const [oldPasswordError, setoldPasswordError] = useState("")
 	const [usernameError, setUsernameError] = useState("")
 
-	
+	/// putting my fetch into a useEffect and setting the useEffect with an empty array dependency to prevent infinite looping of fetching
 	useEffect(() => {
 		const fetchPost = async () => {
 			const response = await fetch(
 				`https://sproutly-api.onrender.com/users/${loggedInUserId}`
 			)
+			// by pacing the below states in the useEffect we are ensuring that those states are updated after the data has been fetched 
+			//since we prefilling some field so user can edit each field as they wished easier
 			const data = await response.json()
 			SetUsername(data.username);
 			setSelectedPlantTags(data.plants || []);
 			setImageUrl(data.profilePicture || "https://pics.craiyon.com/2023-07-02/fa5dc6ea1a0d4c6fa9294b54c6edf1e9.webp")
 		}
 		fetchPost()
+		// mount again if loggedinUser changes
 	}, [loggedInUserId])
 
 	async function editUser() {
@@ -71,11 +74,13 @@ const EditUserDetails = ({
 				const errorData = await putRegister.json()
 				console.log("errorData:", errorData)
 				errorData.Displayederrors.forEach((error) => {
+					// set the different error messages so that they can be individually returned
 					if (error.includes("Incorrect")) setoldPasswordError(error)
 					if (error.includes("minimum")) setPasswordError(error)
 					if (error.includes("Username")) setUsernameError(error)
 					if (error.includes("required")) setUsernameError(error)
 				})
+			//only navigate if there is no error message
 			} else {
 				nav(`/user/${loggedInUserId}`)
 			}
@@ -83,7 +88,7 @@ const EditUserDetails = ({
 			console.error(err.message)
 		}
 	}
-	
+
 	return (
 		<>
 			<NavBar

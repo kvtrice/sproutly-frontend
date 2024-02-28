@@ -5,7 +5,7 @@ import "./RegisterUser.css";
 import NavBar from "./NavBar";
 import { useNavigate} from "react-router-dom"
 
-
+// grabbing the props passed from the app.jsx
 const Login = ({
 	isDark,
 	setIsDark,
@@ -27,7 +27,7 @@ const Login = ({
 			username: username,
 			password: password,
 		}
-
+		// there is no need to do a useEffect when we are posting since there is no rendering side effect from a post component
 		try {
 			const putLogin = await fetch("https://sproutly-api.onrender.com/users/login", {
 				method: "POST",
@@ -42,6 +42,7 @@ const Login = ({
 				setLoginError(errorData.error);
 			} else {
 				const payload = await putLogin.json();
+				// at the sucess of the login store our token in sessionStorage under key called user_id this is crucial for the functionality of our app
 				sessionStorage.setItem("user_id", payload.token);
 				nav(`/`)
 				//trigger a reload of the home page after navigating, without it the components that are meant to show if you log in after navigation from login won't show.
