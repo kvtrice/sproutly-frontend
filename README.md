@@ -2,6 +2,8 @@
 
 A full stack web application by **Alice Tram & Katrice Mountford**
 
+![Hero Image](docs/hero.jpg)
+
 ## Links
 - [Sproutly Deployed Website](https://sproutlyapp.vercel.app/)
 - [Sproutly Deployed API](https://sproutly-api.onrender.com)
