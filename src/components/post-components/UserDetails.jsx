@@ -18,7 +18,7 @@ function UserDetails({post}) {
       <div className="user-image-div">
         <img className="user-image " src={profilePicture} alt="" />
       </div>
-      <h3>{username}</h3>
+      <h3 className='user-details-username'>{username}</h3>
     </div>
   )
 }
