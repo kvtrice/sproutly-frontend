@@ -99,12 +99,22 @@ hr {
     margin-top: 1rem;
 }
 
-.nav-profile-picture {
+.nav-profile-picture-container {
     margin-left: 1rem;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     cursor: pointer;
+    overflow: hidden;
+    transition: 300ms ease-in-out;
+}
+
+.nav-profile-picture-container:hover {
+    transform: scale(1.1);
+}
+
+.nav-profile-picture-container .nav-profile-picture {
+    object-fit: cover;
 }
 
 .logged-in-container {

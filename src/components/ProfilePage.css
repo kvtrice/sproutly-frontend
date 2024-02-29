@@ -20,10 +20,15 @@
     align-items: center;
 }
 
-.profile-details-container .image {
+.profile-details-container .user-image-div {
     width: 70px;
     height: 70px;
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-details-container .user-image-div .image {
+    object-fit: cover;
 }
 
 .profile-details-container .username {
@@ -69,5 +74,15 @@
 
     .profile-likes-count-container {
         margin-right: 0;
+    }
+
+    .profile-details-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .profile-details-container .user-image-div {
+        margin-bottom: 1rem;
     }
 }

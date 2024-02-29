@@ -28,11 +28,16 @@
     border-color: var(--border-color-hover-color);
 }
 
-.user-profile-picture {
+.post-something-container .profile-picture {
     border-radius: 50%;
     width: 60px;
     height: 60px;
     margin-right: 1rem;
+    overflow: hidden;
+}
+
+.post-something-container .profile-picture .user-profile-picture {
+    object-fit: cover;
 }
 
 @media screen and (max-width: 500px) {
